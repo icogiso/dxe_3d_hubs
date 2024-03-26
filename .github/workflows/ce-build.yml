@@ -61,6 +61,5 @@ jobs:
           cache-from: type=registry,ref=${{ inputs.registry }}/${{ github.workflow }}:buildcache
           cache-to: type=registry,ref=${{ inputs.registry }}/${{ github.workflow }}:buildcache,mode=max
           push: true
-            provenance: false
-            platforms: linux/amd64
-
+          provenance: false
+          platforms: linux/amd64
