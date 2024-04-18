@@ -16,35 +16,37 @@ export function LoadingScreenContainer({ onLoaded, scene }) {
   }, [loading, onLoaded]);
 
   //TODO: Make these configurable
-  const infoMessages = useMemo(
-    () => [
-      {
-        heading: intl.formatMessage({ id: "loading-screen.heading.tip", defaultMessage: "Tip:" }),
-        message: intl.formatMessage({
-          id: "loading-screen.message.keyboard-controls",
-          defaultMessage: "Press the Q & E keys to turn left and right."
-        })
-      },
-      {
-        heading: intl.formatMessage({ id: "loading-screen.heading.whats-new", defaultMessage: "What's New?" }),
-        message: intl.formatMessage(
-          {
-            id: "loading-screen.message.whats-new",
-            defaultMessage: "You can now set the default locale in your preferences. <a>Read More</a>"
-          },
-          {
-            // eslint-disable-next-line react/display-name
-            a: chunks => (
-              <a href="/whats-new" target="_blank">
-                {chunks}
-              </a>
-            )
-          }
-        )
-      }
-    ],
-    [intl]
-  );
+  // const infoMessages = useMemo(
+  //   () => [
+  //     {
+  //       heading: intl.formatMessage({ id: "loading-screen.heading.tip", defaultMessage: "Tip:" }),
+  //       message: intl.formatMessage({
+  //         id: "loading-screen.message.keyboard-controls",
+  //         defaultMessage: "Press the Q & E keys to turn left and right."
+  //       })
+  //     },
+  //     {
+  //       heading: intl.formatMessage({ id: "loading-screen.heading.whats-new", defaultMessage: "What's New?" }),
+  //       message: intl.formatMessage(
+  //         {
+  //           id: "loading-screen.message.whats-new",
+  //           defaultMessage: "You can now set the default locale in your preferences. <a>Read More</a>"
+  //         },
+  //         {
+  //           // eslint-disable-next-line react/display-name
+  //           a: chunks => (
+  //             <a href="/whats-new" target="_blank">
+  //               {chunks}
+  //             </a>
+  //           )
+  //         }
+  //       )
+  //     }
+  //   ],
+  //   [intl]
+  // );
+  //配列を空で渡してLoadingScreen.jsで表示部分をコメントアウト
+  const infoMessages = useMemo(()=>[],[]);
 
   return <LoadingScreen message={message} infoMessages={infoMessages} />;
 }
