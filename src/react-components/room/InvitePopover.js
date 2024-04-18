@@ -2,13 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./InvitePopover.scss";
 import { CopyableTextInputField } from "../input/CopyableTextInputField";
-import { Popover } from "../popover/Popover";
-import { ToolbarButton } from "../input/ToolbarButton";
-import { ReactComponent as InviteIcon } from "../icons/Invite.svg";
+// import { Popover } from "../popover/Popover";
+// import { ToolbarButton } from "../input/ToolbarButton";
+// import { ReactComponent as InviteIcon } from "../icons/Invite.svg";
 import { Column } from "../layout/Column";
 import { InviteLinkInputField } from "./InviteLinkInputField";
 import { FormattedMessage, defineMessage, useIntl } from "react-intl";
-import { ToolTip } from "@mozilla/lilypad-ui";
+// import { ToolTip } from "@mozilla/lilypad-ui";
 
 function InvitePopoverContent({ url, embed, inviteRequired, fetchingInvite, inviteUrl, revokeInvite }) {
   return (
@@ -46,15 +46,15 @@ InvitePopoverContent.propTypes = {
   revokeInvite: PropTypes.func
 };
 
-const inviteTooltipDescription = defineMessage({
-  id: "invite-tooltip.description",
-  defaultMessage: "Copy room link to invite others to the room"
-});
+// const inviteTooltipDescription = defineMessage({
+//   id: "invite-tooltip.description",
+//   defaultMessage: "Copy room link to invite others to the room"
+// });
 
-const invitePopoverTitle = defineMessage({
-  id: "invite-popover.title",
-  defaultMessage: "Invite"
-});
+// const invitePopoverTitle = defineMessage({
+//   id: "invite-popover.title",
+//   defaultMessage: "Invite"
+// });
 
 export function InvitePopoverButton({
   url,
@@ -67,42 +67,43 @@ export function InvitePopoverButton({
   revokeInvite,
   ...rest
 }) {
-  const intl = useIntl();
-  const title = intl.formatMessage(invitePopoverTitle);
-  const description = intl.formatMessage(inviteTooltipDescription);
+  /*今回招待ボタンは使用しないため非表示 */
+  // const intl = useIntl();
+  // const title = intl.formatMessage(invitePopoverTitle);
+  // const description = intl.formatMessage(inviteTooltipDescription);
 
-  return (
-    <Popover
-      title={title}
-      content={() => (
-        <InvitePopoverContent
-          url={url}
-          embed={embed}
-          inviteRequired={inviteRequired}
-          fetchingInvite={fetchingInvite}
-          inviteUrl={inviteUrl}
-          revokeInvite={revokeInvite}
-        />
-      )}
-      placement="top-start"
-      offsetDistance={28}
-      initiallyVisible={initiallyVisible}
-      popoverApiRef={popoverApiRef}
-    >
-      {({ togglePopover, popoverVisible, triggerRef }) => (
-        <ToolTip description={description}>
-          <ToolbarButton
-            ref={triggerRef}
-            icon={<InviteIcon />}
-            selected={popoverVisible}
-            onClick={togglePopover}
-            label={title}
-            {...rest}
-          />
-        </ToolTip>
-      )}
-    </Popover>
-  );
+  // return (
+  //   <Popover
+  //     title={title}
+  //     content={() => (
+  //       <InvitePopoverContent
+  //         url={url}
+  //         embed={embed}
+  //         inviteRequired={inviteRequired}
+  //         fetchingInvite={fetchingInvite}
+  //         inviteUrl={inviteUrl}
+  //         revokeInvite={revokeInvite}
+  //       />
+  //     )}
+  //     placement="top-start"
+  //     offsetDistance={28}
+  //     initiallyVisible={initiallyVisible}
+  //     popoverApiRef={popoverApiRef}
+  //   >
+  //     {({ togglePopover, popoverVisible, triggerRef }) => (
+  //       <ToolTip description={description}>
+  //         <ToolbarButton
+  //           ref={triggerRef}
+  //           icon={<InviteIcon />}
+  //           selected={popoverVisible}
+  //           onClick={togglePopover}
+  //           label={title}
+  //           {...rest}
+  //         />
+  //       </ToolTip>
+  //     )}
+  //   </Popover>
+  // );
 }
 
 InvitePopoverButton.propTypes = {

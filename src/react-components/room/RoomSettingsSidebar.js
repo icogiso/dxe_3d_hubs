@@ -120,7 +120,7 @@ export function RoomSettingsSidebar({
             error={errors?.entry_mode?.message}
             {...register("entry_mode")}
           />
-          <RadioInputOption
+          {/* <RadioInputOption
             value="invite"
             label={<FormattedMessage id="room-settings-sidebar.access-invite" defaultMessage="Invite only" />}
             description={
@@ -131,7 +131,7 @@ export function RoomSettingsSidebar({
             }
             error={errors?.entry_mode?.message}
             {...register("entry_mode")}
-          />
+          /> */}
         </RadioInputField>
         {entryMode === "invite" && (
           <InviteLinkInputField fetchingInvite={fetchingInvite} inviteUrl={inviteUrl} onRevokeInvite={onRevokeInvite} />
