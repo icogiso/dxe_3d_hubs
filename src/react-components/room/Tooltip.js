@@ -58,10 +58,10 @@ const onboardingMessages = defineMessages({
     id: "tips.desktop.turning2",
     defaultMessage: "Use {left} or {right} or click and drag to look around"
   },
-  "tips.desktop.invite": {
-    id: "tips.desktop.invite2",
-    defaultMessage: "<p>Use the {invite} button to share</p><p2>this room</p2>"
-  },
+  // "tips.desktop.invite": {
+  //   id: "tips.desktop.invite2",
+  //   defaultMessage: "<p>Use the {invite} button to share</p><p2>this room</p2>"
+  // },
   "tips.end": {
     id: "tips.end",
     defaultMessage: "Tutorial completed! Have fun exploring"
@@ -86,10 +86,10 @@ const onboardingMessages = defineMessages({
     id: "tips.text.more",
     defaultMessage: "More"
   },
-  "tips.text.invite": {
-    id: "tips.text.invite",
-    defaultMessage: "Invite"
-  }
+  // "tips.text.invite": {
+  //   id: "tips.text.invite",
+  //   defaultMessage: ""
+  // }
 });
 
 function isStep(step, item) {
@@ -97,7 +97,7 @@ function isStep(step, item) {
 }
 
 function maxSteps(step) {
-  return isStep(step, "desktop") ? 3 : 2;
+  return isStep(step, "desktop") ? 2 : 1;
 }
 
 function Key({ children }) {
@@ -269,24 +269,26 @@ function onboardingSteps({ intl, step }) {
         }
       };
     case "tips.desktop.invite":
-      return {
-        control: {
-          type: Step,
-          params: {
-            invite: (
-              <InlineButton icon={<InviteIcon />} text={intl.formatMessage(onboardingMessages["tips.text.invite"])} />
-            ),
-            p: chunks => <p style={{ width: "100%" }}>{chunks}</p>,
-            p2: chunks => <p style={{ width: "100%" }}>{chunks}</p>
-          }
-        },
-        navigationBar: {
-          type: StepNavigationBar,
-          params: {
-            currentStep: 2
-          }
-        }
-      };
+      return onboardingSteps({ intl, step: "tips.desktop.end" });
+      // return {
+      //   control: {
+      //     type: Step,
+      //     // params: {
+      //     //   invite: (
+      //     //     <InlineButton icon={<InviteIcon />} text={intl.formatMessage(onboardingMessages["tips.text.invite"])} />
+      //     //   ),
+      //     //   p: chunks => <p style={{ width: "100%" }}>{chunks}</p>,
+      //     //   p2: chunks => <p style={{ width: "100%" }}>{chunks}</p>
+      //     // }
+      //   },
+      //   navigationBar: {
+      //     type: StepNavigationBar,
+      //     params: {
+      //       currentStep: 2
+      //     }
+      //   }
+      // };
+
     case "tips.desktop.menu":
       return {
         control: {
