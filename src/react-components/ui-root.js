@@ -332,9 +332,10 @@ class UIRoot extends Component {
         this.setState({ watching: false });
       }
     });
-    this.props.scene.addEventListener("action_toggle_ui", () =>
-      this.setState({ hide: !this.state.hide, hideUITip: false })
-    );
+    this.props.scene.addEventListener("action_toggle_ui", () => {
+      this.setState({ hide: !this.state.hide, hideUITip: false });
+    });
+
     this.props.scene.addEventListener("action_toggle_record", () => {
       const cursor = document.querySelector("#right-cursor");
       if (this.state.isRecordingMode) {
@@ -1216,13 +1217,13 @@ class UIRoot extends Component {
             icon: HomeIcon,
             onClick: () => this.setSidebar("room-info")
           },
-          (this.props.breakpoint === "sm" || this.props.breakpoint === "md") &&
-            (this.props.hub.entry_mode !== "invite" || this.props.hubChannel.can("update_hub")) && {
-              id: "invite",
-              label: <FormattedMessage id="more-menu.invite" defaultMessage="Invite" />,
-              icon: InviteIcon,
-              onClick: () => this.props.scene.emit("action_invite")
-            },
+          // (this.props.breakpoint === "sm" || this.props.breakpoint === "md") &&
+          //   (this.props.hub.entry_mode !== "invite" || this.props.hubChannel.can("update_hub")) && {
+          //     id: "invite",
+          //     label: <FormattedMessage id="more-menu.invite" defaultMessage="Invite" />,
+          //     icon: InviteIcon,
+          //     onClick: () => this.props.scene.emit("action_invite")
+          //   },
           this.isFavorited()
             ? {
                 id: "unfavorite-room",
