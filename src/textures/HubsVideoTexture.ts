@@ -1,4 +1,5 @@
-import { LinearFilter, Texture } from "three";
+// import { LinearFilter, Texture } from "three";
+import { Texture, NearestFilter, LinearMipmapLinearFilter, LinearFilter } from "three";
 import { Mapping, TextureDataType, TextureFilter, PixelFormat, Wrapping } from "three";
 
 export class HubsVideoTexture extends Texture {
@@ -25,7 +26,7 @@ export class HubsVideoTexture extends Texture {
       this.isVideoTexture = true;
 
       this.minFilter = minFilter !== undefined ? minFilter : LinearFilter;
-      this.magFilter = magFilter !== undefined ? magFilter : LinearFilter;
+      this.magFilter = magFilter !== undefined ? magFilter : NearestFilter; // 拡大時のフィルタリング、より鮮明なエッジが必要な場合は NearestFilter を検討
 
       this.generateMipmaps = false;
 
