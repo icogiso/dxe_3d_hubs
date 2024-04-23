@@ -350,14 +350,22 @@ export default class MediaDevicesManager extends EventEmitter {
           video: {
             // Work around BMO 1449832 by calculating the width. This will break for multi monitors if you share anything
             // other than your current monitor that has a different aspect ratio.
-            width: 720 * (screen.width / screen.height),
-            height: 720,
-            frameRate: 30
+            // width: 720 * (screen.width / screen.height),
+            // height: 720,
+            // frameRate: 30
+            width: 1920 * (screen.width / screen.height),
+            height: 1080,
+            frameRate: 60
           },
-          audio: {
-            echoCancellation: window.APP.store.state.preferences.disableEchoCancellation === true ? false : true,
-            noiseSuppression: window.APP.store.state.preferences.disableNoiseSuppression === true ? false : true,
-            autoGainControl: window.APP.store.state.preferences.disableAutoGainControl === true ? false : true
+          // audio: {
+          //   echoCancellation: window.APP.store.state.preferences.disableEchoCancellation === true ? false : true,
+          //   noiseSuppression: window.APP.store.state.preferences.disableNoiseSuppression === true ? false : true,
+          //   autoGainControl: window.APP.store.state.preferences.disableAutoGainControl === true ? false : true
+          // }
+            audio: {
+            echoCancellation: true,
+            noiseSuppression: true,
+            autoGainControl: true
           }
         });
       } else {
