@@ -25,6 +25,7 @@ export function RoomEntryModal({
   onSpectate,
   showRoomSettings,
   onRoomSettings,
+  isAdmin,
   ...rest
 }) {
   const breakpoint = useCssBreakpoints();
@@ -47,23 +48,26 @@ export function RoomEntryModal({
               </span>
             </Button>
           )}
-          {showEnterOnDevice && (
+          {/* {showEnterOnDevice && (
             <Button preset="accent5" onClick={onEnterOnDevice}>
               <VRIcon />
               <span>
                 <FormattedMessage id="room-entry-modal.enter-on-device-button" defaultMessage="Enter On Device" />
               </span>
             </Button>
-          )}
-          {showSpectate && (
+          )} */}
+              <div>
+              {isAdmin ? <p>Admin</p> : <p>Not Admin</p>}
+            </div>
+          {/* {showSpectate && (
             <Button preset="accent2" onClick={onSpectate}>
               <ShowIcon />
               <span>
                 <FormattedMessage id="room-entry-modal.spectate-button" defaultMessage="Spectate" />
               </span>
             </Button>
-          )}
-          {showRoomSettings && breakpoint !== "sm" && (
+          )} */}
+          {/* {showRoomSettings && breakpoint !== "sm" && (
             <>
               <hr className={styleUtils.showLg} />
               <Button preset="transparent" className={styleUtils.showLg} onClick={onRoomSettings}>
@@ -73,7 +77,7 @@ export function RoomEntryModal({
                 </span>
               </Button>
             </>
-          )}
+          )} */}
         </Column>
       </Column>
     </Modal>
