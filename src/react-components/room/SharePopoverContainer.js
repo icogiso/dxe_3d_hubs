@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 import { ReactComponent as VideoIcon } from "../icons/Video.svg";
 import { ReactComponent as DesktopIcon } from "../icons/Desktop.svg";
 import { ReactComponent as AvatarIcon } from "../icons/Avatar.svg";
+import { ReactComponent as UploadIcon } from "../icons/Upload.svg";
 import { SharePopoverButton } from "./SharePopover";
+import { ObjectUrlModalContainer } from "./ObjectUrlModalContainer";
 import { FormattedMessage } from "react-intl";
 import useAvatar from "./hooks/useAvatar";
 import { MediaDevicesEvents, MediaDevices } from "../../utils/media-devices-utils";
@@ -109,7 +111,7 @@ function useShare(scene, hubChannel) {
   };
 }
 
-export function SharePopoverContainer({ scene, hubChannel }) {
+export function SharePopoverContainer({ scene, hubChannel, showNonHistoriedDialog }) {
   const {
     sharingSource,
     canShareCamera,
@@ -121,14 +123,6 @@ export function SharePopoverContainer({ scene, hubChannel }) {
   } = useShare(scene, hubChannel);
 
   const items = [
-    canShareCamera && {
-      id: "camera",
-      icon: VideoIcon,
-      color: "accent5",
-      label: <FormattedMessage id="share-popover.source.camera" defaultMessage="Camera" />,
-      onSelect: toggleShareCamera,
-      active: sharingSource === MediaDevices.CAMERA
-    },
     canShareScreen && {
       id: "screen",
       icon: DesktopIcon,
@@ -137,6 +131,21 @@ export function SharePopoverContainer({ scene, hubChannel }) {
       onSelect: toggleShareScreen,
       active: sharingSource === MediaDevices.SCREEN
     },
+    {
+      id: "upload",
+      icon: UploadIcon,
+      color: "accent5",
+      label: <FormattedMessage id="place-popover.item-type.upload" defaultMessage="Upload" />,
+      onSelect: () => showNonHistoriedDialog(ObjectUrlModalContainer, { scene })
+    },
+    canShareCamera && {
+      id: "camera",
+      icon: VideoIcon,
+      color: "accent5",
+      label: <FormattedMessage id="share-popover.source.camera" defaultMessage="Camera" />,
+      onSelect: toggleShareCamera,
+      active: sharingSource === MediaDevices.CAMERA
+    },
     canShareCameraToAvatar && {
       id: "camera-to-avatar",
       icon: AvatarIcon,
@@ -144,7 +153,7 @@ export function SharePopoverContainer({ scene, hubChannel }) {
       label: <FormattedMessage id="share-popover.source.avatar-camera" defaultMessage="Avatar Camera" />,
       onSelect: toggleShareCameraToAvatar,
       active: sharingSource === "camera-to-avatar"
-    }
+    },
   ];
 
   return <SharePopoverButton items={items} />;
@@ -152,5 +161,6 @@ export function SharePopoverContainer({ scene, hubChannel }) {
 
 SharePopoverContainer.propTypes = {
   hubChannel: PropTypes.object.isRequired,
-  scene: PropTypes.object.isRequired
+  scene: PropTypes.object.isRequired,
+  showNonHistoriedDialog: PropTypes.func.isRequired
 };
