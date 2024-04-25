@@ -84,7 +84,7 @@ export function ObjectUrlModal({ showModelCollectionLink, modelCollectionUrl, on
         </p>
         <TextInputField
           label={<FormattedMessage id="object-url-modal.url-field-label" defaultMessage="Object URL or File" />}
-          placeholder="https://example.com/avatar.glb"
+          placeholder="ファイルを選択してください。"
           type={hasFile ? "text" : "url"}
           value={fileName || url || ""}
           {...register("url")}
@@ -102,7 +102,7 @@ export function ObjectUrlModal({ showModelCollectionLink, modelCollectionUrl, on
                 {!showCloseButton && (
                   <div className={styles.browse}>
                     <span>
-                      <FormattedMessage id="object-url-modal.browse" defaultMessage="Browse" />
+                      <FormattedMessage id="object-url-modal.browse" defaultMessage="ファイル選択" />
                     </span>
                   </div>
                 )}

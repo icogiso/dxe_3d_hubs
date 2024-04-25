@@ -1630,7 +1630,7 @@ class UIRoot extends Component {
                         {!isLockedDownDemo && (
                           <>
                             <AudioPopoverButtonContainer scene={this.props.scene} />
-                            <SharePopoverContainer scene={this.props.scene} hubChannel={this.props.hubChannel} />
+                            <SharePopoverContainer scene={this.props.scene} hubChannel={this.props.hubChannel} showNonHistoriedDialog={this.showNonHistoriedDialog}/>
                             <PlacePopoverContainer
                               scene={this.props.scene}
                               hubChannel={this.props.hubChannel}
