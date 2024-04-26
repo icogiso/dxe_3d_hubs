@@ -837,7 +837,6 @@ class UIRoot extends Component {
     return (
       <>
         <RoomEntryModal
-          isAdmin={this.state.isAdmin}
           roomName={this.props.hub.name}
           showJoinRoom={!this.state.waitingOnAudio && !this.props.entryDisallowed}
           onJoinRoom={() => {

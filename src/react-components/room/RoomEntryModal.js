@@ -56,9 +56,6 @@ export function RoomEntryModal({
               </span>
             </Button>
           )} */}
-              <div>
-              {isAdmin ? <p>Admin</p> : <p>Not Admin</p>}
-            </div>
           {/* {showSpectate && (
             <Button preset="accent2" onClick={onSpectate}>
               <ShowIcon />
