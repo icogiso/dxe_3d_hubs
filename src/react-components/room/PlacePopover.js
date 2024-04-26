@@ -9,7 +9,7 @@ import { ToolTip } from "@mozilla/lilypad-ui";
 
 const placeTooltipDescription = defineMessage({
   id: "place-tooltip.description",
-  defaultMessage: "Select from a variety of objects and tools to edit your room"
+  defaultMessage: "ペンを使用した描画、空間の撮影ができます"
 });
 
 const placePopoverTitle = defineMessage({

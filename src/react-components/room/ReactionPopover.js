@@ -15,7 +15,7 @@ import { ToolTip } from "@mozilla/lilypad-ui";
 
 const reactTooltipDescription = defineMessage({
   id: "react-tooltip.description",
-  defaultMessage: "Reactions"
+  defaultMessage: "リアクションと挙手の操作"
 });
 
 const reactionPopoverTitle = defineMessage({

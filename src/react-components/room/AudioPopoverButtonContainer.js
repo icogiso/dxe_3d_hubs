@@ -20,11 +20,11 @@ export const AudioPopoverButtonContainer = ({ scene, initiallyVisible }) => {
   const muteStatuses = defineMessages({
     mute: {
       id: "mute",
-      defaultMessage: "マイクをオフにする"
+      defaultMessage: "マイクをオフにする(M)"
     },
     unmute: {
       id: "unmute",
-      defaultMessage: "マイクをオンにする"
+      defaultMessage: "マイクをオンにする(M)"
     }
   });
 
