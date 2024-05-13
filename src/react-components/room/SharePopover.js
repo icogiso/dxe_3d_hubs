@@ -32,7 +32,7 @@ export function SharePopoverButton({ items }) {
   const activeItem = filteredItems.find(item => item.active);
 
   // If there's one item to share (your smartphone camera), or an item is active (recording), then only show that button.
-  if (filteredItems.length === 1 || activeItem) {
+  if ((filteredItems.length === 1 || activeItem) && filteredItems[0].id !== 'upload') {
     const item = filteredItems[0];
     const Icon = item.icon;
     return (
