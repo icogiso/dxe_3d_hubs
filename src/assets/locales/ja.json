@@ -149,7 +149,7 @@
   "close-room-modal.type-to-confirm": "ルーム名を確認し、入力してください: {roomName}",
   "content-menu.ecs-debug-menu-button": "ECSデバッグ",
   "content-menu.objects-menu-button": "オブジェクト",
-  "content-menu.people-menu-button": "出席リスト ({presenceCount})",
+  "content-menu.people-menu-button": "参加者リスト ({presenceCount})",
   "copyable-text-input-field.copied-label": "完了",
   "copyable-text-input-field.copy-label": "コピー",
   "create-room-button": "ルームを作成する",
