@@ -1146,22 +1146,22 @@ class UIRoot extends Component {
           />
         ),
         items: [
-          // this.state.signedIn
-          //   ? {
-          //       id: "sign-out",
-          //       label: <FormattedMessage id="more-menu.sign-out" defaultMessage="Sign Out" />,
-          //       icon: LeaveIcon,
-          //       onClick: async () => {
-          //         await this.props.authChannel.signOut(this.props.hubChannel);
-          //         this.setState({ signedIn: false });
-          //       }
-          //     }
-          //   : {
-          //       id: "sign-in",
-          //       label: <FormattedMessage id="more-menu.sign-in" defaultMessage="Sign In" />,
-          //       icon: EnterIcon,
-          //       onClick: () => this.showContextualSignInDialog()
-          //     },
+          this.state.signedIn
+            ? {
+                id: "sign-out",
+                label: <FormattedMessage id="more-menu.sign-out" defaultMessage="Sign Out" />,
+                icon: LeaveIcon,
+                onClick: async () => {
+                  await this.props.authChannel.signOut(this.props.hubChannel);
+                  this.setState({ signedIn: false });
+                }
+              }
+            : {
+                id: "sign-in",
+                label: <FormattedMessage id="more-menu.sign-in" defaultMessage="Sign In" />,
+                icon: EnterIcon,
+                onClick: () => this.showContextualSignInDialog()
+              },
           // canCreateRoom && {
           //   id: "create-room",
           //   label: <FormattedMessage id="more-menu.create-room" defaultMessage="Create Room" />,
