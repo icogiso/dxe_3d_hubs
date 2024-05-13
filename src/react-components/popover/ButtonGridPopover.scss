@@ -2,8 +2,8 @@
 
 
 :local(.button-grid-popover) {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(48px, 1fr));
+  display: flex;
+  // grid-template-columns: repeat(auto-fit, minmax(48px, 1fr));
   gap: 16px;
   padding: 16px;
 
