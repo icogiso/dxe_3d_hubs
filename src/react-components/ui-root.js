@@ -1552,6 +1552,7 @@ class UIRoot extends Component {
                       )}
                       {this.state.sidebarId === "room-info" && (
                         <RoomSidebar
+                          signedIn={this.state.signedIn}
                           accountId={this.props.sessionId}
                           room={this.props.hub}
                           canEdit={this.props.hubChannel.canOrWillIfCreator("update_hub")}
