@@ -31,6 +31,13 @@ export function ObjectUrlModal({ showModelCollectionLink, modelCollectionUrl, on
 
   const url = watch("url", "");
 
+  const validateFiles = file => {
+    if (!file || file.length=== 0) return true; // ファイルが選択されていない場合はチェックしない
+    const supportedFormats = ["pdf","png", "jpg", "gif", "mp4", "mp3","glb"];
+    const extension = file[0].name.split('.').pop().toLowerCase();
+    return supportedFormats.includes(extension) || "pdf,png,jpg,gif,mp4,mp3,glbのいずれかの形式でアップロードしてください。";
+  };
+
   const showCloseButton = hasFile || url.length > 0;
 
   return (
@@ -106,14 +113,15 @@ export function ObjectUrlModal({ showModelCollectionLink, modelCollectionUrl, on
                     </span>
                   </div>
                 )}
-                <input id="file" className={styles.hidden} type="file" {...register("file")} />
+                {/* <input id="file" className={styles.hidden} type="file" {...register("file")} /> */}
+                <input id="file" {...register("file", { validate: validateFiles })} className={styles.hidden} type="file" />
               </IconButton>
             </>
           }
           description={
             <FormattedMessage
               id="object-url-modal.url-field-description"
-              defaultMessage="Accepts glb, png, jpg, gif, mp4, and mp3 files"
+              defaultMessage="Accepts pdf, png, jpg, gif, mp4, and mp3, 'glb' files"
             />
           }
         />
