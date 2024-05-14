@@ -151,41 +151,44 @@ export function PeopleSidebar({
             const VoiceIcon = getVoiceIconComponent(person.micPresence);
 
             return (
-              <ButtonListItem
-                className={styles.person}
-                key={person.id}
-                type="button"
-                onClick={e => onSelectPerson(person, e)}
-              >
-                {person.hand_raised && <HandRaisedIcon />}
-                {<DeviceIcon title={getDeviceLabel(person.context, intl)} />}
-                {!person.context.discord && VoiceIcon && <VoiceIcon title={getVoiceLabel(person.micPresence, intl)} />}
-                {!person.isMe && (
-                  <ToolTip
-                    classProp="tooltip"
-                    location="bottom"
-                    description={getToolTipDescription(
-                      store._preferences?.avatarVoiceLevels?.[person.profile.displayName]?.muted
-                    )}
-                  >
-                    {store._preferences?.avatarVoiceLevels?.[person.profile.displayName]?.muted ? (
-                      <UserSoundOffIcon />
-                    ) : (
-                      <UserSoundOnIcon />
-                    )}
-                  </ToolTip>
-                )}
-                <p>{getPersonName(person, intl)}</p>
-                {person.roles.owner && (
-                  <StarIcon
-                    title={intl.formatMessage({ id: "people-sidebar.moderator-label", defaultMessage: "Moderator" })}
-                    className={styles.moderatorIcon}
-                    width={12}
-                    height={12}
-                  />
-                )}
-                <p className={styles.presence}>{getPresenceMessage(person.presence, intl)}</p>
-              </ButtonListItem>
+              <>
+                {/* <img src="" /> */}
+                <ButtonListItem
+                  className={styles.person}
+                  key={person.id}
+                  type="button"
+                  onClick={e => onSelectPerson(person, e)}
+                >
+                  {person.hand_raised && <HandRaisedIcon />}
+                  {<DeviceIcon title={getDeviceLabel(person.context, intl)} />}
+                  {!person.context.discord && VoiceIcon && <VoiceIcon title={getVoiceLabel(person.micPresence, intl)} />}
+                  {!person.isMe && (
+                    <ToolTip
+                      classProp="tooltip"
+                      location="bottom"
+                      description={getToolTipDescription(
+                        store._preferences?.avatarVoiceLevels?.[person.profile.displayName]?.muted
+                      )}
+                    >
+                      {store._preferences?.avatarVoiceLevels?.[person.profile.displayName]?.muted ? (
+                        <UserSoundOffIcon />
+                      ) : (
+                        <UserSoundOnIcon />
+                      )}
+                    </ToolTip>
+                  )}
+                  <p>{getPersonName(person, intl)}</p>
+                  {person.roles.owner && (
+                    <StarIcon
+                      title={intl.formatMessage({ id: "people-sidebar.moderator-label", defaultMessage: "Moderator" })}
+                      className={styles.moderatorIcon}
+                      width={12}
+                      height={12}
+                    />
+                  )}
+                  <p className={styles.presence}>{getPresenceMessage(person.presence, intl)}</p>
+                </ButtonListItem>
+              </>
             );
           })}
       </List>
