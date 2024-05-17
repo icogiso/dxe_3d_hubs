@@ -136,7 +136,8 @@ export function SharePopoverContainer({ scene, hubChannel, showNonHistoriedDialo
       icon: UploadIcon,
       color: "accent5",
       label: <FormattedMessage id="place-popover.item-type.upload" defaultMessage="Upload" />,
-      onSelect: () => showNonHistoriedDialog(ObjectUrlModalContainer, { scene })
+      onSelect: () => showNonHistoriedDialog(ObjectUrlModalContainer, { scene }),
+      active: sharingSource === MediaDevices.SCREEN
     },
     canShareCamera && {
       id: "camera",
