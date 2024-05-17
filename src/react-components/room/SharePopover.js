@@ -9,7 +9,7 @@ import { ToolTip } from "@mozilla/lilypad-ui";
 
 const shareTooltipDescription = defineMessage({
   id: "share-tooltip.description",
-  defaultMessage: "画面または Web カメラをルーム内のオブジェクトとして表示します"
+  defaultMessage: "画面やPDFなどの資料、Webカメラの映像をルーム内のオブジェクトとして表示します"
 });
 
 const sharePopoverTitle = defineMessage({
