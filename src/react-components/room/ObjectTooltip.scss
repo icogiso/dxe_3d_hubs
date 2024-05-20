@@ -1,0 +1,56 @@
+@use "../styles/theme.scss";
+
+:local(.objectTooltip) {
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+:local(.spaceKeySection) {
+  margin-bottom: 10px;
+}
+
+:local(.spaceKeyContainer) {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+:local(.spaceKey) {
+	border: 1px solid theme.$border1-color;
+  font-weight: theme.$font-weight-bold;
+  padding: 8px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+:local(.spaceKeyText) {
+  margin: 0;
+  text-align: left;
+}
+
+:local(.waypointSection) {
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+
+:local(.waypointContainer) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border: 1px solid black;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+:local(.waypointText) {
+  margin: 0;
+  text-align: left;
+}
+
+:local(.childrenText) {
+  width: 100%;
+  text-align: left;
+}

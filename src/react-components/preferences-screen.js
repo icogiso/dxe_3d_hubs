@@ -417,18 +417,18 @@ const preferenceLabels = defineMessages({
     id: "preferences-screen.preference.snap-rotation-degrees",
     defaultMessage: "Rotation per snap (in degrees)"
   },
-  disableMovement: {
-    id: "preferences-screen.preference.disable-movement",
-    defaultMessage: "Disable movement"
-  },
-  disableBackwardsMovement: {
-    id: "preferences-screen.preference.disable-backwards-movement",
-    defaultMessage: "Disable backwards movement"
-  },
-  disableStrafing: {
-    id: "preferences-screen.preference.disable-strafing",
-    defaultMessage: "Disable strafing"
-  },
+  // disableMovement: {
+  //   id: "preferences-screen.preference.disable-movement",
+  //   defaultMessage: "Disable movement"
+  // },
+  // disableBackwardsMovement: {
+  //   id: "preferences-screen.preference.disable-backwards-movement",
+  //   defaultMessage: "Disable backwards movement"
+  // },
+  // disableStrafing: {
+  //   id: "preferences-screen.preference.disable-strafing",
+  //   defaultMessage: "Disable strafing"
+  // },
   disableTeleporter: {
     id: "preferences-screen.preference.disable-teleporter",
     defaultMessage: "Disable teleporter"
@@ -445,26 +445,26 @@ const preferenceLabels = defineMessages({
     id: "preferences-screen.preference.enable-on-screen-joystick-right",
     defaultMessage: "Enable right on-screen joystick for looking around"
   },
-  enableGyro: {
-    id: "preferences-screen.preference.enable-gyro",
-    defaultMessage: "Enable gyroscope (when supported by browser/device)"
-  },
-  invertTouchscreenCameraMove: {
-    id: "preferences-screen.preference.invert-touchscreen-camera-move",
-    defaultMessage: "Invert direction of camera movement for touchscreens"
-  },
+  // enableGyro: {
+  //   id: "preferences-screen.preference.enable-gyro",
+  //   defaultMessage: "Enable gyroscope (when supported by browser/device)"
+  // },
+  // invertTouchscreenCameraMove: {
+  //   id: "preferences-screen.preference.invert-touchscreen-camera-move",
+  //   defaultMessage: "Invert direction of camera movement for touchscreens"
+  // },
   locale: {
     id: "preferences-screen.preference.locale",
     defaultMessage: "Language"
   },
-  animateWaypointTransitions: {
-    id: "preferences-screen.preference.animate-waypoint-transitions",
-    defaultMessage: "Animate waypoint transitions"
-  },
-  showFPSCounter: {
-    id: "preferences-screen.preference.show-fps-counter",
-    defaultMessage: "Show FPS Counter"
-  },
+  // animateWaypointTransitions: {
+  //   id: "preferences-screen.preference.animate-waypoint-transitions",
+  //   defaultMessage: "Animate waypoint transitions"
+  // },
+  // showFPSCounter: {
+  //   id: "preferences-screen.preference.show-fps-counter",
+  //   defaultMessage: "Show FPS Counter"
+  // },
   maxResolution: {
     id: "preferences-screen.preference.max-resolution",
     defaultMessage: "Max Resolution"
@@ -477,10 +477,10 @@ const preferenceLabels = defineMessages({
     id: "preferences-screen.preference.enable-dynamic-shadows",
     defaultMessage: "Enable Real-time Shadows"
   },
-  disableAutoPixelRatio: {
-    id: "preferences-screen.preference.disable-auto-pixel-ratio",
-    defaultMessage: "Disable automatic pixel ratio adjustments"
-  },
+  // disableAutoPixelRatio: {
+  //   id: "preferences-screen.preference.disable-auto-pixel-ratio",
+  //   defaultMessage: "Disable automatic pixel ratio adjustments"
+  // },
   allowMultipleHubsInstances: {
     id: "preferences-screen.preference.allow-multiple-hubs-instances",
     defaultMessage: "Disable auto-exit when multiple hubs instances are open"
@@ -497,34 +497,34 @@ const preferenceLabels = defineMessages({
     id: "preferences-screen.preference.show-rtc-debug-panel",
     defaultMessage: "Show RTC Panel"
   },
-  showAudioDebugPanel: {
-    id: "preferences-screen.preference.show-audio-debug-panel",
-    defaultMessage: "Show Audio Debug Panel"
-  },
-  audioPanningQuality: {
-    id: "preferences-screen.preference.audio-panning-quality",
-    defaultMessage: "Panning quality"
-  },
-  enableAudioClipping: {
-    id: "preferences-screen.preference.enable-audio-clipping",
-    defaultMessage: "Enable Audio Clipping"
-  },
-  audioClippingThreshold: {
-    id: "preferences-screen.preference.audio-clipping-threshold",
-    defaultMessage: "Audio Clipping Threshold"
-  },
-  theme: {
-    id: "preferences-screen.preference.theme",
-    defaultMessage: "Theme"
-  },
-  lazyLoadSceneMedia: {
-    id: "preferences-screen.preference.lazy-load-scene-media",
-    defaultMessage: "Enable Scene Media Lazy Loading"
-  },
-  disableLeftRightPanning: {
-    id: "preferences-screen.preference.disable-panning",
-    defaultMessage: "Disable audio left/right panning"
-  },
+  // showAudioDebugPanel: {
+  //   id: "preferences-screen.preference.show-audio-debug-panel",
+  //   defaultMessage: "Show Audio Debug Panel"
+  // },
+  // audioPanningQuality: {
+  //   id: "preferences-screen.preference.audio-panning-quality",
+  //   defaultMessage: "Panning quality"
+  // },
+  // enableAudioClipping: {
+  //   id: "preferences-screen.preference.enable-audio-clipping",
+  //   defaultMessage: "Enable Audio Clipping"
+  // },
+  // audioClippingThreshold: {
+  //   id: "preferences-screen.preference.audio-clipping-threshold",
+  //   defaultMessage: "Audio Clipping Threshold"
+  // },
+  // theme: {
+  //   id: "preferences-screen.preference.theme",
+  //   defaultMessage: "Theme"
+  // },
+  // lazyLoadSceneMedia: {
+  //   id: "preferences-screen.preference.lazy-load-scene-media",
+  //   defaultMessage: "Enable Scene Media Lazy Loading"
+  // },
+  // disableLeftRightPanning: {
+  //   id: "preferences-screen.preference.disable-panning",
+  //   defaultMessage: "Disable audio left/right panning"
+  // },
   cursorSize: {
     id: "preferences-screen.preference.cursor-size",
     defaultMessage: "Cursor Size"
@@ -537,22 +537,22 @@ const preferenceLabels = defineMessages({
     id: "preferences-screen.preference.nametag-visibility-distance",
     defaultMessage: "Nametag visibility distance"
   },
-  enablePostEffects: {
-    id: "preferences-screen.preference.enable-fx",
-    defaultMessage: "Enable Post Processing Effects (experimental)"
-  },
-  enablePostEffectsTooltip: {
-    id: "preferences-screen.preference.enable-fx.tooltip",
-    defaultMessage: "This feature is still experimental and may have issues. It is currently unsupported in VR."
-  },
-  enableBloom: {
-    id: "preferences-screen.preference.enable-fx-bloom",
-    defaultMessage: "Enable Bloom Effect"
-  },
-  aaMode: {
-    id: "preferences-screen.preference.fx-aa-mode",
-    defaultMessage: "Anti-Aliasing Mode"
-  }
+  // enablePostEffects: {
+  //   id: "preferences-screen.preference.enable-fx",
+  //   defaultMessage: "Enable Post Processing Effects (experimental)"
+  // },
+  // enablePostEffectsTooltip: {
+  //   id: "preferences-screen.preference.enable-fx.tooltip",
+  //   defaultMessage: "This feature is still experimental and may have issues. It is currently unsupported in VR."
+  // },
+  // enableBloom: {
+  //   id: "preferences-screen.preference.enable-fx-bloom",
+  //   defaultMessage: "Enable Bloom Effect"
+  // },
+  // aaMode: {
+  //   id: "preferences-screen.preference.fx-aa-mode",
+  //   defaultMessage: "Anti-Aliasing Mode"
+  // }
 });
 
 class PreferenceListItem extends Component {
@@ -943,20 +943,20 @@ class PreferencesScreen extends Component {
           defaultMessage: "User-Facing"
         })
       },
-      {
-        value: "environment",
-        text: this.props.intl.formatMessage({
-          id: "preferences-screen.preferred-camera.environment",
-          defaultMessage: "Environment"
-        })
-      },
-      {
-        value: "default",
-        text: this.props.intl.formatMessage({
-          id: "preferences-screen.preferred-camera.default",
-          defaultMessage: "Default"
-        })
-      }
+      // {
+      //   value: "environment",
+      //   text: this.props.intl.formatMessage({
+      //     id: "preferences-screen.preferred-camera.environment",
+      //     defaultMessage: "Environment"
+      //   })
+      // },
+      // {
+      //   value: "default",
+      //   text: this.props.intl.formatMessage({
+      //     id: "preferences-screen.preferred-camera.default",
+      //     defaultMessage: "Default"
+      //   })
+      // }
     ];
     preferredCamera.options.push(...videoOptions);
 
@@ -1046,14 +1046,14 @@ class PreferencesScreen extends Component {
             key: "enableOnScreenJoystickRight",
             prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
           },
-          {
-            key: "enableGyro",
-            prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
-          },
-          {
-            key: "invertTouchscreenCameraMove",
-            prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
-          }
+          // {
+          //   key: "enableGyro",
+          //   prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
+          // },
+          // {
+          //   key: "invertTouchscreenCameraMove",
+          //   prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
+          // }
         ]
       ],
       [
@@ -1067,18 +1067,18 @@ class PreferencesScreen extends Component {
             step: 5,
             digits: 0
           },
-          {
-            key: "disableMovement",
-            prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
-          },
-          {
-            key: "disableBackwardsMovement",
-            prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
-          },
-          {
-            key: "disableStrafing",
-            prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
-          },
+          // {
+          //   key: "disableMovement",
+          //   prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
+          // },
+          // {
+          //   key: "disableBackwardsMovement",
+          //   prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
+          // },
+          // {
+          //   key: "disableStrafing",
+          //   prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
+          // },
           {
             key: "disableTeleporter",
             prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
@@ -1134,15 +1134,15 @@ class PreferencesScreen extends Component {
             step: 5,
             digits: 0
           },
-          {
-            key: "avatarVoiceLevels",
-            prefType: PREFERENCE_LIST_ITEM_TYPE.MAP_COUNT,
-            defaultValue: 0,
-            text: intl.formatMessage({
-              id: "preferences-screen.preference.avatar-volumes.entries",
-              defaultMessage: "Entries"
-            })
-          },
+          // {
+          //   key: "avatarVoiceLevels",
+          //   prefType: PREFERENCE_LIST_ITEM_TYPE.MAP_COUNT,
+          //   defaultValue: 0,
+          //   text: intl.formatMessage({
+          //     id: "preferences-screen.preference.avatar-volumes.entries",
+          //     defaultMessage: "Entries"
+          //   })
+          // },
           {
             key: "disableSoundEffects",
             prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
@@ -1162,42 +1162,42 @@ class PreferencesScreen extends Component {
             prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX,
             promptForRefresh: true
           },
-          {
-            key: "enableAudioClipping",
-            prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
-          },
-          {
-            key: "audioClippingThreshold",
-            prefType: PREFERENCE_LIST_ITEM_TYPE.NUMBER_WITH_RANGE,
-            min: CLIPPING_THRESHOLD_MIN,
-            max: CLIPPING_THRESHOLD_MAX,
-            step: CLIPPING_THRESHOLD_STEP,
-            digits: 3
-          },
-          {
-            key: "showAudioDebugPanel",
-            prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
-          },
-          {
-            key: "audioPanningQuality",
-            prefType: PREFERENCE_LIST_ITEM_TYPE.SELECT,
-            options: [
-              {
-                value: "High",
-                text: intl.formatMessage({
-                  id: "preferences-screen.audio-panning-quality.high",
-                  defaultMessage: "High"
-                })
-              },
-              {
-                value: "Low",
-                text: intl.formatMessage({
-                  id: "preferences-screen.audio-panning-quality.low",
-                  defaultMessage: "Low"
-                })
-              }
-            ]
-          }
+          // {
+          //   key: "enableAudioClipping",
+          //   prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
+          // },
+          // {
+          //   key: "audioClippingThreshold",
+          //   prefType: PREFERENCE_LIST_ITEM_TYPE.NUMBER_WITH_RANGE,
+          //   min: CLIPPING_THRESHOLD_MIN,
+          //   max: CLIPPING_THRESHOLD_MAX,
+          //   step: CLIPPING_THRESHOLD_STEP,
+          //   digits: 3
+          // },
+          // {
+          //   key: "showAudioDebugPanel",
+          //   prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
+          // },
+          // {
+          //   key: "audioPanningQuality",
+          //   prefType: PREFERENCE_LIST_ITEM_TYPE.SELECT,
+          //   options: [
+          //     {
+          //       value: "High",
+          //       text: intl.formatMessage({
+          //         id: "preferences-screen.audio-panning-quality.high",
+          //         defaultMessage: "High"
+          //       })
+          //     },
+          //     {
+          //       value: "Low",
+          //       text: intl.formatMessage({
+          //         id: "preferences-screen.audio-panning-quality.low",
+          //         defaultMessage: "Low"
+          //       })
+          //     }
+          //   ]
+          // }
         ]
       ],
       [
@@ -1208,11 +1208,11 @@ class PreferencesScreen extends Component {
             prefType: PREFERENCE_LIST_ITEM_TYPE.SELECT,
             options: availableLocales
           },
-          {
-            key: "theme",
-            prefType: PREFERENCE_LIST_ITEM_TYPE.SELECT,
-            options: availableThemes
-          },
+          // {
+          //   key: "theme",
+          //   prefType: PREFERENCE_LIST_ITEM_TYPE.SELECT,
+          //   options: availableThemes
+          // },
           ...(!isLockedDownDemoRoom()
             ? [
                 {
@@ -1275,22 +1275,22 @@ class PreferencesScreen extends Component {
             key: "disableIdleDetection",
             prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
           },
-          {
-            key: "lazyLoadSceneMedia",
-            prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
-          },
+          // {
+          //   key: "lazyLoadSceneMedia",
+          //   prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
+          // },
           {
             key: "preferMobileObjectInfoPanel",
             prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
           },
-          {
-            key: "animateWaypointTransitions",
-            prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
-          },
-          {
-            key: "showFPSCounter",
-            prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
-          },
+          // {
+          //   key: "animateWaypointTransitions",
+          //   prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
+          // },
+          // {
+          //   key: "showFPSCounter",
+          //   prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
+          // },
           {
             key: "showRtcDebugPanel",
             prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
@@ -1305,15 +1305,15 @@ class PreferencesScreen extends Component {
           }
         ]
       ],
-      [
-        CATEGORY_ACCESSIBILITY,
-        [
-          {
-            key: "disableLeftRightPanning",
-            prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
-          }
-        ]
-      ],
+      // [
+      //   CATEGORY_ACCESSIBILITY,
+      //   [
+      //     {
+      //       key: "disableLeftRightPanning",
+      //       prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
+      //     }
+      //   ]
+      // ],
       [
         CATEGORY_GRAPHICS,
         [
@@ -1350,68 +1350,68 @@ class PreferencesScreen extends Component {
             key: "enableDynamicShadows",
             prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
           },
-          {
-            key: "disableAutoPixelRatio",
-            prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
-          },
-          {
-            key: "enablePostEffects",
-            prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX,
-            hidden: AFRAME.utils.device.isMobileVR(),
-            tooltipKey: "enablePostEffectsTooltip",
-            promptForRefresh: true
-          },
-          {
-            key: "enableBloom",
-            prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX,
-            hidden: AFRAME.utils.device.isMobileVR(),
-            disableIfFalse: "enablePostEffects",
-            promptForRefresh: true
-          },
-          {
-            key: "aaMode",
-            prefType: PREFERENCE_LIST_ITEM_TYPE.SELECT,
-            hidden: AFRAME.utils.device.isMobileVR(),
-            disableIfFalse: "enablePostEffects",
-            promptForRefresh: true,
-            options: [
-              {
-                value: AAModes.NONE,
-                text: intl.formatMessage({
-                  id: "preferences-screen.aa-mode.none",
-                  defaultMessage: "none"
-                })
-              },
-              {
-                value: AAModes.SMAA,
-                text: intl.formatMessage({
-                  id: "preferences-screen.aa-mode.smaa",
-                  defaultMessage: "SMAA"
-                })
-              },
-              {
-                value: AAModes.MSAA_2X,
-                text: intl.formatMessage({
-                  id: "preferences-screen.aa-mode.msaa_2x",
-                  defaultMessage: "2x MSAA"
-                })
-              },
-              {
-                value: AAModes.MSAA_4X,
-                text: intl.formatMessage({
-                  id: "preferences-screen.aa-mode.msaa_4x",
-                  defaultMessage: "4x MSAA"
-                })
-              },
-              {
-                value: AAModes.MSAA_8X,
-                text: intl.formatMessage({
-                  id: "preferences-screen.aa-mode.msaa_8x",
-                  defaultMessage: "8x MSAA"
-                })
-              }
-            ]
-          }
+          // {
+          //   key: "disableAutoPixelRatio",
+          //   prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
+          // },
+          // {
+          //   key: "enablePostEffects",
+          //   prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX,
+          //   hidden: AFRAME.utils.device.isMobileVR(),
+          //   tooltipKey: "enablePostEffectsTooltip",
+          //   promptForRefresh: true
+          // },
+          // {
+          //   key: "enableBloom",
+          //   prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX,
+          //   hidden: AFRAME.utils.device.isMobileVR(),
+          //   disableIfFalse: "enablePostEffects",
+          //   promptForRefresh: true
+          // },
+          // {
+          //   key: "aaMode",
+          //   prefType: PREFERENCE_LIST_ITEM_TYPE.SELECT,
+          //   hidden: AFRAME.utils.device.isMobileVR(),
+          //   disableIfFalse: "enablePostEffects",
+          //   promptForRefresh: true,
+          //   options: [
+          //     {
+          //       value: AAModes.NONE,
+          //       text: intl.formatMessage({
+          //         id: "preferences-screen.aa-mode.none",
+          //         defaultMessage: "none"
+          //       })
+          //     },
+          //     {
+          //       value: AAModes.SMAA,
+          //       text: intl.formatMessage({
+          //         id: "preferences-screen.aa-mode.smaa",
+          //         defaultMessage: "SMAA"
+          //       })
+          //     },
+          //     {
+          //       value: AAModes.MSAA_2X,
+          //       text: intl.formatMessage({
+          //         id: "preferences-screen.aa-mode.msaa_2x",
+          //         defaultMessage: "2x MSAA"
+          //       })
+          //     },
+          //     {
+          //       value: AAModes.MSAA_4X,
+          //       text: intl.formatMessage({
+          //         id: "preferences-screen.aa-mode.msaa_4x",
+          //         defaultMessage: "4x MSAA"
+          //       })
+          //     },
+          //     {
+          //       value: AAModes.MSAA_8X,
+          //       text: intl.formatMessage({
+          //         id: "preferences-screen.aa-mode.msaa_8x",
+          //         defaultMessage: "8x MSAA"
+          //       })
+          //     }
+          //   ]
+          // }
         ]
       ]
     ]);
@@ -1433,7 +1433,7 @@ class PreferencesScreen extends Component {
         [
           { items: items.get(CATEGORY_AUDIO) },
           {
-            name: intl.formatMessage(categoryNames[CATEGORY_ACCESSIBILITY]),
+            // name: intl.formatMessage(categoryNames[CATEGORY_ACCESSIBILITY]),
             items: items.get(CATEGORY_ACCESSIBILITY)
           }
         ]
