@@ -633,6 +633,7 @@
   "tips.buttons.get-started": "始める",
   "tips.buttons.skip-tour": "ツアーをスキップ",
   "tips.desktop.invite2": "<p>{invite} ボタンを使用して、 </p><p2>このルーム</p2><p>を共有します。</p>",
+  "tips.desktop.invite": "test",
   "tips.desktop.locomotion2": "{wasd} または {arrows}<p>で移動できます。</p>",
   "tips.desktop.turning2": "{left} または {right} を使用するか、クリックしてドラッグすると周りを見回すことができます。",
   "tips.discord": "このルームのチャットは、Discordの {broadcastTarget} チャンネルに送信されています。",
