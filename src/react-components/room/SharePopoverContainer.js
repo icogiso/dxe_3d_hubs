@@ -29,16 +29,19 @@ function useShare(scene, hubChannel) {
 
     function onPermissionsUpdated() {
       const canShareMedia = hubChannel.can("spawn_and_move_media");
+      console.log("Permissions updated - canShareMedia:", canShareMedia);
 
       if (canShareMedia) {
         navigator.mediaDevices
           .enumerateDevices()
           .then(devices => {
             const hasCamera = devices.some(device => device.kind === "videoinput");
+            console.log("Devices enumerated - hasCamera:", hasCamera);
             setCanShareCamera(hasCamera);
             setCanShareCameraToAvatar(hasCamera && hasVideoTextureTarget);
           })
           .catch(() => {
+            console.log("Failed to enumerate devices");
             setCanShareCamera(false);
             setCanShareCameraToAvatar(false);
           });
@@ -53,13 +56,11 @@ function useShare(scene, hubChannel) {
 
     scene.addEventListener("share_video_enabled", onShareVideoEnabled);
     scene.addEventListener("share_video_disabled", onShareVideoDisabled);
-    // TODO: Show share error dialog
     scene.addEventListener("share_video_failed", onShareVideoDisabled);
     hubChannel.addEventListener("permissions_updated", onPermissionsUpdated);
 
     onPermissionsUpdated();
 
-    // We currently only support sharing one video stream at the same time
     setSharingSource(
       mediaDevicesManager.isVideoShared
         ? mediaDevicesManager.isWebcamShared
@@ -122,40 +123,68 @@ export function SharePopoverContainer({ scene, hubChannel, showNonHistoriedDialo
     toggleShareCameraToAvatar
   } = useShare(scene, hubChannel);
 
-  const items = [
-    canShareScreen && {
-      id: "screen",
-      icon: DesktopIcon,
-      color: "accent5",
-      label: <FormattedMessage id="share-popover.source.screen" defaultMessage="Screen" />,
-      onSelect: toggleShareScreen,
-      active: sharingSource === MediaDevices.SCREEN
-    },
-    {
-      id: "upload",
-      icon: UploadIcon,
-      color: "accent5",
-      label: <FormattedMessage id="place-popover.item-type.upload" defaultMessage="Upload" />,
-      onSelect: () => showNonHistoriedDialog(ObjectUrlModalContainer, { scene }),
-      active: sharingSource === MediaDevices.SCREEN
-    },
-    canShareCamera && {
-      id: "camera",
-      icon: VideoIcon,
-      color: "accent5",
-      label: <FormattedMessage id="share-popover.source.camera" defaultMessage="Camera" />,
-      onSelect: toggleShareCamera,
-      active: sharingSource === MediaDevices.CAMERA
-    },
-    canShareCameraToAvatar && {
-      id: "camera-to-avatar",
-      icon: AvatarIcon,
-      color: "accent5",
-      label: <FormattedMessage id="share-popover.source.avatar-camera" defaultMessage="Avatar Camera" />,
-      onSelect: toggleShareCameraToAvatar,
-      active: sharingSource === "camera-to-avatar"
-    },
-  ];
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    function updateItems() {
+      const newItems = [
+        canShareScreen && {
+          id: "screen",
+          icon: DesktopIcon,
+          color: "accent5",
+          label: <FormattedMessage id="share-popover.source.screen" defaultMessage="Screen" />,
+          onSelect: toggleShareScreen,
+          active: sharingSource === MediaDevices.SCREEN
+        },
+        hubChannel.can("spawn_and_move_media") && {
+          id: "upload",
+          icon: UploadIcon,
+          color: "accent5",
+          label: <FormattedMessage id="place-popover.item-type.upload" defaultMessage="Upload" />,
+          onSelect: () => showNonHistoriedDialog(ObjectUrlModalContainer, { scene }),
+          active: sharingSource === MediaDevices.SCREEN
+        },
+        canShareCamera && {
+          id: "camera",
+          icon: VideoIcon,
+          color: "accent5",
+          label: <FormattedMessage id="share-popover.source.camera" defaultMessage="Camera" />,
+          onSelect: toggleShareCamera,
+          active: sharingSource === MediaDevices.CAMERA
+        },
+        canShareCameraToAvatar && {
+          id: "camera-to-avatar",
+          icon: AvatarIcon,
+          color: "accent5",
+          label: <FormattedMessage id="share-popover.source.avatar-camera" defaultMessage="Avatar Camera" />,
+          onSelect: toggleShareCameraToAvatar,
+          active: sharingSource === "camera-to-avatar"
+        }
+      ].filter(Boolean);
+
+      console.log("Updated items:", newItems);
+      setItems(newItems);
+    }
+
+    updateItems();
+
+    hubChannel.addEventListener("permissions_updated", updateItems);
+
+    return () => {
+      hubChannel.removeEventListener("permissions_updated", updateItems);
+    };
+  }, [
+    canShareScreen,
+    canShareCamera,
+    canShareCameraToAvatar,
+    sharingSource,
+    toggleShareScreen,
+    toggleShareCamera,
+    toggleShareCameraToAvatar,
+    hubChannel,
+    showNonHistoriedDialog,
+    scene
+  ]);
 
   return <SharePopoverButton items={items} />;
 }
