@@ -943,20 +943,20 @@ class PreferencesScreen extends Component {
           defaultMessage: "User-Facing"
         })
       },
-      {
-        value: "environment",
-        text: this.props.intl.formatMessage({
-          id: "preferences-screen.preferred-camera.environment",
-          defaultMessage: "Environment"
-        })
-      },
-      {
-        value: "default",
-        text: this.props.intl.formatMessage({
-          id: "preferences-screen.preferred-camera.default",
-          defaultMessage: "Default"
-        })
-      }
+      // {
+      //   value: "environment",
+      //   text: this.props.intl.formatMessage({
+      //     id: "preferences-screen.preferred-camera.environment",
+      //     defaultMessage: "Environment"
+      //   })
+      // },
+      // {
+      //   value: "default",
+      //   text: this.props.intl.formatMessage({
+      //     id: "preferences-screen.preferred-camera.default",
+      //     defaultMessage: "Default"
+      //   })
+      // }
     ];
     preferredCamera.options.push(...videoOptions);
 
