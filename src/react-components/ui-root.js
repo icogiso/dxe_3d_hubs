@@ -1336,7 +1336,6 @@ class UIRoot extends Component {
       }
     ];
     console.log("isModerator:"+isModerator);
-    alert("isModerator:"+isModerator);
 
     return (
       <MoreMenuContextProvider>
