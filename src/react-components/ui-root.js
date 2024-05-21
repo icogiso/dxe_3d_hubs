@@ -1548,6 +1548,7 @@ class UIRoot extends Component {
                           onClose={() => this.setSidebar(null)}
                           onCloseDialog={() => this.closeDialog()}
                           showNonHistoriedDialog={this.showNonHistoriedDialog}
+                          isModerator={isModerator}
                         />
                       )}
                       {this.state.sidebarId === "room-info" && (

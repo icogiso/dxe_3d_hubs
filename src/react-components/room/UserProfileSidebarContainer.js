@@ -13,7 +13,8 @@ export function UserProfileSidebarContainer({
   onBack,
   onClose,
   onCloseDialog,
-  showNonHistoriedDialog
+  showNonHistoriedDialog,
+  isModerator
 }) {
   const [avatarThumbnailUrl, setAvatarThumbnailUrl] = useState();
 
@@ -29,7 +30,7 @@ export function UserProfileSidebarContainer({
   const [isOwner, setIsOwner] = useState(!!roles.owner);
   const isCreator = !!roles.creator;
   const isSignedIn = !!roles.signed_in;
-  const mayAddOwner = hubChannel.canOrWillIfCreator("update_roles") && !isOwner;
+  const mayAddOwner = (hubChannel.canOrWillIfCreator("update_roles") || isModerator) && !isOwner;
   const mayRemoveOwner = hubChannel.canOrWillIfCreator("update_roles") && isOwner;
   const [isHidden, setIsHidden] = useState(hubChannel.isHidden(user.id));
 
@@ -134,5 +135,6 @@ UserProfileSidebarContainer.propTypes = {
   onBack: PropTypes.func,
   onClose: PropTypes.func,
   onCloseDialog: PropTypes.func.isRequired,
-  showNonHistoriedDialog: PropTypes.func
+  showNonHistoriedDialog: PropTypes.func,
+  isModerator: PropTypes.bool 
 };
