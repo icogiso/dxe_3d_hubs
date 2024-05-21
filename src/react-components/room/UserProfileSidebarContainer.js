@@ -30,9 +30,14 @@ export function UserProfileSidebarContainer({
   const [isOwner, setIsOwner] = useState(!!roles.owner);
   const isCreator = !!roles.creator;
   const isSignedIn = !!roles.signed_in;
-  const mayAddOwner = (hubChannel.canOrWillIfCreator("update_roles") || isModerator) && !isOwner;
-  const mayRemoveOwner = hubChannel.canOrWillIfCreator("update_roles") && isOwner;
+  // const mayAddOwner = (hubChannel.canOrWillIfCreator("update_roles") || isModerator) && !isOwner;
+  // const mayRemoveOwner = hubChannel.canOrWillIfCreator("update_roles") && isOwner;
+  const mayAddOwner = (hubChannel.canOrWillIfCreator("update_roles") || isModerator);
+  const mayRemoveOwner = hubChannel.canOrWillIfCreator("update_roles") || isModerator;
   const [isHidden, setIsHidden] = useState(hubChannel.isHidden(user.id));
+
+  console.log("mayAddOwner"+mayAddOwner);
+  console.log("mayRemoveOwner"+mayRemoveOwner);
 
   useEffect(() => {
     if (avatarId) {

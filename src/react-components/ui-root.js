@@ -1335,6 +1335,7 @@ class UIRoot extends Component {
         ].filter(item => item)
       }
     ];
+    console.log("isModerator"+isModerator);
 
     return (
       <MoreMenuContextProvider>
@@ -1541,6 +1542,7 @@ class UIRoot extends Component {
                         />
                       )}
                       {this.state.sidebarId === "user" && (
+                        
                         <UserProfileSidebarContainer
                           user={this.getSelectedUser()}
                           hubChannel={this.props.hubChannel}
