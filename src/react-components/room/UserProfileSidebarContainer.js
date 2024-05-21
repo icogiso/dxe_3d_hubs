@@ -36,8 +36,11 @@ export function UserProfileSidebarContainer({
   const mayRemoveOwner = hubChannel.canOrWillIfCreator("update_roles") || isModerator;
   const [isHidden, setIsHidden] = useState(hubChannel.isHidden(user.id));
 
-  console.log("mayAddOwner"+mayAddOwner);
-  console.log("mayRemoveOwner"+mayRemoveOwner);
+  
+  console.log("isModerator:"+isModerator);
+  console.log("hubChannel.canOrWillIfCreator(update_roles):"+hubChannel.canOrWillIfCreator("update_roles"));
+  console.log("mayAddOwner:"+mayAddOwner);
+  console.log("mayRemoveOwner:"+mayRemoveOwner);
 
   useEffect(() => {
     if (avatarId) {
