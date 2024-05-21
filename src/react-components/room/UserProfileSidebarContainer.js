@@ -18,6 +18,8 @@ export function UserProfileSidebarContainer({
 }) {
   const [avatarThumbnailUrl, setAvatarThumbnailUrl] = useState();
 
+  console.log("isModerator in UserProfileSidebarContainer: ", isModerator);
+
   const {
     id: userId,
     profile: { displayName, identityName, avatarId, pronouns },
