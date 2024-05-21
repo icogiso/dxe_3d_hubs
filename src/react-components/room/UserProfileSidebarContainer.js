@@ -29,8 +29,8 @@ export function UserProfileSidebarContainer({
   const [isOwner, setIsOwner] = useState(!!roles.owner);
   const isCreator = !!roles.creator;
   const isSignedIn = !!roles.signed_in;
-  const mayAddOwner = hubChannel.canOrWillIfCreator("update_roles") && !isOwner && !isCreator;
-  const mayRemoveOwner = hubChannel.canOrWillIfCreator("update_roles") && isOwner && !isCreator;
+  const mayAddOwner = hubChannel.canOrWillIfCreator("update_roles") && !isOwner;
+  const mayRemoveOwner = hubChannel.canOrWillIfCreator("update_roles") && isOwner;
   const [isHidden, setIsHidden] = useState(hubChannel.isHidden(user.id));
 
   useEffect(() => {
