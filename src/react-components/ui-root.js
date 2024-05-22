@@ -1237,47 +1237,47 @@ class UIRoot extends Component {
           //       icon: StarOutlineIcon,
           //       onClick: () => this.toggleFavorited()
           //     },
-          isModerator &&
-            entered && {
-              id: "streamer-mode",
-              label: streaming ? (
-                <FormattedMessage id="more-menu.exit-streamer-mode" defaultMessage="Exit Streamer Mode" />
-              ) : (
-                <FormattedMessage id="more-menu.enter-streamer-mode" defaultMessage="Enter Streamer Mode" />
-              ),
-              icon: CameraIcon,
-              onClick: () => this.toggleStreamerMode()
-            },
-          (this.props.breakpoint === "sm" || this.props.breakpoint === "md") &&
-            entered && {
-              id: "leave-room",
-              label: <FormattedMessage id="more-menu.enter-leave-room" defaultMessage="Leave Room" />,
-              icon: LeaveIcon,
-              onClick: () => {
-                this.showNonHistoriedDialog(LeaveRoomModal, {
-                  destinationUrl: "/",
-                  reason: LeaveReason.leaveRoom
-                });
-              }
-            },
-          canCloseRoom && {
-            id: "close-room",
-            label: <FormattedMessage id="more-menu.close-room" defaultMessage="Close Room" />,
-            icon: DeleteIcon,
-            onClick: () =>
-              this.props.performConditionalSignIn(
-                () => this.props.hubChannel.can("update_hub"),
-                () => {
-                  this.showNonHistoriedDialog(CloseRoomModal, {
-                    roomName: this.props.hub.name,
-                    onConfirm: () => {
-                      this.props.hubChannel.closeHub();
-                    }
-                  });
-                },
-                SignInMessages.closeRoom
-              )
-          }
+          // isModerator &&
+          //   entered && {
+          //     id: "streamer-mode",
+          //     label: streaming ? (
+          //       <FormattedMessage id="more-menu.exit-streamer-mode" defaultMessage="Exit Streamer Mode" />
+          //     ) : (
+          //       <FormattedMessage id="more-menu.enter-streamer-mode" defaultMessage="Enter Streamer Mode" />
+          //     ),
+          //     icon: CameraIcon,
+          //     onClick: () => this.toggleStreamerMode()
+          //   },
+          // (this.props.breakpoint === "sm" || this.props.breakpoint === "md") &&
+          //   entered && {
+          //     id: "leave-room",
+          //     label: <FormattedMessage id="more-menu.enter-leave-room" defaultMessage="Leave Room" />,
+          //     icon: LeaveIcon,
+          //     onClick: () => {
+          //       this.showNonHistoriedDialog(LeaveRoomModal, {
+          //         destinationUrl: "/",
+          //         reason: LeaveReason.leaveRoom
+          //       });
+          //     }
+          //   },
+          // canCloseRoom && {
+          //   id: "close-room",
+          //   label: <FormattedMessage id="more-menu.close-room" defaultMessage="Close Room" />,
+          //   icon: DeleteIcon,
+          //   onClick: () =>
+          //     this.props.performConditionalSignIn(
+          //       () => this.props.hubChannel.can("update_hub"),
+          //       () => {
+          //         this.showNonHistoriedDialog(CloseRoomModal, {
+          //           roomName: this.props.hub.name,
+          //           onConfirm: () => {
+          //             this.props.hubChannel.closeHub();
+          //           }
+          //         });
+          //       },
+          //       SignInMessages.closeRoom
+          //     )
+          // }
         ].filter(item => item)
       },
       {
