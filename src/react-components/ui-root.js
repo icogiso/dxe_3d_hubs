@@ -1550,7 +1550,7 @@ class UIRoot extends Component {
                           onClose={() => this.setSidebar(null)}
                           onCloseDialog={() => this.closeDialog()}
                           showNonHistoriedDialog={this.showNonHistoriedDialog}
-                          isModerator={isModerator}
+                          isModerator={this.props.hubChannel && this.props.hubChannel.canOrWillIfCreator("kick_users") && !isMobileVR}
                         />
                       )}
                       {this.state.sidebarId === "room-info" && (
