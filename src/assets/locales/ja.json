@@ -391,7 +391,7 @@
   "people-sidebar.presence.entering": "入室中",
   "people-sidebar.presence.in-lobby": "ロビー",
   "people-sidebar.presence.in-room": "ルーム内",
-  "people-sidebar.title": "メンバー ({numPeople})",
+  "people-sidebar.title": "参加者リスト ({numPeople})",
   "people-sidebar.voice-label.muted": "ミュート",
   "people-sidebar.voice-label.not-talking": "会話無し",
   "people-sidebar.voice-label.talking": "会話中",
