@@ -17,7 +17,7 @@ export function UserProfileSidebarContainer({
 }) {
   const [avatarThumbnailUrl, setAvatarThumbnailUrl] = useState();
 
-  console.log("isModerator in UserProfileSidebarContainer: ", isModerator);//undefind
+  // console.log("isModerator in UserProfileSidebarContainer: ", isModerator);//undefind
 
   const {
     id: userId,
