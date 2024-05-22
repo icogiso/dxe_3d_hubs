@@ -14,11 +14,10 @@ export function UserProfileSidebarContainer({
   onClose,
   onCloseDialog,
   showNonHistoriedDialog,
-  isModerator
 }) {
   const [avatarThumbnailUrl, setAvatarThumbnailUrl] = useState();
 
-  console.log("isModerator in UserProfileSidebarContainer: ", isModerator);
+  console.log("isModerator in UserProfileSidebarContainer: ", isModerator);//undefind
 
   const {
     id: userId,
@@ -32,14 +31,14 @@ export function UserProfileSidebarContainer({
   const [isOwner, setIsOwner] = useState(!!roles.owner);
   const isCreator = !!roles.creator;
   const isSignedIn = !!roles.signed_in;
-  // const mayAddOwner = (hubChannel.canOrWillIfCreator("update_roles") || isModerator) && !isOwner;
+  // const mayAddOwner = (hubChannel.canOrWillIfCreator("update_roles")) && !isOwner;
   // const mayRemoveOwner = hubChannel.canOrWillIfCreator("update_roles") && isOwner;
-  const mayAddOwner = (hubChannel.canOrWillIfCreator("update_roles") || isModerator);
-  const mayRemoveOwner = hubChannel.canOrWillIfCreator("update_roles") || isModerator;
+  const mayAddOwner = (hubChannel.canOrWillIfCreator("update_roles") || mayKick);
+  const mayRemoveOwner = hubChannel.canOrWillIfCreator("update_roles") || mayKick;
   const [isHidden, setIsHidden] = useState(hubChannel.isHidden(user.id));
 
   
-  console.log("isModerator:"+isModerator);
+  console.log("mayKick:"+mayKick);
   console.log("hubChannel.canOrWillIfCreator(update_roles):"+hubChannel.canOrWillIfCreator("update_roles"));
   console.log("mayAddOwner:"+mayAddOwner);
   console.log("mayRemoveOwner:"+mayRemoveOwner);
@@ -145,6 +144,5 @@ UserProfileSidebarContainer.propTypes = {
   onBack: PropTypes.func,
   onClose: PropTypes.func,
   onCloseDialog: PropTypes.func.isRequired,
-  showNonHistoriedDialog: PropTypes.func,
-  isModerator: PropTypes.bool 
+  showNonHistoriedDialog: PropTypes.func
 };
