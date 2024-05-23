@@ -51,13 +51,13 @@ export function HomePage() {
     }
   }, []);
 
-  const canCreateRooms = !configs.feature("disable_room_creation") || auth.isAdmin;
+  const canCreateRooms = !configs.feature("disable_room_creation") && auth.isAdmin;
   const email = auth.email;
   return (
     <PageContainer className={styles.homePage}>
       <Container>
         <div className={styles.hero}>
-          {auth.isSignedIn ? (
+          {auth.isSignedIn && auth.isAdmin ? (
             <div className={styles.signInContainer}>
               <span>
                 <FormattedMessage
