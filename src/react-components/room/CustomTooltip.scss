@@ -57,6 +57,10 @@
 
 :local(.menuTooltip) {
   padding: 10px;
+
+  p {
+    line-height: 2;
+  }
 }
 
 :local(.menuTooltipFlex) {
