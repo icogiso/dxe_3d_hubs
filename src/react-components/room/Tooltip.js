@@ -6,8 +6,8 @@ import configs from "../../utils/configs";
 import { useIntl, defineMessages } from "react-intl";
 import { Button } from "../input/Button";
 import { IconButton } from "../input/IconButton";
-import { ReactComponent as MoreIcon } from "../icons/More.svg";
 import ObjectTooltip from './ObjectTooltip';
+import MenuTooltip from './MenuTooltip';
 
 // These keys are hardcoded in the input system to be based on the physical location on the keyboard rather than character
 let moveKeyFront = "W";
@@ -152,18 +152,14 @@ MoveKeys.propTypes = {
   right: PropTypes.node
 };
 
-// function Step({ step, params }) {
-//   const intl = useIntl();
-//   if (typeof params.invite === 'function') {
-//     return params.invite();
-//   }
-//   return <>{intl.formatMessage(onboardingMessages[step], params)}</>;
-// }
 
 function Step({ step, params }) {
   const intl = useIntl();
   if (params && params.invite) {
     return params.invite();
+  }
+  if (params && params.menu) {
+    return params.menu();
   }
   return <>{intl.formatMessage(onboardingMessages[step], params)}</>;
 }
@@ -308,11 +304,6 @@ function onboardingSteps({ intl, step }) {
         control: {
           type: Step,
           params: {
-            // invite: (chunks) => (
-            //   <>
-            //     <ObjectTooltip>{chunks}</ObjectTooltip>
-            //   </>
-            // )
             invite: () => (
               <ObjectTooltip />
             )
@@ -326,20 +317,18 @@ function onboardingSteps({ intl, step }) {
         }
       };
     
-    
-    
-
-
-    case "tips.desktop.menu":
-      return {
-        control: {
-          type: Step,
-          params: {
-            menu: <InlineButton icon={<MoreIcon />} text={intl.formatMessage(onboardingMessages["tips.text.more"])} />
-          },
-          messageId: "tips.menu"
-        }
-      };
+      case "tips.desktop.menu":
+        return {
+          control: {
+            type: Step,
+            params: {
+              menu: () => (
+                <MenuTooltip />
+              )
+            },
+            messageId: "tips.menu"
+          }
+        };
     case "tips.mobile.locomotion":
       return {
         control: {
@@ -373,7 +362,9 @@ function onboardingSteps({ intl, step }) {
         control: {
           type: Step,
           params: {
-            menu: <InlineIcon icon={<MoreIcon />} />
+            menu: () => (
+              <MenuTooltip />
+            )
           },
           messageId: "tips.menu"
         }

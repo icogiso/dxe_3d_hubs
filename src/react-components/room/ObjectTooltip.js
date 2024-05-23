@@ -1,6 +1,6 @@
 import React from 'react';
 import { ReactComponent as Waypoint } from '../icons/Waypoint.svg';
-import styles from './ObjectTooltip.scss';
+import styles from './CustomTooltip.scss';
 
 const ObjectTooltip = ({ children }) => (
   <div className={styles.objectTooltip}>

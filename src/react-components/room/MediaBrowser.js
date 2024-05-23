@@ -61,32 +61,14 @@ export function MediaBrowser({
         </IconButton>
       }
       headerCenter={
-        <>
-          {selectedSource === "favorites" ? (
-            <>
-              <StarIcon className={styles.favoriteIcon} />
-              <h3>
-                <FormattedMessage id="media-browser.favorites-header" defaultMessage="Favorite Rooms" />
-              </h3>
-            </>
-          ) : (
-            <TextInputField
-              value={query}
-              onChange={onChangeQuery}
-              autoFocus={autoFocusSearch}
-              ref={searchInputRef}
-              placeholder={searchPlaceholder}
-              onKeyDown={onSearchKeyDown}
-              beforeInput={<SearchIcon className={styles.searchIcon} />}
-              afterInput={
-                <IconButton onClick={onClearSearch}>
-                  <CloseIcon height={16} width={16} />
-                </IconButton>
-              }
-              description={searchDescription}
-            />
-          )}
-        </>
+        selectedSource === "favorites" && (
+          <>
+            <StarIcon className={styles.favoriteIcon} />
+            <h3>
+              <FormattedMessage id="media-browser.favorites-header" defaultMessage="Favorite Rooms" />
+            </h3>
+          </>
+        )
       }
       headerRight={headerRight}
     >

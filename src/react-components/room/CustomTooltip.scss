@@ -54,3 +54,27 @@
   width: 100%;
   text-align: left;
 }
+
+:local(.menuTooltip) {
+  padding: 10px;
+
+  p {
+    line-height: 2;
+  }
+}
+
+:local(.menuTooltipFlex) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  span {
+    display: flex;
+    align-items: center;
+    border: 1px solid theme.$border1-color;
+    padding: 4px;
+    border-radius: 12px;
+    margin-right: 10px;
+  }
+}
