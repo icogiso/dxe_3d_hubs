@@ -343,26 +343,15 @@ export default class MediaDevicesManager extends EventEmitter {
   async startVideoShare({ isDisplayMedia, target, success, error }) {
     let newStream;
     let videoTrackAdded = false;
-
     try {
       if (isDisplayMedia) {
         newStream = await navigator.mediaDevices.getDisplayMedia({
           video: {
-            // Work around BMO 1449832 by calculating the width. This will break for multi monitors if you share anything
-            // other than your current monitor that has a different aspect ratio.
-            // width: 720 * (screen.width / screen.height),
-            // height: 720,
-            // frameRate: 30
             width: 1920 * (screen.width / screen.height),
             height: 1080,
             frameRate: 60
           },
-          // audio: {
-          //   echoCancellation: window.APP.store.state.preferences.disableEchoCancellation === true ? false : true,
-          //   noiseSuppression: window.APP.store.state.preferences.disableNoiseSuppression === true ? false : true,
-          //   autoGainControl: window.APP.store.state.preferences.disableAutoGainControl === true ? false : true
-          // }
-            audio: {
+          audio: {
             echoCancellation: true,
             noiseSuppression: true,
             autoGainControl: true
@@ -374,23 +363,27 @@ export default class MediaDevicesManager extends EventEmitter {
             width: isIOS ? { max: 1280 } : { max: 1280, ideal: 720 },
             frameRate: 30
           }
-          //TODO: Capture audio from camera?
         });
       }
-
       const videoTracks = newStream ? newStream.getVideoTracks() : [];
       if (videoTracks.length > 0) {
         videoTrackAdded = true;
-
-        newStream.getVideoTracks().forEach(track => {
-          // Ideally we would use track.contentHint but it seems to be read-only in Chrome so we just add a custom property
+        videoTracks.forEach(track => {
           track["_hubs_contentHint"] = isDisplayMedia ? MediaDevices.SCREEN : MediaDevices.CAMERA;
           track.addEventListener("ended", async () => {
             this._scene.emit(MediaDevicesEvents.VIDEO_SHARE_ENDED);
           });
           this._mediaStream.addTrack(track);
-        });
 
+          // カメラの向きを判定するためのロジックを追加
+          const settings = track.getSettings();
+          const aspectRatio = settings.aspectRatio || (settings.width / settings.height);
+          if (aspectRatio > 1) {
+            console.log('Camera is in landscape orientation.');
+          } else {
+            console.log('Camera is in portrait orientation.');
+          }
+        });
         if (newStream && newStream.getAudioTracks().length > 0) {
           this.audioSystem.addStreamToOutboundAudio("screenshare", newStream);
         }
@@ -410,9 +403,9 @@ export default class MediaDevicesManager extends EventEmitter {
       this.emit(MediaDevicesEvents.PERMISSIONS_STATUS_CHANGED, { mediaDevice, status: PermissionStatus.DENIED });
       return;
     }
+  success(isDisplayMedia, videoTrackAdded, target);
+}
 
-    success(isDisplayMedia, videoTrackAdded, target);
-  }
 
   async stopVideoShare() {
     if (!this._mediaStream) return;
