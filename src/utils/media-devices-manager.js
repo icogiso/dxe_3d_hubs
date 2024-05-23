@@ -347,7 +347,7 @@ export default class MediaDevicesManager extends EventEmitter {
       if (isDisplayMedia) {
         newStream = await navigator.mediaDevices.getDisplayMedia({
           video: {
-            width: 1920 * (screen.width / screen.height),
+            width: 1920,
             height: 1080,
             frameRate: 60
           },
