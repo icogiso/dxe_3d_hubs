@@ -366,6 +366,7 @@ export default class MediaDevicesManager extends EventEmitter {
           }
         });
       }
+  
       const videoTracks = newStream ? newStream.getVideoTracks() : [];
       if (videoTracks.length > 0) {
         videoTrackAdded = true;
@@ -376,15 +377,30 @@ export default class MediaDevicesManager extends EventEmitter {
           });
           this._mediaStream.addTrack(track);
   
-          // カメラの向きを判定するためのロジックを追加
-          const settings = track.getSettings();
-          const aspectRatio = settings.aspectRatio || (settings.width / settings.height);
-          if (aspectRatio > 1) {
-            console.log('Camera is in landscape orientation.');
-          } else {
-            console.log('Camera is in portrait orientation.');
-          }
+          // 常に横向きにするためのトリミング処理
+          const canvas = document.createElement('canvas');
+          canvas.width = 1280;  // 横型の幅
+          canvas.height = 720;  // 横型の高さ
+          const ctx = canvas.getContext('2d');
+          const video = document.createElement('video');
+          video.srcObject = newStream;
+          video.play();
+          video.onloadeddata = () => {
+            // 映像が縦向きの場合に回転してトリミング
+            ctx.save();
+            if (track.getSettings().aspectRatio < 1) {
+              ctx.translate(canvas.width / 2, canvas.height / 2);
+              ctx.rotate(Math.PI / 2); // 90度回転
+              ctx.drawImage(video, -canvas.height / 2, -canvas.width / 2, canvas.height, canvas.width);
+            } else {
+              ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            }
+            ctx.restore();
+            const newStream = canvas.captureStream(30);  // フレームレートを30に設定
+            this._mediaStream = newStream;
+          };
         });
+  
         if (newStream && newStream.getAudioTracks().length > 0) {
           this.audioSystem.addStreamToOutboundAudio("screenshare", newStream);
         }
@@ -406,6 +422,7 @@ export default class MediaDevicesManager extends EventEmitter {
     }
     success(isDisplayMedia, videoTrackAdded, target);
   }
+  
   
 
 
