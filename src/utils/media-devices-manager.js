@@ -360,7 +360,8 @@ export default class MediaDevicesManager extends EventEmitter {
       } else {
         newStream = await navigator.mediaDevices.getUserMedia({
           video: {
-            width: isIOS ? { max: 1280 } : { max: 1280, ideal: 720 },
+            width: { max: 1280, ideal: 1280 },
+            height: { max: 720, ideal: 720 },
             frameRate: 30
           }
         });
@@ -374,7 +375,7 @@ export default class MediaDevicesManager extends EventEmitter {
             this._scene.emit(MediaDevicesEvents.VIDEO_SHARE_ENDED);
           });
           this._mediaStream.addTrack(track);
-
+  
           // カメラの向きを判定するためのロジックを追加
           const settings = track.getSettings();
           const aspectRatio = settings.aspectRatio || (settings.width / settings.height);
@@ -387,9 +388,9 @@ export default class MediaDevicesManager extends EventEmitter {
         if (newStream && newStream.getAudioTracks().length > 0) {
           this.audioSystem.addStreamToOutboundAudio("screenshare", newStream);
         }
-
+  
         await APP.dialog.setLocalMediaStream(this._mediaStream);
-
+  
         const mediaDevice = isDisplayMedia ? MediaDevices.SCREEN : MediaDevices.CAMERA;
         this._permissionsStatus[mediaDevice] = PermissionStatus.GRANTED;
         this._scene.emit(MediaDevicesEvents.VIDEO_SHARE_STARTED);
@@ -403,8 +404,9 @@ export default class MediaDevicesManager extends EventEmitter {
       this.emit(MediaDevicesEvents.PERMISSIONS_STATUS_CHANGED, { mediaDevice, status: PermissionStatus.DENIED });
       return;
     }
-  success(isDisplayMedia, videoTrackAdded, target);
-}
+    success(isDisplayMedia, videoTrackAdded, target);
+  }
+  
 
 
   async stopVideoShare() {
