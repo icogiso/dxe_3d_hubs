@@ -31,10 +31,10 @@ export function UserProfileSidebarContainer({
   const [isOwner, setIsOwner] = useState(!!roles.owner);
   const isCreator = !!roles.creator;
   const isSignedIn = !!roles.signed_in;
-  // const mayAddOwner = (hubChannel.canOrWillIfCreator("update_roles")) && !isOwner;
-  // const mayRemoveOwner = hubChannel.canOrWillIfCreator("update_roles") && isOwner;
-  const mayAddOwner = (hubChannel.canOrWillIfCreator("update_roles") || mayKick);
-  const mayRemoveOwner = hubChannel.canOrWillIfCreator("update_roles") || mayKick;
+  const mayAddOwner = (hubChannel.canOrWillIfCreator("update_roles")) && !isOwner;
+  const mayRemoveOwner = hubChannel.canOrWillIfCreator("update_roles") && isOwner;
+  // const mayAddOwner = (hubChannel.canOrWillIfCreator("update_roles") || mayKick);
+  // const mayRemoveOwner = hubChannel.canOrWillIfCreator("update_roles") || mayKick;
   const [isHidden, setIsHidden] = useState(hubChannel.isHidden(user.id));
 
   
@@ -50,52 +50,37 @@ export function UserProfileSidebarContainer({
     }
   }, [avatarId, setAvatarThumbnailUrl, user]);
 
+  const addOwner = useCallback(() => {
+    performConditionalSignIn(
+      () => hubChannel.can("update_roles"),
+      async () => {
+        showNonHistoriedDialog(PromoteClientModal, {
+          displayName,
+          onConfirm: async () => {
+            setIsOwner(true);
+            await hubChannel.addOwner(userId);
+            onCloseDialog();
+          }
+        });
+      },
+      SignInMessages.addOwner
+    );
+  }, [performConditionalSignIn, hubChannel, showNonHistoriedDialog, userId, onCloseDialog, displayName]);
+
+  const removeOwner = useCallback(() => {
+    performConditionalSignIn(
+      () => hubChannel.can("update_roles"),
+      async () => {
+        setIsOwner(false);
+        await hubChannel.removeOwner(userId);
+      },
+      SignInMessages.removeOwner
+    );
+  }, [performConditionalSignIn, hubChannel, userId]);
+
   // const addOwner = useCallback(() => {
-  //   performConditionalSignIn(
-  //     () => hubChannel.can("update_roles"),
-  //     async () => {
-  //       showNonHistoriedDialog(PromoteClientModal, {
-  //         displayName,
-  //         onConfirm: async () => {
-  //           setIsOwner(true);
-  //           await hubChannel.addOwner(userId);
-  //           onCloseDialog();
-  //         }
-  //       });
-  //     },
-  //     SignInMessages.addOwner
-  //   );
-  // }, [performConditionalSignIn, hubChannel, showNonHistoriedDialog, userId, onCloseDialog, displayName]);
-
-  // const removeOwner = useCallback(() => {
-  //   performConditionalSignIn(
-  //     () => hubChannel.can("update_roles"),
-  //     async () => {
-  //       setIsOwner(false);
-  //       await hubChannel.removeOwner(userId);
-  //     },
-  //     SignInMessages.removeOwner
-  //   );
-  // }, [performConditionalSignIn, hubChannel, userId]);
-
-
-  // const addOwner = useCallback(() => {
+  //   console.log(userId);
   //   if (!mayKick) {
-  //     performConditionalSignIn(
-  //       () => hubChannel.can("update_roles"),
-  //       async () => {
-  //         showNonHistoriedDialog(PromoteClientModal, {
-  //           displayName,
-  //           onConfirm: async () => {
-  //             setIsOwner(true);
-  //             await hubChannel.addOwner(userId);
-  //             onCloseDialog();
-  //           }
-  //         });
-  //       },
-  //       SignInMessages.addOwner
-  //     );
-  //   } else {
   //     showNonHistoriedDialog(PromoteClientModal, {
   //       displayName,
   //       onConfirm: async () => {
@@ -105,37 +90,23 @@ export function UserProfileSidebarContainer({
   //       }
   //     });
   //   }
-  // }, [mayKick, performConditionalSignIn, hubChannel, showNonHistoriedDialog, userId, onCloseDialog, displayName]);
+  // }, [showNonHistoriedDialog, userId, onCloseDialog, displayName]);
 
-  const addOwner = useCallback(() => {
-    console.log(userId);
-    if (!mayKick) {
-      showNonHistoriedDialog(PromoteClientModal, {
-        displayName,
-        onConfirm: async () => {
-          setIsOwner(true);
-          await hubChannel.addOwner(userId);
-          onCloseDialog();
-        }
-      });
-    }
-  }, [showNonHistoriedDialog, userId, onCloseDialog, displayName]);
-
-  const removeOwner = useCallback(() => {
-    if (mayKick) {
-      performConditionalSignIn(
-        () => hubChannel.can("update_roles"),
-        async () => {
-          setIsOwner(false);
-          await hubChannel.removeOwner(userId);
-        },
-        SignInMessages.removeOwner
-      );
-    } else {
-      setIsOwner(false);
-      hubChannel.removeOwner(userId);
-    }
-  }, [mayKick, performConditionalSignIn, hubChannel, userId]);
+  // const removeOwner = useCallback(() => {
+  //   if (mayKick) {
+  //     performConditionalSignIn(
+  //       () => hubChannel.can("update_roles"),
+  //       async () => {
+  //         setIsOwner(false);
+  //         await hubChannel.removeOwner(userId);
+  //       },
+  //       SignInMessages.removeOwner
+  //     );
+  //   } else {
+  //     setIsOwner(false);
+  //     hubChannel.removeOwner(userId);
+  //   }
+  // }, [mayKick, performConditionalSignIn, hubChannel, userId]);
 
   const toggleHidden = useCallback(() => {
     if (isHidden) {
