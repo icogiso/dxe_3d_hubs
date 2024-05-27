@@ -449,10 +449,10 @@ const preferenceLabels = defineMessages({
   //   id: "preferences-screen.preference.enable-gyro",
   //   defaultMessage: "Enable gyroscope (when supported by browser/device)"
   // },
-  // invertTouchscreenCameraMove: {
-  //   id: "preferences-screen.preference.invert-touchscreen-camera-move",
-  //   defaultMessage: "Invert direction of camera movement for touchscreens"
-  // },
+  invertTouchscreenCameraMove: {
+    id: "preferences-screen.preference.invert-touchscreen-camera-move",
+    defaultMessage: "Invert direction of camera movement for touchscreens"
+  },
   locale: {
     id: "preferences-screen.preference.locale",
     defaultMessage: "Language"
@@ -489,14 +489,14 @@ const preferenceLabels = defineMessages({
     id: "preferences-screen.preference.disable-idle-detection",
     defaultMessage: "Disable auto-exit when idle or backgrounded"
   },
-  preferMobileObjectInfoPanel: {
-    id: "preferences-screen.preference.prefer-mobile-object-info-panel",
-    defaultMessage: "Prefer Mobile Object Info Panel"
-  },
-  showRtcDebugPanel: {
-    id: "preferences-screen.preference.show-rtc-debug-panel",
-    defaultMessage: "Show RTC Panel"
-  },
+  // preferMobileObjectInfoPanel: {
+  //   id: "preferences-screen.preference.prefer-mobile-object-info-panel",
+  //   defaultMessage: "Prefer Mobile Object Info Panel"
+  // },
+  // showRtcDebugPanel: {
+  //   id: "preferences-screen.preference.show-rtc-debug-panel",
+  //   defaultMessage: "Show RTC Panel"
+  // },
   // showAudioDebugPanel: {
   //   id: "preferences-screen.preference.show-audio-debug-panel",
   //   defaultMessage: "Show Audio Debug Panel"
@@ -525,10 +525,10 @@ const preferenceLabels = defineMessages({
   //   id: "preferences-screen.preference.disable-panning",
   //   defaultMessage: "Disable audio left/right panning"
   // },
-  cursorSize: {
-    id: "preferences-screen.preference.cursor-size",
-    defaultMessage: "Cursor Size"
-  },
+  // cursorSize: {
+  //   id: "preferences-screen.preference.cursor-size",
+  //   defaultMessage: "Cursor Size"
+  // },
   nametagVisibility: {
     id: "preferences-screen.preference.nametag-visibility",
     defaultMessage: "Show Nametag"
@@ -1050,10 +1050,10 @@ class PreferencesScreen extends Component {
           //   key: "enableGyro",
           //   prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
           // },
-          // {
-          //   key: "invertTouchscreenCameraMove",
-          //   prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
-          // }
+          {
+            key: "invertTouchscreenCameraMove",
+            prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
+          }
         ]
       ],
       [
@@ -1279,10 +1279,10 @@ class PreferencesScreen extends Component {
           //   key: "lazyLoadSceneMedia",
           //   prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
           // },
-          {
-            key: "preferMobileObjectInfoPanel",
-            prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
-          },
+          // {
+          //   key: "preferMobileObjectInfoPanel",
+          //   prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
+          // },
           // {
           //   key: "animateWaypointTransitions",
           //   prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
@@ -1291,18 +1291,18 @@ class PreferencesScreen extends Component {
           //   key: "showFPSCounter",
           //   prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
           // },
-          {
-            key: "showRtcDebugPanel",
-            prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
-          },
-          {
-            key: "cursorSize",
-            prefType: PREFERENCE_LIST_ITEM_TYPE.NUMBER_WITH_RANGE,
-            min: 1,
-            max: 5,
-            step: 0.5,
-            digits: 1
-          }
+          // {
+          //   key: "showRtcDebugPanel",
+          //   prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
+          // },
+          // {
+          //   key: "cursorSize",
+          //   prefType: PREFERENCE_LIST_ITEM_TYPE.NUMBER_WITH_RANGE,
+          //   min: 1,
+          //   max: 5,
+          //   step: 0.5,
+          //   digits: 1
+          // }
         ]
       ],
       // [
