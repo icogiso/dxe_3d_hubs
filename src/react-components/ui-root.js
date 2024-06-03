@@ -1162,36 +1162,36 @@ class UIRoot extends Component {
                 icon: EnterIcon,
                 onClick: () => this.showContextualSignInDialog()
               },
-          canCreateRoom && {
-            id: "create-room",
-            label: <FormattedMessage id="more-menu.create-room" defaultMessage="Create Room" />,
-            icon: AddIcon,
-            onClick: () =>
-              this.showNonHistoriedDialog(LeaveRoomModal, {
-                destinationUrl: "/",
-                reason: LeaveReason.createRoom
-              })
-          },
+          // canCreateRoom && {
+          //   id: "create-room",
+          //   label: <FormattedMessage id="more-menu.create-room" defaultMessage="Create Room" />,
+          //   icon: AddIcon,
+          //   onClick: () =>
+          //     this.showNonHistoriedDialog(LeaveRoomModal, {
+          //       destinationUrl: "/",
+          //       reason: LeaveReason.createRoom
+          //     })
+          // },
           !isLockedDownDemo && {
             id: "user-profile",
             label: <FormattedMessage id="more-menu.profile" defaultMessage="Change Name & Avatar" />,
             icon: AvatarIcon,
             onClick: () => this.setSidebar("profile")
           },
-          {
-            id: "favorite-rooms",
-            label: <FormattedMessage id="more-menu.favorite-rooms" defaultMessage="Favorite Rooms" />,
-            icon: FavoritesIcon,
-            onClick: () =>
-              this.props.performConditionalSignIn(
-                () => this.props.hubChannel.signedIn,
-                () => {
-                  showFullScreenIfAvailable();
-                  this.props.mediaSearchStore.sourceNavigateWithNoNav("favorites", "use");
-                },
-                SignInMessages.favoriteRooms
-              )
-          },
+          // {
+          //   id: "favorite-rooms",
+          //   label: <FormattedMessage id="more-menu.favorite-rooms" defaultMessage="Favorite Rooms" />,
+          //   icon: FavoritesIcon,
+          //   onClick: () =>
+          //     this.props.performConditionalSignIn(
+          //       () => this.props.hubChannel.signedIn,
+          //       () => {
+          //         showFullScreenIfAvailable();
+          //         this.props.mediaSearchStore.sourceNavigateWithNoNav("favorites", "use");
+          //       },
+          //       SignInMessages.favoriteRooms
+          //     )
+          // },
           {
             id: "preferences",
             label: <FormattedMessage id="more-menu.preferences" defaultMessage="Preferences" />,
@@ -1224,60 +1224,60 @@ class UIRoot extends Component {
           //     icon: InviteIcon,
           //     onClick: () => this.props.scene.emit("action_invite")
           //   },
-          this.isFavorited()
-            ? {
-                id: "unfavorite-room",
-                label: <FormattedMessage id="more-menu.unfavorite-room" defaultMessage="Unfavorite Room" />,
-                icon: StarIcon,
-                onClick: () => this.toggleFavorited()
-              }
-            : {
-                id: "favorite-room",
-                label: <FormattedMessage id="more-menu.favorite-room" defaultMessage="Favorite Room" />,
-                icon: StarOutlineIcon,
-                onClick: () => this.toggleFavorited()
-              },
-          isModerator &&
-            entered && {
-              id: "streamer-mode",
-              label: streaming ? (
-                <FormattedMessage id="more-menu.exit-streamer-mode" defaultMessage="Exit Streamer Mode" />
-              ) : (
-                <FormattedMessage id="more-menu.enter-streamer-mode" defaultMessage="Enter Streamer Mode" />
-              ),
-              icon: CameraIcon,
-              onClick: () => this.toggleStreamerMode()
-            },
-          (this.props.breakpoint === "sm" || this.props.breakpoint === "md") &&
-            entered && {
-              id: "leave-room",
-              label: <FormattedMessage id="more-menu.enter-leave-room" defaultMessage="Leave Room" />,
-              icon: LeaveIcon,
-              onClick: () => {
-                this.showNonHistoriedDialog(LeaveRoomModal, {
-                  destinationUrl: "/",
-                  reason: LeaveReason.leaveRoom
-                });
-              }
-            },
-          canCloseRoom && {
-            id: "close-room",
-            label: <FormattedMessage id="more-menu.close-room" defaultMessage="Close Room" />,
-            icon: DeleteIcon,
-            onClick: () =>
-              this.props.performConditionalSignIn(
-                () => this.props.hubChannel.can("update_hub"),
-                () => {
-                  this.showNonHistoriedDialog(CloseRoomModal, {
-                    roomName: this.props.hub.name,
-                    onConfirm: () => {
-                      this.props.hubChannel.closeHub();
-                    }
-                  });
-                },
-                SignInMessages.closeRoom
-              )
-          }
+          // this.isFavorited()
+          //   ? {
+          //       id: "unfavorite-room",
+          //       label: <FormattedMessage id="more-menu.unfavorite-room" defaultMessage="Unfavorite Room" />,
+          //       icon: StarIcon,
+          //       onClick: () => this.toggleFavorited()
+          //     }
+          //   : {
+          //       id: "favorite-room",
+          //       label: <FormattedMessage id="more-menu.favorite-room" defaultMessage="Favorite Room" />,
+          //       icon: StarOutlineIcon,
+          //       onClick: () => this.toggleFavorited()
+          //     },
+          // isModerator &&
+          //   entered && {
+          //     id: "streamer-mode",
+          //     label: streaming ? (
+          //       <FormattedMessage id="more-menu.exit-streamer-mode" defaultMessage="Exit Streamer Mode" />
+          //     ) : (
+          //       <FormattedMessage id="more-menu.enter-streamer-mode" defaultMessage="Enter Streamer Mode" />
+          //     ),
+          //     icon: CameraIcon,
+          //     onClick: () => this.toggleStreamerMode()
+          //   },
+          // (this.props.breakpoint === "sm" || this.props.breakpoint === "md") &&
+          //   entered && {
+          //     id: "leave-room",
+          //     label: <FormattedMessage id="more-menu.enter-leave-room" defaultMessage="Leave Room" />,
+          //     icon: LeaveIcon,
+          //     onClick: () => {
+          //       this.showNonHistoriedDialog(LeaveRoomModal, {
+          //         destinationUrl: "/",
+          //         reason: LeaveReason.leaveRoom
+          //       });
+          //     }
+          //   },
+          // canCloseRoom && {
+          //   id: "close-room",
+          //   label: <FormattedMessage id="more-menu.close-room" defaultMessage="Close Room" />,
+          //   icon: DeleteIcon,
+          //   onClick: () =>
+          //     this.props.performConditionalSignIn(
+          //       () => this.props.hubChannel.can("update_hub"),
+          //       () => {
+          //         this.showNonHistoriedDialog(CloseRoomModal, {
+          //           roomName: this.props.hub.name,
+          //           onConfirm: () => {
+          //             this.props.hubChannel.closeHub();
+          //           }
+          //         });
+          //       },
+          //       SignInMessages.closeRoom
+          //     )
+          // }
         ].filter(item => item)
       },
       {
@@ -1335,6 +1335,7 @@ class UIRoot extends Component {
         ].filter(item => item)
       }
     ];
+    console.log("isModerator:"+isModerator); //true
 
     return (
       <MoreMenuContextProvider>
@@ -1541,6 +1542,7 @@ class UIRoot extends Component {
                         />
                       )}
                       {this.state.sidebarId === "user" && (
+                        
                         <UserProfileSidebarContainer
                           user={this.getSelectedUser()}
                           hubChannel={this.props.hubChannel}
@@ -1548,10 +1550,13 @@ class UIRoot extends Component {
                           onClose={() => this.setSidebar(null)}
                           onCloseDialog={() => this.closeDialog()}
                           showNonHistoriedDialog={this.showNonHistoriedDialog}
+                          // isModerator={this.props.hubChannel && this.props.hubChannel.canOrWillIfCreator("kick_users") && !isMobileVR}
+                          // isModerator={isModerator}
                         />
                       )}
                       {this.state.sidebarId === "room-info" && (
                         <RoomSidebar
+                          signedIn={this.state.signedIn}
                           accountId={this.props.sessionId}
                           room={this.props.hub}
                           canEdit={this.props.hubChannel.canOrWillIfCreator("update_hub")}
@@ -1629,7 +1634,7 @@ class UIRoot extends Component {
                         {!isLockedDownDemo && (
                           <>
                             <AudioPopoverButtonContainer scene={this.props.scene} />
-                            <SharePopoverContainer scene={this.props.scene} hubChannel={this.props.hubChannel} />
+                            <SharePopoverContainer scene={this.props.scene} hubChannel={this.props.hubChannel} showNonHistoriedDialog={this.showNonHistoriedDialog}/>
                             <PlacePopoverContainer
                               scene={this.props.scene}
                               hubChannel={this.props.hubChannel}

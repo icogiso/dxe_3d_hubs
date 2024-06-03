@@ -84,8 +84,8 @@ function allowDisplayOfSceneLink(accountId, scene) {
   return scene && ((accountId && scene.account_id === accountId) || scene.allow_promotion || scene.allow_remixing);
 }
 
-export function SceneInfo({ accountId, scene, showAttributions, canChangeScene, onChangeScene }) {
-  const changeSceneButton = canChangeScene && (
+export function SceneInfo({signedIn, accountId, scene, showAttributions, canChangeScene, onChangeScene }) {
+  const changeSceneButton = canChangeScene && signedIn && (
     <Button preset="primary" onClick={onChangeScene}>
       <FormattedMessage id="room-sidebar.scene-info.change-scene-button" defaultMessage="Change Scene" />
     </Button>
@@ -159,7 +159,7 @@ SceneInfo.propTypes = {
   })
 };
 
-export function RoomSidebar({ room, accountId, onClose, canEdit, onEdit, onChangeScene }) {
+export function RoomSidebar({ signedIn, room, accountId, onClose, canEdit, onEdit, onChangeScene }) {
   return (
     <Sidebar
       title={<FormattedMessage id="room-sidebar.title" defaultMessage="Room" />}
@@ -182,6 +182,7 @@ export function RoomSidebar({ room, accountId, onClose, canEdit, onEdit, onChang
           </InputField>
         )}
         <SceneInfo
+          signedIn={signedIn}
           accountId={accountId}
           scene={room.scene}
           showAttributions
@@ -194,6 +195,7 @@ export function RoomSidebar({ room, accountId, onClose, canEdit, onEdit, onChang
 }
 
 RoomSidebar.propTypes = {
+  signedIn: PropTypes.bool,
   accountId: PropTypes.string,
   room: PropTypes.object.isRequired,
   onClose: PropTypes.func,

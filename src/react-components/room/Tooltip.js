@@ -6,8 +6,8 @@ import configs from "../../utils/configs";
 import { useIntl, defineMessages } from "react-intl";
 import { Button } from "../input/Button";
 import { IconButton } from "../input/IconButton";
-import { ReactComponent as InviteIcon } from "../icons/Invite.svg";
-import { ReactComponent as MoreIcon } from "../icons/More.svg";
+import ObjectTooltip from './ObjectTooltip';
+import MenuTooltip from './MenuTooltip';
 
 // These keys are hardcoded in the input system to be based on the physical location on the keyboard rather than character
 let moveKeyFront = "W";
@@ -58,10 +58,10 @@ const onboardingMessages = defineMessages({
     id: "tips.desktop.turning2",
     defaultMessage: "Use {left} or {right} or click and drag to look around"
   },
-  // "tips.desktop.invite": {
-  //   id: "tips.desktop.invite2",
-  //   defaultMessage: "<p>Use the {invite} button to share</p><p2>this room</p2>"
-  // },
+  "tips.desktop.invite": {
+    id: "tips.desktop.invite2",
+    defaultMessage: "<p>Use the {invite} button to share</p><p2>this room</p2>"
+  },
   "tips.end": {
     id: "tips.end",
     defaultMessage: "Tutorial completed! Have fun exploring"
@@ -86,10 +86,10 @@ const onboardingMessages = defineMessages({
     id: "tips.text.more",
     defaultMessage: "More"
   },
-  // "tips.text.invite": {
-  //   id: "tips.text.invite",
-  //   defaultMessage: ""
-  // }
+  "tips.text.invite": {
+    id: "tips.text.invite",
+    defaultMessage: ""
+  }
 });
 
 function isStep(step, item) {
@@ -97,7 +97,7 @@ function isStep(step, item) {
 }
 
 function maxSteps(step) {
-  return isStep(step, "desktop") ? 2 : 1;
+  return isStep(step, "desktop") ? 3 : 2;
 }
 
 function Key({ children }) {
@@ -152,8 +152,15 @@ MoveKeys.propTypes = {
   right: PropTypes.node
 };
 
+
 function Step({ step, params }) {
   const intl = useIntl();
+  if (params && params.invite) {
+    return params.invite();
+  }
+  if (params && params.menu) {
+    return params.menu();
+  }
   return <>{intl.formatMessage(onboardingMessages[step], params)}</>;
 }
 
@@ -268,37 +275,60 @@ function onboardingSteps({ intl, step }) {
           }
         }
       };
-    case "tips.desktop.invite":
-      return onboardingSteps({ intl, step: "tips.desktop.end" });
-      // return {
-      //   control: {
-      //     type: Step,
-      //     // params: {
-      //     //   invite: (
-      //     //     <InlineButton icon={<InviteIcon />} text={intl.formatMessage(onboardingMessages["tips.text.invite"])} />
-      //     //   ),
-      //     //   p: chunks => <p style={{ width: "100%" }}>{chunks}</p>,
-      //     //   p2: chunks => <p style={{ width: "100%" }}>{chunks}</p>
-      //     // }
-      //   },
-      //   navigationBar: {
-      //     type: StepNavigationBar,
-      //     params: {
-      //       currentStep: 2
-      //     }
-      //   }
-      // };
+    // case "tips.desktop.invite":
+    //   // return onboardingSteps({ intl, step: "tips.desktop.end" });
+    //   return {
+    //     control: {
+    //       type: Step,
+    //       params: {
+    //         invite: (
+    //           <>
+    //             <InlineButton text={intl.formatMessage(onboardingMessages["tips.text.invite"])} />,
+    //           </>
+    //           // <InlineButton icon={<InviteIcon />} text={intl.formatMessage(onboardingMessages["tips.text.invite"])} />
+    //         ),
+    //         p: chunks => <p style={{ width: "100%" }}>{chunks}</p>,
+    //         p2: chunks => <p style={{ textAlign: "left" }}>{chunks}</p>,
+    //       }
+    //     },
+    //     navigationBar: {
+    //       type: StepNavigationBar,
+    //       params: {
+    //         currentStep: 2
+    //       }
+    //     }
+    //   };
 
-    case "tips.desktop.menu":
+    case "tips.desktop.invite":
       return {
         control: {
           type: Step,
           params: {
-            menu: <InlineButton icon={<MoreIcon />} text={intl.formatMessage(onboardingMessages["tips.text.more"])} />
-          },
-          messageId: "tips.menu"
+            invite: () => (
+              <ObjectTooltip />
+            )
+          }
+        },
+        navigationBar: {
+          type: StepNavigationBar,
+          params: {
+            currentStep: 2
+          }
         }
       };
+    
+      case "tips.desktop.menu":
+        return {
+          control: {
+            type: Step,
+            params: {
+              menu: () => (
+                <MenuTooltip />
+              )
+            },
+            messageId: "tips.menu"
+          }
+        };
     case "tips.mobile.locomotion":
       return {
         control: {
@@ -332,7 +362,9 @@ function onboardingSteps({ intl, step }) {
         control: {
           type: Step,
           params: {
-            menu: <InlineIcon icon={<MoreIcon />} />
+            menu: () => (
+              <MenuTooltip />
+            )
           },
           messageId: "tips.menu"
         }

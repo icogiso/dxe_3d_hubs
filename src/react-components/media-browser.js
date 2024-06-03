@@ -433,45 +433,45 @@ class MediaBrowserContainer extends Component {
       <MediaBrowser
         browserRef={r => (this.browserDiv = r)}
         onClose={this.close}
-        searchInputRef={r => (this.inputRef = r)}
-        autoFocusSearch={!isMobile && !isMobileVR}
-        query={this.state.query}
-        onChangeQuery={e => this.handleQueryUpdated(e.target.value)}
-        onSearchKeyDown={e => {
-          if (e.key === "Enter" && e.ctrlKey) {
-            if (entries.length > 0 && !this._sendQueryTimeout) {
-              this.handleEntryClicked(e, entries[0]);
-            } else if (this.state.query.trim() !== "") {
-              this.handleQueryUpdated(this.state.query, true);
-              this.setState({ selectNextResult: true });
-            } else {
-              this.close();
-            }
-          } else if (e.key === "Escape" || (e.key === "Enter" && isMobile)) {
-            e.target.blur();
-          }
-        }}
-        onClearSearch={() => this.handleQueryUpdated("", true)}
-        mediaSources={urlSource === "favorites" ? undefined : SOURCES}
+        // searchInputRef={r => (this.inputRef = r)}
+        // autoFocusSearch={!isMobile && !isMobileVR}
+        // query={this.state.query}
+        // onChangeQuery={e => this.handleQueryUpdated(e.target.value)}
+        // onSearchKeyDown={e => {
+        //   if (e.key === "Enter" && e.ctrlKey) {
+        //     if (entries.length > 0 && !this._sendQueryTimeout) {
+        //       this.handleEntryClicked(e, entries[0]);
+        //     } else if (this.state.query.trim() !== "") {
+        //       this.handleQueryUpdated(this.state.query, true);
+        //       this.setState({ selectNextResult: true });
+        //     } else {
+        //       this.close();
+        //     }
+        //   } else if (e.key === "Escape" || (e.key === "Enter" && isMobile)) {
+        //     e.target.blur();
+        //   }
+        // }}
+        // onClearSearch={() => this.handleQueryUpdated("", true)}
+        // mediaSources={urlSource === "favorites" ? undefined : SOURCES}
         selectedSource={urlSource}
         onSelectSource={this.handleSourceClicked}
         activeFilter={activeFilter}
         facets={facets}
         onSelectFacet={this.handleFacetClicked}
-        searchPlaceholder={
-          searchPlaceholderMessages[urlSource]
-            ? intl.formatMessage(searchPlaceholderMessages[urlSource])
-            : intl.formatMessage(searchPlaceholderMessages.default)
-        }
-        searchDescription={searchDescription}
-        headerRight={
-          showCustomOption && (
-            <IconButton lg onClick={() => handleCustomClicked(urlSource)}>
-              {["scenes", "avatars"].includes(urlSource) ? <LinkIcon /> : <UploadIcon />}
-              <p>{intl.formatMessage(customObjectMessages[customObjectType])}</p>
-            </IconButton>
-          )
-        }
+        // searchPlaceholder={
+        //   searchPlaceholderMessages[urlSource]
+        //     ? intl.formatMessage(searchPlaceholderMessages[urlSource])
+        //     : intl.formatMessage(searchPlaceholderMessages.default)
+        // }
+        // searchDescription={searchDescription}
+        // headerRight={
+        //   showCustomOption && (
+        //     <IconButton lg onClick={() => handleCustomClicked(urlSource)}>
+        //       {["scenes", "avatars"].includes(urlSource) ? <LinkIcon /> : <UploadIcon />}
+        //       <p>{intl.formatMessage(customObjectMessages[customObjectType])}</p>
+        //     </IconButton>
+        //   )
+        // }
         hasNext={hasNext}
         hasPrevious={hasPrevious}
         onNextPage={() => this.handlePager(1)}

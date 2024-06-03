@@ -52,6 +52,10 @@ export function UserProfileSidebar({
   );
   const newLevel = calcLevel(multiplier);
 
+  console.log("onPromote:"+onPromote);
+  console.log("canPromote:"+canPromote);
+  console.log("isSignedIn:"+isSignedIn);
+
   return (
     <Sidebar
       beforeTitle={showBackButton ? <BackButton onClick={onBack} /> : <CloseButton onClick={onClose} />}

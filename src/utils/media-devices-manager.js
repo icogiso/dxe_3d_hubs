@@ -343,52 +343,70 @@ export default class MediaDevicesManager extends EventEmitter {
   async startVideoShare({ isDisplayMedia, target, success, error }) {
     let newStream;
     let videoTrackAdded = false;
-
     try {
       if (isDisplayMedia) {
         newStream = await navigator.mediaDevices.getDisplayMedia({
           video: {
-            // Work around BMO 1449832 by calculating the width. This will break for multi monitors if you share anything
-            // other than your current monitor that has a different aspect ratio.
-            width: 720 * (screen.width / screen.height),
-            height: 720,
-            frameRate: 30
+            width: 1920,
+            height: 1080,
+            frameRate: 60
           },
           audio: {
-            echoCancellation: window.APP.store.state.preferences.disableEchoCancellation === true ? false : true,
-            noiseSuppression: window.APP.store.state.preferences.disableNoiseSuppression === true ? false : true,
-            autoGainControl: window.APP.store.state.preferences.disableAutoGainControl === true ? false : true
+            echoCancellation: true,
+            noiseSuppression: true,
+            autoGainControl: true
           }
         });
       } else {
         newStream = await navigator.mediaDevices.getUserMedia({
           video: {
-            width: isIOS ? { max: 1280 } : { max: 1280, ideal: 720 },
+            width: { max: 1280, ideal: 1280 },
+            height: { max: 720, ideal: 720 },
             frameRate: 30
           }
-          //TODO: Capture audio from camera?
         });
       }
-
+  
       const videoTracks = newStream ? newStream.getVideoTracks() : [];
       if (videoTracks.length > 0) {
         videoTrackAdded = true;
-
-        newStream.getVideoTracks().forEach(track => {
-          // Ideally we would use track.contentHint but it seems to be read-only in Chrome so we just add a custom property
+        videoTracks.forEach(track => {
           track["_hubs_contentHint"] = isDisplayMedia ? MediaDevices.SCREEN : MediaDevices.CAMERA;
           track.addEventListener("ended", async () => {
             this._scene.emit(MediaDevicesEvents.VIDEO_SHARE_ENDED);
           });
           this._mediaStream.addTrack(track);
+  
+          // 常に横向きにするためのトリミング処理
+          const canvas = document.createElement('canvas');
+          canvas.width = 1280;  // 横型の幅
+          canvas.height = 720;  // 横型の高さ
+          const ctx = canvas.getContext('2d');
+          const video = document.createElement('video');
+          video.srcObject = newStream;
+          video.play();
+          video.onloadeddata = () => {
+            // 映像が縦向きの場合に回転してトリミング
+            ctx.save();
+            if (track.getSettings().aspectRatio < 1) {
+              ctx.translate(canvas.width / 2, canvas.height / 2);
+              ctx.rotate(Math.PI / 2); // 90度回転
+              ctx.drawImage(video, -canvas.height / 2, -canvas.width / 2, canvas.height, canvas.width);
+            } else {
+              ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            }
+            ctx.restore();
+            const newStream = canvas.captureStream(30);  // フレームレートを30に設定
+            this._mediaStream = newStream;
+          };
         });
-
+  
         if (newStream && newStream.getAudioTracks().length > 0) {
           this.audioSystem.addStreamToOutboundAudio("screenshare", newStream);
         }
-
+  
         await APP.dialog.setLocalMediaStream(this._mediaStream);
-
+  
         const mediaDevice = isDisplayMedia ? MediaDevices.SCREEN : MediaDevices.CAMERA;
         this._permissionsStatus[mediaDevice] = PermissionStatus.GRANTED;
         this._scene.emit(MediaDevicesEvents.VIDEO_SHARE_STARTED);
@@ -402,9 +420,11 @@ export default class MediaDevicesManager extends EventEmitter {
       this.emit(MediaDevicesEvents.PERMISSIONS_STATUS_CHANGED, { mediaDevice, status: PermissionStatus.DENIED });
       return;
     }
-
     success(isDisplayMedia, videoTrackAdded, target);
   }
+  
+  
+
 
   async stopVideoShare() {
     if (!this._mediaStream) return;
