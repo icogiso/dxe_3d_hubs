@@ -559,6 +559,16 @@
 
       svg {
         color: theme.$accent4-color;
+        stroke: theme.$accent4-color;
+
+        path {
+          stroke: theme.$accent4-color;
+          stroke-width: 1.5;
+          &:nth-of-type(n+2) {
+            fill: theme.$accent4-color;
+            stroke-width: 1.0;
+          }
+        }
       }
     }
 
