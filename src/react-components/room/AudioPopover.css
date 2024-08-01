@@ -1,0 +1,94 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.audio-toolbar-popover) {
+  width: 100%;
+  height: 100%;
+}
+@media (min-width: 992px) and (min-height: 600px) {
+  :local(.audio-toolbar-popover) {
+    padding-top: 8px;
+    width: 272px;
+    overflow: hidden;
+  }
+}
+
+:local(.selection-input) {
+  width: 100%;
+  max-width: none;
+}
+
+:local(.buttons-container) {
+  display: flex;
+}
+
+:local(.icon-enabled) {
+  width: 24px;
+  height: 24px;
+  color: var(--text1-color);
+}
+:local(.icon-enabled) path {
+  stroke-width: 1;
+}
+
+:local(.icon-disabled) {
+  width: 24px;
+  height: 24px;
+  color: var(--text2-color);
+}
+:local(.icon-disabled) path {
+  stroke-width: 1;
+}
+
+:local(.arrow-button) svg {
+  transform: rotate(180deg);
+}
+
+:local(.arrow-button-selected) svg {
+  transform: rotate(0deg);
+}
+
+:local(.level-bar) {
+  width: 100%;
+  height: 24px;
+}
+
+:local(.voice-chat-disabled) {
+  display: flex;
+  flex: auto;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  gap: 20px;
+  padding: 30px;
+}
+
+:local(.text-disabled) {
+  color: var(--disabled-text-color);
+  font-size: 14px;
+  text-align: center;
+}/*# sourceMappingURL=AudioPopover.css.map */

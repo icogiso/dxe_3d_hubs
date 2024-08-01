@@ -1,0 +1,33 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+@media (min-width: 992px) and (min-height: 600px) {
+  :local(.lg) svg {
+    height: 20px;
+    width: 20px;
+  }
+}/*# sourceMappingURL=CloseButton.css.map */

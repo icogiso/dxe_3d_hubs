@@ -1,0 +1,38 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.label) {
+  margin-bottom: 8px;
+  color: var(--text2-color);
+  align-self: flex-start;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+:local(.popover) {
+  margin-bottom: -8px;
+}/*# sourceMappingURL=ReactionPopover.css.map */

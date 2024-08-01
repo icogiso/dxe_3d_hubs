@@ -1,0 +1,56 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.content) {
+  align-items: center;
+  padding: 24px;
+  padding-top: 10px;
+  text-align: center;
+}
+
+:local(.avatar-preview-container) {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  /* TODO: This styling into AvatarPreview */
+}
+:local(.avatar-preview-container) > :first-child {
+  /*
+  We need to set dimensions explicitly here, since AvatarPreview
+  resizes itself to its container's dimensions.
+  */
+  width: 168px;
+  height: 250px;
+  border-radius: 8px;
+  background-color: var(--tile-bg-color);
+}
+:local(.avatar-preview-container) button {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 8px;
+}/*# sourceMappingURL=AvatarSettingsContent.css.map */

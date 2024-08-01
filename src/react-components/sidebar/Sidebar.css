@@ -1,0 +1,77 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.sidebar) {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--background1-color);
+  pointer-events: auto;
+  overflow-wrap: break-word;
+}
+@media (min-width: 992px) and (min-height: 600px) {
+  :local(.sidebar) {
+    border-left: 1px solid var(--border1-color);
+  }
+}
+
+:local(.header) {
+  display: flex;
+  height: 48px;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border1-color);
+  align-items: center;
+  justify-content: center;
+}
+
+:local(.before-title) {
+  position: absolute;
+  left: 0;
+  margin-left: 16px;
+}
+
+:local(.after-title) {
+  position: absolute;
+  right: 0;
+  margin-right: 16px;
+}
+
+:local(.content) {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+:local(.overflow-y) {
+  overflow-y: auto;
+}/*# sourceMappingURL=Sidebar.css.map */

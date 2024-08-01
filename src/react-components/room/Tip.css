@@ -1,0 +1,89 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.tip) {
+  pointer-events: all;
+  min-height: 48px;
+  background-color: var(--accent4-color);
+  border-radius: 16px;
+  display: flex;
+  color: var(--text4-color);
+  align-items: center;
+}
+@media (min-width: 992px) and (min-height: 600px) {
+  :local(.tip) {
+    bottom: 24px;
+    max-width: 360px;
+  }
+}
+
+:local(.content) {
+  margin: 16px;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 0 8px;
+  line-height: 1.25;
+}
+
+:local(.dismiss-button) {
+  background: none;
+  height: 32px;
+  border-radius: 16px;
+  padding: 0 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--accent4-color-pressed);
+  margin-right: 8px;
+  margin-bottom: 8px;
+  min-width: 48px;
+  font-size: 14px;
+  font-weight: 700;
+  align-self: flex-end;
+}
+:local(.dismiss-button):hover {
+  border-color: var(--accent4-color-hover);
+  background-color: var(--accent4-color-hover);
+}
+:local(.dismiss-button):active {
+  border-color: var(--accent4-color-pressed);
+  background-color: var(--accent4-color-pressed);
+}
+
+:local(.toast) {
+  animation: vanish 5s;
+  animation-fill-mode: forwards;
+}
+@keyframes vanish {
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}/*# sourceMappingURL=Tip.css.map */

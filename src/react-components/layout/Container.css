@@ -1,0 +1,57 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.container) {
+  display: flex;
+  margin: auto;
+  max-width: 100%;
+}
+@media (min-width: 576px) {
+  :local(.container) {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  :local(.container) {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  :local(.container) {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  :local(.container) {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1600px) {
+  :local(.container) {
+    max-width: 1140px;
+  }
+}/*# sourceMappingURL=Container.css.map */

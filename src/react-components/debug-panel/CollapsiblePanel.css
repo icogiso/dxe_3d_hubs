@@ -1,0 +1,261 @@
+@charset "UTF-8";
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.border-tile), :local(.borderless-tile) {
+  border: 2px;
+  border-color: #e7e7e7;
+  border-style: solid;
+  padding: 4px;
+  margin: 4px;
+  border-radius: 5px;
+  display: flex;
+  flex-flow: column;
+  flex: 0 1 auto;
+  background-color: var(--overlay-bg-color);
+  pointer-events: auto;
+}
+@media not all and (-webkit-min-device-pixel-ratio: 0), not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) {
+    :local(.border-tile), :local(.borderless-tile) {
+      height: 100%;
+    }
+  }
+}
+
+:local(.border-tile).collapsed, .collapsed:local(.borderless-tile) {
+  display: none;
+}
+
+:local(.borderless-tile) {
+  border: none;
+}
+
+:local(.borderless-tile).collapsed {
+  display: none;
+}
+
+:local(.rtc-debug-panel-root) {
+  pointer-events: none;
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  height: auto;
+  top: 76px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+}
+@media (max-width: 500px) {
+  :local(.rtc-debug-panel-root) {
+    flex-flow: column nowrap;
+    width: 100%;
+    justify-content: stretch;
+  }
+}
+
+:local(.rtc-status-container), :local(.status-container-middle), :local(.rtc-status-container-right), :local(.rtc-status-container-left) {
+  display: flex;
+  overflow-y: auto;
+  pointer-events: auto;
+  width: 25%;
+  align-self: flex-start;
+  max-height: 100%;
+}
+@media (max-width: 500px) {
+  :local(.rtc-status-container), :local(.status-container-middle), :local(.rtc-status-container-right), :local(.rtc-status-container-left) {
+    width: 100%;
+    max-height: 33%;
+    align-self: baseline;
+    flex: 0 1 auto;
+  }
+}
+
+:local(.rtc-status-container-left) {
+  justify-content: start;
+}
+
+:local(.rtc-status-container-right) {
+  justify-content: end;
+}
+@media (max-width: 500px) {
+  :local(.rtc-status-container-right) {
+    justify-content: start;
+  }
+}
+
+:local(.status-container-middle) {
+  width: 50%;
+  height: 100%;
+  flex: 1 0 auto;
+  flex-flow: column;
+  overflow-y: hidden;
+  pointer-events: none;
+}
+@media (max-width: 500px) {
+  :local(.status-container-middle) {
+    justify-content: start;
+    width: 100%;
+  }
+}
+
+:local(.rtc-log-container) {
+  pointer-events: auto;
+  width: 100%;
+  overflow-y: auto;
+  display: flex;
+  align-self: flex-end;
+  max-height: 33%;
+  flex: 0 1 auto;
+  justify-content: center;
+}
+@media (max-width: 500px) {
+  :local(.rtc-log-container) {
+    width: 100%;
+    align-self: baseline;
+    flex: 0 1 auto;
+    justify-content: left;
+  }
+}
+
+:local(.rtc-log-time) {
+  font-size: 10px;
+  color: #007ab8;
+  margin: 0;
+}
+
+:local(.rtc-log-text), :local(.rtc-log-msg), :local(.rtc-log-tag) {
+  font-size: 10px;
+  margin: 0;
+}
+
+:local(.rtc-log-tag) {
+  color: #ffc000;
+}
+
+:local(.rtc-log-msg-container) {
+  -webkit-user-select: text;
+     -moz-user-select: text;
+          user-select: text;
+}
+
+:local(.rtc-log-msg) {
+  color: #ffffff;
+}
+
+:local(.collapse-button) {
+  background-color: transparent;
+  border-color: transparent;
+  color: #e7e7e7;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+:local(.log-button) {
+  color: #000000;
+  background-color: #e7e7e7;
+  border-radius: 50%;
+  font-weight: 700;
+  width: 15px;
+  height: 15px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+  align-self: center;
+  font-size: 10px;
+}
+
+:local(.collapse-button):after {
+  content: "−";
+  color: #e7e7e7;
+  font-weight: 700;
+  float: left;
+  align-self: stretch;
+  padding-right: 6px;
+}
+
+:local(.collapse-button).collapsed:after {
+  content: "+";
+}
+
+:local(.collapsible-content), :local(.collapsible-content-root) {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+:local(.collapsible-content-root) {
+  flex-flow: column nowrap;
+  overflow-y: auto;
+  justify-content: space-evenly;
+}
+
+:local(.collapsible-content).collapsed, .collapsed:local(.collapsible-content-root) {
+  display: none;
+}
+
+:local(.collapsible-header) {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin-right: 4px;
+}
+
+:local(.collapsible-right-buttons) > * {
+  margin: 4px;
+}/*# sourceMappingURL=CollapsiblePanel.css.map */

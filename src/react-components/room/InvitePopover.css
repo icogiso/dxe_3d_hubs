@@ -1,0 +1,36 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.invite-popover) {
+  width: 100%;
+}
+@media (min-width: 992px) and (min-height: 600px) {
+  :local(.invite-popover) {
+    padding-top: 8px;
+    width: 272px;
+  }
+}/*# sourceMappingURL=InvitePopover.css.map */

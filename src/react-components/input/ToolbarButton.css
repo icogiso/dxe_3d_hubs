@@ -1,0 +1,514 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.toolbar-button) {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 48px;
+}
+:local(.toolbar-button) label {
+  cursor: pointer;
+  color: var(--text1-color);
+  margin-top: 8px;
+  margin-bottom: 3px;
+  white-space: nowrap;
+}
+:local(.toolbar-button) label:disabled, :local(.toolbar-button) label[disabled] {
+  cursor: default;
+}
+:local(.toolbar-button):disabled, :local(.toolbar-button)[disabled] {
+  cursor: default;
+}
+
+:local(.icon-container) {
+  position: relative;
+  border-radius: 9999px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid transparent;
+  background-color: transparent;
+  transition: background-color 0.1s ease-in-out, border-color 0.1s ease-in-out;
+}
+:local(.icon-container) svg {
+  color: var(--toolbar-icon-color);
+}
+:local(.icon-container) svg *[stroke="#000"] {
+  transition: stroke 0.1s ease-in-out;
+}
+:local(.icon-container) svg *[fill="#000"] {
+  transition: fill 0.1s ease-in-out;
+}
+
+:local(.large) :local(.icon-container) {
+  width: 96px;
+  height: 96px;
+}
+
+:local(.basic) :local(.icon-container),
+:local(.transparent) :local(.icon-container) {
+  border-color: var(--toolbar-basic-border-color);
+  background-color: var(--background1-color);
+}
+:local(.basic) :local(.icon-container) svg,
+:local(.transparent) :local(.icon-container) svg {
+  color: var(--toolbar-basic-icon-color);
+}
+:local(.basic) :local(.icon-container):disabled, :local(.basic) :local(.icon-container)[disabled],
+:local(.transparent) :local(.icon-container):disabled,
+:local(.transparent) :local(.icon-container)[disabled] {
+  border-color: var(--background1-color);
+  background-color: var(--disabled-bg-color);
+}
+:local(.basic) :local(.icon-container):disabled svg, :local(.basic) :local(.icon-container)[disabled] svg,
+:local(.transparent) :local(.icon-container):disabled svg,
+:local(.transparent) :local(.icon-container)[disabled] svg {
+  color: var(--disabled-icon-color);
+}
+:local(.basic):hover :local(.icon-container),
+:local(.transparent):hover :local(.icon-container) {
+  border: 1px solid var(--toolbar-basic-border-color);
+  background-color: var(--basic-color-hover);
+}
+:local(.basic):hover :local(.icon-container):disabled, :local(.basic):hover :local(.icon-container)[disabled],
+:local(.transparent):hover :local(.icon-container):disabled,
+:local(.transparent):hover :local(.icon-container)[disabled] {
+  border-color: transparent;
+  background-color: var(--disabled-bg-color);
+}
+:local(.basic):hover :local(.icon-container):disabled svg, :local(.basic):hover :local(.icon-container)[disabled] svg,
+:local(.transparent):hover :local(.icon-container):disabled svg,
+:local(.transparent):hover :local(.icon-container)[disabled] svg {
+  color: var(--disabled-icon-color);
+}
+:local(.basic):active :local(.icon-container),
+:local(.transparent):active :local(.icon-container) {
+  border-color: var(--basic-color-pressed);
+  background-color: var(--basic-color-pressed);
+}
+:local(.basic):local(.selected) :local(.icon-container),
+:local(.transparent):local(.selected) :local(.icon-container) {
+  border-color: transparent;
+  background-color: var(--toolbar-icon-selected-bg);
+}
+:local(.basic):local(.selected) svg,
+:local(.transparent):local(.selected) svg {
+  color: var(--toolbar-basic-selected-icon-color);
+}
+:local(.basic):local(.selected) label,
+:local(.transparent):local(.selected) label {
+  color: var(--text4-color);
+}
+:local(.basic):local(.selected):hover :local(.icon-container),
+:local(.transparent):local(.selected):hover :local(.icon-container) {
+  background-color: var(--toolbar-basic-color-hover);
+}
+:local(.basic):local(.selected):active :local(.icon-container),
+:local(.transparent):local(.selected):active :local(.icon-container) {
+  background-color: var(--toolbar-basic-color-pressed);
+}
+
+:local(.transparent) :local(.icon-container) {
+  border-color: transparent;
+}
+
+:local(.primary) :local(.icon-container) {
+  background-color: var(--primary-color);
+}
+:local(.primary) :local(.icon-container):disabled svg, :local(.primary) :local(.icon-container)[disabled] svg {
+  color: var(--disabled-icon-color);
+}
+:local(.primary):hover :local(.icon-container) {
+  background-color: var(--primary-color-hover);
+}
+:local(.primary):active :local(.icon-container) {
+  background-color: var(--primary-color-pressed);
+}
+:local(.primary):local(.selected) :local(.icon-container) {
+  border-color: var(--primary-color);
+  background-color: var(--toolbar-icon-selected-bg);
+}
+:local(.primary):local(.selected) :local(.icon-container) svg {
+  color: var(--toolbar-basic-icon-color);
+}
+:local(.primary):local(.selected) label {
+  color: var(--primary-color);
+}
+:local(.primary):local(.selected):hover :local(.icon-container) {
+  border-color: var(--primary-color-hover);
+  background-color: var(--toolbar-basic-color-hover);
+}
+:local(.primary):local(.selected):hover :local(.icon-container) svg {
+  color: var(--primary-color-hover);
+}
+:local(.primary):local(.selected):hover :local(.icon-container):disabled svg, :local(.primary):local(.selected):hover :local(.icon-container)[disabled] svg {
+  color: var(--disabled-icon-color);
+}
+:local(.primary):local(.selected):hover:disabled, :local(.primary):local(.selected):hover[disabled] {
+  border-color: transparent;
+  background-color: var(--disabled-bg-color);
+}
+:local(.primary):local(.selected):hover:disabled svg, :local(.primary):local(.selected):hover[disabled] svg {
+  color: var(--disabled-icon-color);
+}
+:local(.primary):local(.selected):active :local(.icon-container) {
+  border-color: var(--primary-color-pressed);
+}
+:local(.primary):local(.selected):active :local(.icon-container) svg {
+  color: var(--primary-color-pressed);
+}
+
+:local(.accept) :local(.icon-container) {
+  background-color: var(--accept-color);
+  border-color: var(--accept-border-color);
+}
+:local(.accept) :local(.icon-container):disabled svg, :local(.accept) :local(.icon-container)[disabled] svg {
+  color: var(--disabled-icon-color);
+}
+:local(.accept):hover :local(.icon-container) {
+  background-color: var(--accept-color-hover);
+}
+:local(.accept):hover :local(.icon-container):disabled svg, :local(.accept):hover :local(.icon-container)[disabled] svg {
+  color: var(--disabled-icon-color);
+}
+:local(.accept):active :local(.icon-container) {
+  background-color: var(--accept-color-pressed);
+}
+:local(.accept):local(.selected) :local(.icon-container) {
+  border-color: var(--accept-color);
+  background-color: var(--toolbar-icon-selected-bg);
+}
+:local(.accept):local(.selected) :local(.icon-container) svg {
+  color: var(--accept-color);
+}
+:local(.accept):local(.selected) label {
+  color: var(--accept-color);
+}
+:local(.accept):local(.selected):hover :local(.icon-container) {
+  border-color: var(--accept-color-hover);
+}
+:local(.accept):local(.selected):hover :local(.icon-container) svg {
+  color: var(--accept-color-hover);
+}
+:local(.accept):local(.selected):active :local(.icon-container) {
+  border-color: var(--accept-color-pressed);
+}
+:local(.accept):local(.selected):active :local(.icon-container) svg {
+  color: var(--accept-color-pressed);
+}
+
+:local(.cancel) :local(.icon-container) {
+  background-color: var(--cancel-color);
+}
+:local(.cancel) :local(.icon-container):disabled svg, :local(.cancel) :local(.icon-container)[disabled] svg {
+  color: var(--disabled-icon-color);
+}
+:local(.cancel):hover :local(.icon-container) {
+  background-color: var(--cancel-color-hover);
+}
+:local(.cancel):hover :local(.icon-container):disabled svg, :local(.cancel):hover :local(.icon-container)[disabled] svg {
+  color: var(--disabled-icon-color);
+}
+:local(.cancel):active :local(.icon-container) {
+  background-color: var(--cancel-color-pressed);
+}
+:local(.cancel):local(.selected) :local(.icon-container) {
+  border-color: var(--cancel-color);
+  background-color: var(--toolbar-icon-selected-bg);
+}
+:local(.cancel):local(.selected) :local(.icon-container) svg {
+  color: var(--cancel-color);
+}
+:local(.cancel):local(.selected) label {
+  color: var(--cancel-color);
+}
+:local(.cancel):local(.selected):hover :local(.icon-container) {
+  border-color: var(--cancel-color-hover);
+}
+:local(.cancel):local(.selected):hover :local(.icon-container) svg {
+  color: var(--cancel-color-hover);
+}
+:local(.cancel):local(.selected):active :local(.icon-container) {
+  border-color: var(--cancel-color-pressed);
+}
+:local(.cancel):local(.selected):active :local(.icon-container) svg {
+  color: var(--cancel-color-pressed);
+}
+
+:local(.accent1) :local(.icon-container) {
+  background-color: var(--accent1-color);
+  border-color: var(--accent1-border-color);
+}
+:local(.accent1) :local(.icon-container):disabled svg, :local(.accent1) :local(.icon-container)[disabled] svg {
+  color: var(--disabled-icon-color);
+}
+:local(.accent1):hover :local(.icon-container) {
+  background-color: var(--accent1-color-hover);
+}
+:local(.accent1):hover :local(.icon-container):disabled, :local(.accent1):hover :local(.icon-container)[disabled] {
+  background-color: var(--accent1-color);
+}
+:local(.accent1):active :local(.icon-container) {
+  background-color: var(--accent1-color-pressed);
+}
+:local(.accent1):local(.selected) :local(.icon-container) {
+  border-color: var(--accent1-color);
+  background-color: var(--toolbar-icon-selected-bg);
+}
+:local(.accent1):local(.selected) :local(.icon-container) svg {
+  color: var(--accent1-color);
+}
+:local(.accent1):local(.selected) label {
+  color: var(--accent1-color);
+}
+:local(.accent1):local(.selected):hover :local(.icon-container) {
+  border-color: var(--accent1-color-hover);
+}
+:local(.accent1):local(.selected):hover :local(.icon-container) svg {
+  color: var(--accent1-color-hover);
+}
+:local(.accent1):local(.selected):hover:disabled svg, :local(.accent1):local(.selected):hover[disabled] svg {
+  color: var(--disabled-icon-color);
+}
+:local(.accent1):local(.selected):active :local(.icon-container) {
+  border-color: var(--accent1-color-pressed);
+}
+:local(.accent1):local(.selected):active :local(.icon-container) svg {
+  color: var(--accent1-color-pressed);
+}
+
+:local(.accent2) :local(.icon-container) {
+  background-color: var(--accent2-color);
+  border-color: var(--accent2-border-color);
+}
+:local(.accent2) :local(.icon-container):disabled svg, :local(.accent2) :local(.icon-container)[disabled] svg {
+  color: var(--disabled-icon-color);
+}
+:local(.accent2):hover :local(.icon-container) {
+  background-color: var(--accent2-color-hover);
+}
+:local(.accent2):hover :local(.icon-container):disabled svg, :local(.accent2):hover :local(.icon-container)[disabled] svg {
+  color: var(--disabled-icon-color);
+}
+:local(.accent2):active :local(.icon-container) {
+  background-color: var(--accent2-color-pressed);
+}
+:local(.accent2):local(.selected) :local(.icon-container) {
+  border-color: var(--accent2-color);
+  background-color: var(--toolbar-icon-selected-bg);
+}
+:local(.accent2):local(.selected) :local(.icon-container) svg {
+  color: var(--accent2-color);
+}
+:local(.accent2):local(.selected) label {
+  color: var(--accent2-color);
+}
+:local(.accent2):local(.selected):hover :local(.icon-container) {
+  border-color: var(--accent2-color-hover);
+}
+:local(.accent2):local(.selected):hover :local(.icon-container) svg {
+  color: var(--accent2-color-hover);
+}
+:local(.accent2):local(.selected):active :local(.icon-container) {
+  border-color: var(--accent2-color-pressed);
+}
+:local(.accent2):local(.selected):active :local(.icon-container) svg {
+  color: var(--accent2-color-pressed);
+}
+
+:local(.accent3) :local(.icon-container) {
+  background-color: var(--accent3-color);
+  border-color: var(--accent3-border-color);
+}
+:local(.accent3) :local(.icon-container):disabled svg, :local(.accent3) :local(.icon-container)[disabled] svg {
+  color: var(--disabled-icon-color);
+}
+:local(.accent3):hover :local(.icon-container) {
+  background-color: var(--accent3-color-hover);
+}
+:local(.accent3):hover :local(.icon-container):disabled svg, :local(.accent3):hover :local(.icon-container)[disabled] svg {
+  color: var(--disabled-icon-color);
+}
+:local(.accent3):active :local(.icon-container) {
+  background-color: var(--accent3-color-pressed);
+}
+:local(.accent3):local(.selected) :local(.icon-container) {
+  border-color: var(--accent3-color);
+  background-color: var(--toolbar-icon-selected-bg);
+}
+:local(.accent3):local(.selected) :local(.icon-container) svg {
+  color: var(--accent3-color);
+}
+:local(.accent3):local(.selected) label {
+  color: var(--accent3-color);
+}
+:local(.accent3):local(.selected):hover :local(.icon-container) {
+  border-color: var(--accent3-color-hover);
+}
+:local(.accent3):local(.selected):hover :local(.icon-container) svg {
+  color: var(--accent3-color-hover);
+}
+:local(.accent3):local(.selected):active :local(.icon-container) {
+  border-color: var(--accent3-color-pressed);
+}
+:local(.accent3):local(.selected):active :local(.icon-container) svg {
+  color: var(--accent3-color-pressed);
+}
+
+:local(.accent4) :local(.icon-container) {
+  background-color: var(--accent4-color);
+  border-color: var(--accent4-border-color);
+}
+:local(.accent4) :local(.icon-container):disabled svg, :local(.accent4) :local(.icon-container)[disabled] svg {
+  color: var(--disabled-icon-color);
+}
+:local(.accent4):hover :local(.icon-container) {
+  background-color: var(--accent4-color-hover);
+}
+:local(.accent4):hover :local(.icon-container):disabled svg, :local(.accent4):hover :local(.icon-container)[disabled] svg {
+  color: var(--disabled-icon-color);
+}
+:local(.accent4):active :local(.icon-container) {
+  background-color: var(--accent4-color-pressed);
+}
+:local(.accent4):local(.selected) :local(.icon-container) {
+  border-color: var(--accent4-color);
+  background-color: var(--toolbar-icon-selected-bg);
+}
+:local(.accent4):local(.selected) :local(.icon-container) svg {
+  color: var(--accent4-color);
+  stroke: var(--accent4-color);
+}
+:local(.accent4):local(.selected) :local(.icon-container) svg path {
+  stroke: var(--accent4-color);
+  stroke-width: 1.5;
+}
+:local(.accent4):local(.selected) :local(.icon-container) svg path:nth-of-type(n+2) {
+  fill: var(--accent4-color);
+  stroke-width: 1;
+}
+:local(.accent4):local(.selected) label {
+  color: var(--accent4-color);
+}
+:local(.accent4):local(.selected):hover :local(.icon-container) {
+  border-color: var(--accent4-color-hover);
+}
+:local(.accent4):local(.selected):hover :local(.icon-container) svg {
+  color: var(--accent4-color-hover);
+}
+:local(.accent4):local(.selected):active :local(.icon-container) {
+  border-color: var(--accent4-color-pressed);
+}
+:local(.accent4):local(.selected):active :local(.icon-container) svg {
+  color: var(--accent4-color-pressed);
+}
+
+:local(.accent5) :local(.icon-container) {
+  background-color: var(--accent5-color);
+  border-color: var(--accent5-border-color);
+}
+:local(.accent5) :local(.icon-container):disabled svg, :local(.accent5) :local(.icon-container)[disabled] svg {
+  color: var(--disabled-icon-color);
+}
+:local(.accent5):hover :local(.icon-container) {
+  background-color: var(--accent5-color-hover);
+}
+:local(.accent5):hover :local(.icon-container):disabled svg, :local(.accent5):hover :local(.icon-container)[disabled] svg {
+  color: var(--disabled-icon-color);
+}
+:local(.accent5):active :local(.icon-container) {
+  background-color: var(--accent5-color-pressed);
+}
+:local(.accent5):local(.selected) :local(.icon-container) {
+  border-color: var(--accent5-color);
+  background-color: var(--toolbar-icon-selected-bg);
+}
+:local(.accent5):local(.selected) :local(.icon-container) svg {
+  color: var(--accent5-color);
+}
+:local(.accent5):local(.selected) label {
+  color: var(--accent5-color);
+}
+:local(.accent5):local(.selected):hover :local(.icon-container) {
+  border-color: var(--accent5-color-hover);
+}
+:local(.accent5):local(.selected):hover :local(.icon-container) svg {
+  color: var(--accent5-color-hover);
+}
+:local(.accent5):local(.selected):active :local(.icon-container) {
+  border-color: var(--accent5-color-pressed);
+}
+:local(.accent5):local(.selected):active :local(.icon-container) svg {
+  color: var(--accent5-color-pressed);
+}
+
+:local(.status-indicator) {
+  position: absolute;
+  top: 5px;
+  width: 5px;
+  height: 5px;
+  border-radius: 5px;
+}
+
+:local(.status-enabled) {
+  background-color: var(--accept-color);
+}
+
+:local(.status-disabled) {
+  background-color: var(--cancel-color);
+}
+
+:local(.status-unread) {
+  background-color: #ff8500;
+}
+
+:local(.status-recording) {
+  background-color: #f5325c;
+}
+
+:local(.left) :local(.icon-container) {
+  width: 48px;
+  border-radius: 0px;
+  border-top-left-radius: 9999px;
+  border-bottom-left-radius: 9999px;
+}
+
+:local(.middle) :local(.icon-container) {
+  border-radius: 0px;
+}
+
+:local(.right) :local(.icon-container) {
+  width: 48px;
+  border-radius: 0px;
+  border-top-right-radius: 9999px;
+  border-bottom-right-radius: 9999px;
+}/*# sourceMappingURL=ToolbarButton.css.map */

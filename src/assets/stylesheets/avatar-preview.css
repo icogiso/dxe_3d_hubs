@@ -1,0 +1,56 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.preview) {
+  position: relative;
+  overflow: hidden;
+  background: var(--tile-bg-color);
+  border-radius: 20px;
+}
+:local(.preview) .loader {
+  position: absolute;
+  left: calc(50% - 4.3em);
+  top: calc(50% - 4.5em);
+}
+:local(.preview) .error {
+  color: var(--text2-color);
+  text-align: center;
+  padding: 1.5em;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+  white-space: pre-wrap;
+  box-sizing: border-box;
+  width: 100%;
+}
+:local(.preview) .error-icon {
+  width: 16px;
+  height: 16px;
+  transform: translateY(2px);
+  margin: 0 0.3em;
+}/*# sourceMappingURL=avatar-preview.css.map */

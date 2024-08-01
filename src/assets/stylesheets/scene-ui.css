@@ -1,0 +1,253 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.ui), :local(.scenePreviewButton) {
+  font-family: var(--font-family-default);
+}
+
+:local(.scenePreviewButton) {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  text-decoration: none;
+  outline-style: none;
+  font-weight: bold;
+  cursor: pointer;
+  border: 0;
+  border-radius: 28px;
+  padding: 0px 18px;
+  background: var(--primary-color);
+  font-size: 1em;
+  color: var(--text5-color);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 150px;
+  height: 48px;
+}
+
+:local(.no-default-button-style) {
+  padding: 0px;
+  border-style: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+:focus:local(.no-default-button-style) {
+  outline: 0;
+}
+
+:local(.ui) {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  pointer-events: none;
+  color: white;
+}
+
+:local(.grid) {
+  display: grid;
+  grid-template-rows: 10vh 69vh 1fr;
+  width: 100%;
+  height: 100%;
+}
+@media (min-height: 600px) {
+  :local(.grid) {
+    grid-template-rows: 17vh 69vh 1fr;
+  }
+}
+
+:local(.mainPanel) {
+  margin: auto;
+  width: clamp(300px, 100%, 80vw);
+  grid-row: 2;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: auto;
+}
+
+:local(.logoTagline) {
+  color: var(--text1-color);
+  text-shadow: 0px 0px 10px var(--text-inverted-color);
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  font-size: 1.2em;
+  margin: 30px 0;
+}
+
+:local(.logo) {
+  width: clamp(200px, 100%, 17vw);
+  display: block;
+  filter: drop-shadow(0 0 4px var(--text-inverted-color));
+}
+:local(.logo) img {
+  width: 100%;
+}
+:local(.logo) svg {
+  width: clamp(200px, 100%, 17vw);
+  height: clamp(200px, 100%, 17vh);
+}
+
+:local(.info) {
+  grid-row: 3;
+  color: var(--text1-color);
+  text-shadow: 0px 0px 10px var(--text-inverted-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  text-align: center;
+}
+@media (min-width: 992px) {
+  :local(.info) {
+    align-items: flex-start;
+    align-self: left;
+    margin-left: 16px;
+    text-align: left;
+  }
+}
+
+:local(.name) {
+  font-weight: bold;
+  font-size: 1.6em;
+}
+
+:local(.attribution) {
+  font-size: 1em;
+  white-space: normal;
+}
+:local(.attribution) .remix {
+  font-size: 0.8em;
+}
+:local(.attribution) a {
+  font-size: 0.8em;
+  color: var(--text1-color);
+  pointer-events: auto;
+}
+
+:local(.screenshot) {
+  position: absolute;
+  width: 115%;
+  height: 115%;
+  top: -40px;
+  left: -40px;
+  background-color: black;
+  filter: blur(10px);
+}
+:local(.screenshot) img {
+  width: 100%;
+  height: 100%;
+}
+
+:local(.screenshotHidden) {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.5s, opacity 0.5s linear;
+}
+
+:local(.scenePreviewButtonWrapper) {
+  margin: auto;
+  display: flex;
+  max-width: 60vw;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+:local(.scenePreviewButton) {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #007AB8;
+  background-color: #007AB8;
+  color: var(--text5-color);
+  box-sizing: border-box;
+  border-radius: 13px;
+  margin: 0.5rem 0 0.5rem 0;
+  white-space: nowrap;
+}
+:local(.scenePreviewButton) svg {
+  margin-right: 8px;
+  color: var(--text5-color);
+}
+:local(.scenePreviewButton):hover {
+  background-color: #008bd1;
+  color: var(--text5-color);
+}
+:local(.scenePreviewButton):hover svg {
+  color: var(--text5-color);
+}
+:local(.scenePreviewButton):active {
+  background-color: #00699E;
+}
+
+:local(.unavailable) {
+  color: var(--text5-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+:local(.attribution) > * {
+  margin-right: 8px;
+}
+:local(.attribution) > *:last-child {
+  margin-right: 0;
+}/*# sourceMappingURL=scene-ui.css.map */

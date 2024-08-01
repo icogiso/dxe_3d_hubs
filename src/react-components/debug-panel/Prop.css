@@ -1,0 +1,41 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.rtc-tile-text) {
+  color: #ffffff;
+  font-size: 10px;
+  display: block;
+  margin: 0;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+:local(.rtc-value-text) {
+  font-size: 10px;
+  margin: 0;
+  color: #ffc000;
+}/*# sourceMappingURL=Prop.css.map */

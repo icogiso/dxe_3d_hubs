@@ -1,0 +1,90 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.toggle-input) {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+:local(.toggle-input) input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+:local(.toggle-input):focus-within :local(.track) {
+  border-color: var(--active-color);
+  box-shadow: 0 0 0 2px var(--active-color);
+}
+
+:local(.disabled) {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+:local(.label-container) {
+  margin-left: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+:local(.label) {
+  font-size: 12px;
+}
+
+:local(.description) {
+  margin-top: 8px;
+  font-size: 10px;
+  font-weight: 400;
+}
+
+:local(.track) {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  border: 1px solid var(--radio-border-color);
+  border-radius: 44px;
+}
+
+:local(.button) {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: var(--toggle-button-color);
+}
+
+:local(.toggle-input) input:checked + :local(.track) :local(.button) {
+  left: auto;
+  right: 1px;
+  background-color: var(--active-color);
+}/*# sourceMappingURL=ToggleInput.css.map */

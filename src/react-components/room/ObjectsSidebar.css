@@ -1,0 +1,49 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.object) {
+  font-size: 12px;
+}
+:local(.object) > * {
+  margin-right: 8px;
+}
+:local(.object) > *:last-child {
+  margin-right: 0;
+}
+:local(.object) svg {
+  color: var(--text1-color);
+}
+
+:local(.no-objects) {
+  text-align: center;
+  list-style: none;
+  margin-top: 20px;
+}
+:local(.no-objects) p {
+  margin: 20px;
+  color: var(--text2-color);
+}/*# sourceMappingURL=ObjectsSidebar.css.map */

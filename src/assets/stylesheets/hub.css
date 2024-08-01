@@ -1,0 +1,91 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+.webxr-realities, .webxr-sessions {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+:local(.no-default-button-style) {
+  padding: 0px;
+  border-style: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+:focus:local(.no-default-button-style) {
+  outline: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+#ui-root {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+body.vr-mode-stretch a-scene .a-canvas {
+  width: 200% !important;
+}
+
+.a-enter-vr, .a-orientation-modal {
+  display: none;
+}
+
+.grab-cursor {
+  cursor: grab;
+}
+
+.no-cursor {
+  cursor: none;
+}
+
+a-entity {
+  display: none;
+}
+
+.svg-icon {
+  overflow: visible;
+  display: inline-block;
+  font-size: inherit;
+  vertical-align: -0.125em;
+  height: 1em;
+}
+
+.dg select {
+  color: black;
+}
+
+.dg input {
+  line-height: normal;
+}/*# sourceMappingURL=hub.css.map */

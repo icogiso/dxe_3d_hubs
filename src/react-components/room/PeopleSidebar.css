@@ -1,0 +1,48 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.person) {
+  font-size: 12px;
+  color: var(--text1-color);
+  position: relative;
+}
+:local(.person) > * {
+  margin-right: 8px;
+}
+:local(.person) > *:last-child {
+  margin-right: 0;
+}
+
+:local(.moderator-icon) {
+  color: var(--accent1-color);
+}
+
+:local(.presence) {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+}/*# sourceMappingURL=PeopleSidebar.css.map */

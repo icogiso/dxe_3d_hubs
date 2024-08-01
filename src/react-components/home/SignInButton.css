@@ -1,0 +1,44 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.sign-in-button) {
+  display: none;
+}
+@media (min-width: 992px) {
+  :local(.sign-in-button) {
+    display: flex;
+  }
+}
+
+:local(.mobile-sign-in) {
+  display: flex;
+}
+@media (min-width: 992px) {
+  :local(.mobile-sign-in) {
+    display: none;
+  }
+}/*# sourceMappingURL=SignInButton.css.map */

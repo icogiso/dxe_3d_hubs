@@ -1,0 +1,49 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.image-grid-popover) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(48px, 1fr));
+  gap: 12px;
+  padding: 16px;
+}
+:local(.image-grid-popover):not(:local(.fullscreen)) {
+  max-width: 224px;
+  padding-top: 0;
+}
+:local(.image-grid-popover) img {
+  padding: 4px;
+  border-radius: 6px;
+  width: 100%;
+  min-height: 56px;
+}
+:local(.image-grid-popover) img:hover {
+  background-color: var(--basic-color-hover);
+}
+:local(.image-grid-popover) img:active {
+  background-color: var(--basic-color-pressed);
+}/*# sourceMappingURL=ImageGridPopover.css.map */

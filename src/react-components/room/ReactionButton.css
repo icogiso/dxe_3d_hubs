@@ -1,0 +1,60 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.reaction-button) {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  border-radius: 8px;
+  border: 3px solid #868686;
+  background-color: transparent;
+  font-size: 14px;
+  font-weight: 400;
+  align-items: center;
+  padding: 6px 6px;
+}
+:local(.reaction-button) > * {
+  margin-right: 0px;
+}
+:local(.reaction-button) > *:first-child {
+  margin-right: 48px;
+}
+:local(.reaction-button):hover {
+  background-color: var(--button-bg-color-hover);
+  border: 3px solid transparent;
+}
+:local(.reaction-button):active {
+  border: 3px solid #868686;
+}
+
+:local(.active) {
+  border: 3px solid var(--active-color-pressed);
+  background-color: var(--button-bg-color-hover);
+}
+:local(.active):hover {
+  border: 3px solid var(--active-color-pressed);
+}/*# sourceMappingURL=ReactionButton.css.map */
