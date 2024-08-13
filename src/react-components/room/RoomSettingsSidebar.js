@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import styles from "./RoomSettingsSidebar.scss";
@@ -53,15 +53,54 @@ export function RoomSettingsSidebar({
   }, [spawnAndMoveMedia, setValue]);
 
   //[?rpub]のクエリが存在する場合、パブリックメニューを表示
-  const pubQueryParams = new URLSearchParams(window.location.search); //https://hubs.local:4000/p6SWetG/local-room1?rpub
+  const pubQueryParams = new URLSearchParams(window.location.search);
   const isRpubPresent = pubQueryParams.has('rpub');
+
+  useEffect(() => {
+    if (inviteUrl) {
+      setValue("inviteUrl", inviteUrl);
+    }
+  }, [inviteUrl, setValue]);
+
+  const handleFormSubmit = async (data) => {
+    console.log("Form data:", data);
+  
+    if (data.entry_mode === "invite") {
+      console.log("invite.true");
+  
+      const endpoint = "https://httpbin.org/post";
+      try {
+        const response = await fetch(endpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        });
+  
+        if (!response.ok) {
+          throw new Error(`cURL送信エラー:${response.status}`);
+        }
+  
+        const result = await response.json();
+        console.log("成功:", result);
+      } catch (error) {
+        console.error("Failed to send invite:", error);
+      }
+    } else if (data.entry_mode === "allow") {
+      data.inviteUrl = "";
+    }
+  
+    onSubmit(data);
+  };
+  
 
   return (
     <Sidebar
       title={<FormattedMessage id="room-settings-sidebar.title" defaultMessage="Room Settings" />}
       beforeTitle={showBackButton ? <BackButton onClick={onClose} /> : <CloseButton onClick={onClose} />}
     >
-      <Column padding as="form" onSubmit={handleSubmit(onSubmit)}>
+      <Column padding as="form" onSubmit={handleSubmit(handleFormSubmit)}>
         <SceneInfo
           accountId={accountId}
           scene={room.scene}
@@ -108,38 +147,36 @@ export function RoomSettingsSidebar({
           fullWidth
           {...register("room_size")}
         />
-        {/* <RadioInputField
-          label={<FormattedMessage id="room-settings-sidebar.room-access" defaultMessage="Room Access" />}
-          fullWidth
-        > */}
-          {/* <RadioInputOption
-            value="allow"
-            label={<FormattedMessage id="room-settings-sidebar.access-shared-link" defaultMessage="Shared link" />}
-            description={
-              <FormattedMessage
-                id="room-settings-sidebar.access-shared-link-description"
-                defaultMessage="Only those with the link can join"
-              />
-            }
-            error={errors?.entry_mode?.message}
-            {...register("entry_mode")}
-          /> */}
-          {/* <RadioInputOption
-            value="invite"
-            label={<FormattedMessage id="room-settings-sidebar.access-invite" defaultMessage="Invite only" />}
-            description={
-              <FormattedMessage
-                id="room-settings-sidebar.access-invite-description"
-                defaultMessage="Invite people with a link that can be revoked"
-              />
-            }
-            error={errors?.entry_mode?.message}
-            {...register("entry_mode")}
-          /> */}
-        {/* </RadioInputField> */}
-        {/* {entryMode === "invite" && (
+        <RadioInputOption
+          value="allow"
+          label={<FormattedMessage id="room-settings-sidebar.access-shared-link" defaultMessage="Shared link" />}
+          description={
+            <FormattedMessage
+              id="room-settings-sidebar.access-shared-link-description"
+              defaultMessage="Only those with the link can join"
+            />
+          }
+          error={errors?.entry_mode?.message}
+          {...register("entry_mode")}
+        />
+        <RadioInputOption
+          value="invite"
+          label={<FormattedMessage id="room-settings-sidebar.access-invite" defaultMessage="Invite only" />}
+          description={
+            <FormattedMessage
+              id="room-settings-sidebar.access-invite-description"
+              defaultMessage="Invite people with a link that can be revoked"
+            />
+          }
+          error={errors?.entry_mode?.message}
+          {...register("entry_mode")}
+        />
+        {entryMode === "invite" && (
+          <>
           <InviteLinkInputField fetchingInvite={fetchingInvite} inviteUrl={inviteUrl} onRevokeInvite={onRevokeInvite} />
-        )} */}
+          {console.log("inviteUrl:", inviteUrl)}
+          </>
+        )}
         {showPublicRoomSetting && isRpubPresent && (
           <ToggleInput
             label={<FormattedMessage id="room-settings-sidebar.access-public" defaultMessage="Public" />}
@@ -194,32 +231,8 @@ export function RoomSettingsSidebar({
               label={<FormattedMessage id="room-settings-sidebar.spawn-emoji" defaultMessage="Create emoji" />}
               {...register("member_permissions.spawn_emoji")}
             />
-            {/* <ToggleInput
-              label={<FormattedMessage id="room-settings-sidebar.fly" defaultMessage="Allow flying" />}
-              {...register("member_permissions.fly")}
-            /> */}
           </div>
         </InputField>
-        {/* <InputField
-          label={<FormattedMessage id="room-settings-sidebar.bitecs-client" defaultMessage="bitECS based Client" />}
-          fullWidth
-        >
-          <ToggleInput
-            label={
-              <FormattedMessage
-                id="room-settings-sidebar.bitecs-client-activation"
-                defaultMessage="Enable bitECS based Client"
-              />
-            }
-            description={
-              <FormattedMessage
-                id="room-settings-sidebar.bitecs-client-activation-description"
-                defaultMessage="Enable or disable the new Client, which is implemented with bitECS for simplicity and extensibility."
-              />
-            }
-            {...register("user_data.hubs_use_bitecs_based_client")}
-          />
-        </InputField> */}
         <ApplyButton type="submit" />
       </Column>
     </Sidebar>
