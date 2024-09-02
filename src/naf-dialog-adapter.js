@@ -337,9 +337,11 @@ export class DialogAdapter extends EventEmitter {
 
     this._protoo.on("notification", notification => {
       debug('proto "notification" event [method:%s, data:%o]', notification.method, notification.data);
+      console.log("portTest1");
 
       switch (notification.method) {
         case "newPeer": {
+          console.log("portTest2");
           break;
         }
 
