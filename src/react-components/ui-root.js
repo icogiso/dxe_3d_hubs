@@ -103,6 +103,8 @@ import { usePermissions } from "./room/hooks/usePermissions";
 import { ChatContextProvider } from "./room/contexts/ChatContext";
 import ChatToolbarButton from "./room/components/ChatToolbarButton/ChatToolbarButton";
 import SeePlansCTA from "./room/components/SeePlansCTA/SeePlansCTA";
+import WaypointList from "./room/WaypointList";
+import { ReactionInfoContainer } from "./room/ReactionInfoContainer";
 
 const avatarEditorDebug = qsTruthy("avatarEditorDebug");
 
@@ -1400,6 +1402,11 @@ class UIRoot extends Component {
                 scene={this.props.scene}
               />
             )}
+            {entered && (
+              <WaypointList 
+                scene={this.props.scene}
+              />
+            )}
             {this.props.hub && (
               <RoomLayoutContainer
                 scene={this.props.scene}
@@ -1432,6 +1439,21 @@ class UIRoot extends Component {
                           />
                         )}
                       </ContentMenu>
+                    )}
+                    {entered && (
+                      <ReactionInfoContainer
+                        displayNameOverride={displayNameOverride}
+                        store={this.props.store}
+                        mediaSearchStore={this.props.mediaSearchStore}
+                        hubChannel={this.props.hubChannel}
+                        history={this.props.history}
+                        mySessionId={this.props.sessionId}
+                        presences={this.props.presences}
+                        onClose={() => this.setSidebar(null)}
+                        onCloseDialog={() => this.closeDialog()}
+                        showNonHistoriedDialog={this.showNonHistoriedDialog}
+                        performConditionalSignIn={this.props.performConditionalSignIn}
+                      />
                     )}
                     {!entered && !streaming && !isMobile && streamerName && <SpectatingLabel name={streamerName} />}
                     {this.props.activeObject && (

@@ -353,6 +353,10 @@ function mountUI(props = {}) {
     qsTruthy("allow_idle") || (process.env.NODE_ENV === "development" && !qs.get("idle_timeout"));
   const forcedVREntryType = qsVREntryType;
 
+  if (scene) {
+    scene.roomHandRaised = 0; // 初期値をセット
+  }
+
   root.render(
     <WrappedIntlProvider>
       <ThemeProvider store={store}>
