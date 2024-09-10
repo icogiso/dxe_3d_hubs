@@ -41,30 +41,35 @@ export function ReactionInfo({
   
   return (
     <div>
-      {isVisible && (
-        <div className={styles.ReactionInfo}>
-          <div className={styles.ReactionInfoWrap}>
-            <div className={styles.ReactionInfoHeader}>
-              <HandRaisedIcon />
-              <h5>以下のユーザーが挙手しています</h5>
-            </div>
-            <ul className={styles.ReactionInfoList}>
-              {!!people.length && 
-                filteredPeople.map(person => {
-                  console.log(person.presence);
-                  return person.hand_raised ? (
-                    <div key={person.id}>
-                      <li className={styles.ReactionInfoItem}>
-                        <p>{getPersonName(person, intl)}</p>
-                      </li>
-                    </div>
-                  ) : null;
-                })
-              }
-            </ul>
+      <div className={classNames(styles.ReactionInfo, 'ui-fade-slide', {
+        visible: isVisible,
+        hidden: !isVisible,
+      })}>
+        <div className={styles.ReactionInfoWrap}>
+          <div className={styles.ReactionInfoHeader}>
+            <HandRaisedIcon />
+            <p className={styles.ReactionInfoHeaderTitle}>以下のユーザーが挙手しています</p>
           </div>
+          <ul className={styles.ReactionInfoList}>
+            {!!people.length && 
+              filteredPeople.map(person => {
+                return person.hand_raised ? (
+                  <div
+                    key={person.id}
+                    className={classNames(styles.ReactionInfoListWrap, {
+                      'text-fade-slide': person.hand_raised,
+                      'text-hidden': !person.hand_raised,
+                  })} >
+                    <li className={styles.ReactionInfoItem}>
+                      <p className={styles.ReactionInfoItemText}>・{getPersonName(person, intl)}</p>
+                    </li>
+                  </div>
+                ) : null;
+              })
+            }
+          </ul>
         </div>
-      )}
+      </div>
     </div>
   );
 }

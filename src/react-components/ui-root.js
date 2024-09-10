@@ -1402,11 +1402,7 @@ class UIRoot extends Component {
                 scene={this.props.scene}
               />
             )}
-            {entered && (
-              <WaypointList 
-                scene={this.props.scene}
-              />
-            )}
+
             {this.props.hub && (
               <RoomLayoutContainer
                 scene={this.props.scene}
@@ -1441,19 +1437,26 @@ class UIRoot extends Component {
                       </ContentMenu>
                     )}
                     {entered && (
-                      <ReactionInfoContainer
-                        displayNameOverride={displayNameOverride}
-                        store={this.props.store}
-                        mediaSearchStore={this.props.mediaSearchStore}
-                        hubChannel={this.props.hubChannel}
-                        history={this.props.history}
-                        mySessionId={this.props.sessionId}
-                        presences={this.props.presences}
-                        onClose={() => this.setSidebar(null)}
-                        onCloseDialog={() => this.closeDialog()}
-                        showNonHistoriedDialog={this.showNonHistoriedDialog}
-                        performConditionalSignIn={this.props.performConditionalSignIn}
-                      />
+                      <>
+                        {isModerator && (
+                          <ReactionInfoContainer
+                            displayNameOverride={displayNameOverride}
+                            store={this.props.store}
+                            mediaSearchStore={this.props.mediaSearchStore}
+                            hubChannel={this.props.hubChannel}
+                            history={this.props.history}
+                            mySessionId={this.props.sessionId}
+                            presences={this.props.presences}
+                            onClose={() => this.setSidebar(null)}
+                            onCloseDialog={() => this.closeDialog()}
+                            showNonHistoriedDialog={this.showNonHistoriedDialog}
+                            performConditionalSignIn={this.props.performConditionalSignIn}
+                          />
+                        )}
+                        <WaypointList 
+                          scene={this.props.scene}
+                        />
+                      </>
                     )}
                     {!entered && !streaming && !isMobile && streamerName && <SpectatingLabel name={streamerName} />}
                     {this.props.activeObject && (
