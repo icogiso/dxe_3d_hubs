@@ -23,6 +23,14 @@
   margin-top: 8px;
   color: theme.$error-color;
   align-self: flex-start;
+  line-height: 1.2rem;
+}
+
+:local(.upload_error) {
+  white-space: pre-line;
+  width: 100%;
+  text-align: center;
+  font-weight: 700;
 }
 
 :local(.info) {
@@ -33,5 +41,5 @@
 
 :local(.info),
 :local(.error) {
-  font-size: 10px;
+  font-size: 12px;
 }

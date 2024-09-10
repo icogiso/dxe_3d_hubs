@@ -93,6 +93,8 @@ $discord-text2-color: #a3a3a3;
 $discord-text3-color: rgb(127, 127, 127);
 $discord-text4-color: rgb(64, 64, 64);
 
+$color-background-list--hover: #e7e7e7;
+
 // Theme SCSS Variables:
 // Reference these variables in the Hubs codebase.
 // The CSS variables they reference are defined in ./global.scss such that they are only included on the page once.
@@ -339,6 +341,7 @@ $color-background-callout: var(--color-background-subtle-callout);
 $color-background-modal-overlay: var(--color-background-modal-overlay);
 $color-background-critical: var(--color-background-critical);
 $color-background-neutral-0: var(--color-background-neutral-0);
+$color-background-list--hover: var(--color-background-list--hover);
 
 /**
   MENU

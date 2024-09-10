@@ -18,14 +18,17 @@ ReactionButton.propTypes = {
   active: PropTypes.bool
 };
 
+//リアクションモーダル-アクション項目の部分
 export function HandRaisedButton({ active, ...props }) {
   return (
     <ReactionButton active={active} {...props}>
       <HandRaisedIcon width="42px" height="42px" />
       <p>
         {active ? (
-          <FormattedMessage id="reaction-popover.lower-hand" defaultMessage="Lower Hand" />
+          //手を下げる
+          <FormattedMessage id="reaction-popover.lower-hand" defaultMessage="Lower Hand" /> 
         ) : (
+          //挙手
           <FormattedMessage id="reaction-popover.raise-hand" defaultMessage="Raise Hand" />
         )}
       </p>

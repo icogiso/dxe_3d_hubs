@@ -1,0 +1,154 @@
+@use "../styles/theme.scss";
+
+:local(.wayPointBtnCnt) {
+  position: absolute;
+  top: 8px;
+  right: 120px;
+  border-radius: 50%;
+  background-color: #fff;
+  top: 8px;
+  right: 300px;
+  pointer-events: auto;
+
+  @media (min-width: 992px) {
+    top: 24px;
+    right: 320px;
+  }
+
+}
+
+:local(.wayPointBtn) {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 48px;
+}
+
+
+:local(.wayPointModal) {
+  grid-column-start: sidebar;
+  height: 70%;
+  overflow: hidden;
+  width: 25%;
+  background-color: #fff;
+  position: fixed;
+  top: 12%;
+  bottom: 30%;
+  right: 24px;
+  z-index: 0;
+  border-radius: 16px;
+
+  @media (max-width: 991px), (max-height: 599px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    border-radius: 0px;
+  }
+}
+
+:local(.wayPointModalWrap) {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--background1-color);
+  pointer-events: auto;
+  overflow-wrap: break-word;
+}
+
+:local(.wayPointModalHeader) {
+  display: flex;
+  height: 48px;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border1-color);
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background7-color);
+  color: var(--text7-color);
+}
+
+:local(.wayPointModalClose) {
+  position: absolute;
+  left: 0;
+  margin-left: 16px;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
+:local(.wayPointModalClose:hover) {
+  color: var(--primary-color-hover);
+}
+
+:local(.wayPointModalTitle) {
+  font-size: 12px;
+}
+
+:local(.wayPointListSection) {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+:local(.wayPointList) {
+  display: flex;
+  flex: 1;
+  flex-shrink: 1;
+  flex-direction: column;
+  list-style: none;
+  overflow-y: auto;
+  background-color: #fff;
+  color: #000;
+}
+
+:local(.wayPointItem) {
+  display: flex;
+}
+
+:local(.wayPointLink) {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  width: 100%;
+  font-size: 12px;
+  align-items: center;
+  padding: 16px 24px;
+  line-height: inherit;
+  color: inherit;
+}
+
+:local(.wayPointLink:hover) {
+  background-color: var(--color-background-list--hover);
+  color: inherit;
+}
+
+:local(.wayPointBtnIcon) {
+  position: relative;
+  border-radius: 9999px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color .1s ease-in-out, border-color .1s ease-in-out;
+
+  & svg {
+    width: 20px;
+  }
+}

@@ -38,7 +38,7 @@ const nametagVolumeMaterial = new THREE.MeshBasicMaterial({ color: "#7ED320" });
 const nametagTypingGeometry = new THREE.CircleBufferGeometry(0.01, 6);
 
 const handRaisedTexture = textureLoader.load(handRaisedIconSrc);
-const handRaisedGeometry = createPlaneBufferGeometry(0.2, 0.2, 1, 1, handRaisedTexture.flipY);
+const handRaisedGeometry = createPlaneBufferGeometry(0.4, 0.4, 1, 1, handRaisedTexture.flipY);
 const handRaisedMaterial = new THREE.MeshBasicMaterial({ transparent: true, map: handRaisedTexture });
 
 AFRAME.registerComponent("name-tag", {
