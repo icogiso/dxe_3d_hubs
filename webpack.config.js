@@ -461,6 +461,18 @@ module.exports = async (env, argv) => {
             name: "[name]-[contenthash].[ext]"
           }
         },
+        {
+          test: /\.(woff|woff2|eot|ttf|otf)$/,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                outputPath: 'assets/fonts',
+                name: '[name].[ext]',
+              }
+            }
+          ]
+        },
         // TODO worker-loader has been deprecated, but we need "inline" support which is not available yet
         // ideally instead of inlining workers we should serve them off the root domain instead of CDN.
         {
