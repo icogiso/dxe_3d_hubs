@@ -6,7 +6,7 @@
   overflow: hidden;
   width: 296px;
   position: absolute;
-  bottom: 88px;
+  top: 74px;
   left: 8px;
   z-index: 0;
   border-radius: 16px;
@@ -14,7 +14,14 @@
 
   @media (min-width: 992px) {
     left: 24px;
-    bottom: 24px;
+    top: 24px;
+  }
+
+  @media (max-width: 410px) {
+    width: 230px;
+    top: 64px;
+    left: auto;
+    right: 8px;
   }
 }
 
@@ -36,11 +43,19 @@
   background: rgba(0, 0, 0, 0.76);
   color: var(--text5-color);
   padding: 15px 34px 15px 24px;
+
+  @media (max-width: 410px) {
+    padding: 14px 24px 13px 16px;
+  }
 }
 
 :local(.ReactionInfoHeaderTitle) {
   margin-left: 8px;
   font-size: 14px;
+
+  @media (max-width: 410px) {
+    font-size: 12px;
+  }
 }
 
 :local(.ReactionInfoList) {
@@ -74,6 +89,10 @@
 
 :local(.ReactionInfoItemText) {
   font-size: 14px;
+
+  @media (max-width: 410px) {
+    font-size: 12px;
+  }
 }
 
 //UIアニメーション
