@@ -105,6 +105,7 @@ import ChatToolbarButton from "./room/components/ChatToolbarButton/ChatToolbarBu
 import SeePlansCTA from "./room/components/SeePlansCTA/SeePlansCTA";
 import WaypointList from "./room/WaypointList";
 import { ReactionInfoContainer } from "./room/ReactionInfoContainer";
+import { customBackLink } from "../hub";
 
 const avatarEditorDebug = qsTruthy("avatarEditorDebug");
 
@@ -1250,18 +1251,18 @@ class UIRoot extends Component {
           //     icon: CameraIcon,
           //     onClick: () => this.toggleStreamerMode()
           //   },
-          // (this.props.breakpoint === "sm" || this.props.breakpoint === "md") &&
-          //   entered && {
-          //     id: "leave-room",
-          //     label: <FormattedMessage id="more-menu.enter-leave-room" defaultMessage="Leave Room" />,
-          //     icon: LeaveIcon,
-          //     onClick: () => {
-          //       this.showNonHistoriedDialog(LeaveRoomModal, {
-          //         destinationUrl: "/",
-          //         reason: LeaveReason.leaveRoom
-          //       });
-          //     }
-          //   },
+          (this.props.breakpoint === "sm" || this.props.breakpoint === "md") &&
+            entered && {
+              id: "leave-room",
+              label: <FormattedMessage id="more-menu.enter-leave-room" defaultMessage="Leave Room" />,
+              icon: LeaveIcon,
+              onClick: () => {
+                this.showNonHistoriedDialog(LeaveRoomModal, {
+                  destinationUrl: { customBackLink },
+                  reason: LeaveReason.leaveRoom
+                });
+              }
+            },
           // canCloseRoom && {
           //   id: "close-room",
           //   label: <FormattedMessage id="more-menu.close-room" defaultMessage="Close Room" />,
@@ -1712,7 +1713,7 @@ class UIRoot extends Component {
                         onClick={() => {
                           this.setState({ leaving: true });
                           this.showNonHistoriedDialog(LeaveRoomModal, {
-                            destinationUrl: "/",
+                            destinationUrl: { customBackLink },
                             reason: LeaveReason.leaveRoom,
                             onClose: () => {
                               this.setState({ leaving: false });
