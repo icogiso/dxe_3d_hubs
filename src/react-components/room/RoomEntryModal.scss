@@ -1,15 +1,39 @@
 @use "../styles/theme.scss";
 
 :local(.content) {
-  padding: 24px 8px;
+  padding: 30px 8px;
 
   button {
     width: 156px;
   }
 
-  @media (min-width: theme.$breakpoint-lg) and (min-height: theme.$breakpoint-vr) {
-    padding: 24px;
+  :local(.backLinkBtn) {
+    background-color: #EDEDED;
+    color: #000;
+    border: none;
+    width: 180px;
+    opacity: 1;
+    transition: all 0.5s;
+    margin-top: 14px;
+
+    @media (max-width: theme.$breakpoint-sm) {
+      margin-top: 4px;
+    }
+
+    & svg {
+      color: #000;
+      fill: #000;
+    }
   }
+  
+
+  @media (min-width: theme.$breakpoint-lg) and (min-height: theme.$breakpoint-vr) {
+    padding: 30px;
+  }
+}
+
+:local(.backLinkBtn:hover) {
+  opacity: 0.6;
 }
 
 :local(.logo) {
@@ -44,6 +68,8 @@
 }
 
 :local(.buttons) {
+  width: 100%;
+
   button {
     margin-left: 16px;
     margin-right: 16px;
@@ -54,3 +80,4 @@
     }
   }
 }
+

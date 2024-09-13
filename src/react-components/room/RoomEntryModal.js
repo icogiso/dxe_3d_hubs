@@ -7,12 +7,14 @@ import { ReactComponent as EnterIcon } from "../icons/Enter.svg";
 import { ReactComponent as VRIcon } from "../icons/VR.svg";
 import { ReactComponent as ShowIcon } from "../icons/Show.svg";
 import { ReactComponent as SettingsIcon } from "../icons/Settings.svg";
+import { ReactComponent as BackLinkIcon } from "../icons/BackLinkIcon.svg";
 import styles from "./RoomEntryModal.scss";
 import styleUtils from "../styles/style-utils.scss";
 import { useCssBreakpoints } from "react-use-css-breakpoints";
 import { Column } from "../layout/Column";
 import { AppLogo } from "../misc/AppLogo";
 import { FormattedMessage } from "react-intl";
+import { customBackLink } from "../../hub";
 
 export function RoomEntryModal({
   className,
@@ -29,6 +31,11 @@ export function RoomEntryModal({
   ...rest
 }) {
   const breakpoint = useCssBreakpoints();
+
+  const onDxeBackLink = () => {
+    window.location.href=customBackLink;
+  }
+
   return (
     <Modal className={classNames(styles.roomEntryModal, className)} disableFullscreen {...rest}>
       <Column center className={styles.content}>
@@ -75,6 +82,13 @@ export function RoomEntryModal({
               </Button>
             </>
           )} */}
+          <hr />
+          <Button preset="transparent" className={styles.backLinkBtn} onClick={onDxeBackLink}>
+            <BackLinkIcon />
+            <span>
+              <FormattedMessage id="room-entry-modal.dxe-back-link" defaultMessage="エントランスに戻る" />
+            </span>
+          </Button>
         </Column>
       </Column>
     </Modal>

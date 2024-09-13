@@ -274,6 +274,19 @@ import { loadLegacyRoomObjects } from "./utils/load-legacy-room-objects";
 import { loadSavedEntityStates } from "./utils/entity-state-utils";
 import { shouldUseNewLoader } from "./utils/bit-utils";
 
+export const customBackLink = "https://metapus.metabooth.jp/events/metapus/venue/user/login.php";
+
+const referrer = document.referrer.split('?')[0];
+console.log("Current referrer (without query params):", referrer);
+
+var mod_debug = localStorage.getItem('mod_debug');
+if (!mod_debug) {
+  if (!referrer || !referrer.includes("light3dauth")) {
+    alert("ルームへのアクセスは正規の方法でログインしてください");
+    window.location.href = customBackLink;
+  }
+}
+
 const PHOENIX_RELIABLE_NAF = "phx-reliable";
 NAF.options.firstSyncSource = PHOENIX_RELIABLE_NAF;
 NAF.options.syncSource = PHOENIX_RELIABLE_NAF;
