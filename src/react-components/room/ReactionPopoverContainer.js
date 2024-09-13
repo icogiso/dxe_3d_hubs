@@ -46,11 +46,6 @@ export function ReactionPopoverContainer({ scene, initialPresence }) {
     } else {
       window.APP.hubChannel.raiseHand();
     }
-
-    setTimeout(() => {
-      window.APP.hubChannel.lowerHand();
-    }, 15000)
-
   }, [presence]);
 
   return <ReactionPopoverButton items={items} presence={presence} onToggleHandRaised={onToggleHandRaised} />;
