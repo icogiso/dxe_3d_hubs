@@ -274,7 +274,7 @@ import { loadLegacyRoomObjects } from "./utils/load-legacy-room-objects";
 import { loadSavedEntityStates } from "./utils/entity-state-utils";
 import { shouldUseNewLoader } from "./utils/bit-utils";
 
-export const customBackLink = "https://metapus.metabooth.jp/events/metapus/venue/user/login.php";
+export const customBackLink = "https://demo.metabooth.jp/events/3d/venue/user/login.php";
 
 const referrer = document.referrer.split('?')[0];
 console.log("Current referrer (without query params):", referrer);
