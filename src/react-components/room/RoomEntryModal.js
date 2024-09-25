@@ -7,6 +7,7 @@ import { ReactComponent as EnterIcon } from "../icons/Enter.svg";
 import { ReactComponent as VRIcon } from "../icons/VR.svg";
 import { ReactComponent as ShowIcon } from "../icons/Show.svg";
 import { ReactComponent as SettingsIcon } from "../icons/Settings.svg";
+import { ReactComponent as CloseIcon } from "../icons/Close.svg";
 import { ReactComponent as BackLinkIcon } from "../icons/BackLinkIcon.svg";
 import styles from "./RoomEntryModal.scss";
 import styleUtils from "../styles/style-utils.scss";
@@ -33,7 +34,11 @@ export function RoomEntryModal({
   const breakpoint = useCssBreakpoints();
 
   const onDxeBackLink = () => {
-    window.location.href=customBackLink;
+    window.close();
+
+    setTimeout(function() {
+      alert("お使いのブラウザでタブを閉じることができませんでした。お手数ですが手動でタブを閉じてください。");
+    }, 3000);
   }
 
   return (
@@ -84,9 +89,9 @@ export function RoomEntryModal({
           )} */}
           <hr />
           <Button preset="transparent" className={styles.backLinkBtn} onClick={onDxeBackLink}>
-            <BackLinkIcon />
+            <CloseIcon className="close_icon"/>
             <span>
-              <FormattedMessage id="room-entry-modal.dxe-back-link" defaultMessage="エントランスに戻る" />
+              <FormattedMessage id="room-entry-modal.dxe-back-link" defaultMessage="タブを閉じる" />
             </span>
           </Button>
         </Column>

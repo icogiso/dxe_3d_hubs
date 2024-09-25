@@ -245,7 +245,7 @@
   "leave-room-modal.create-room.message": "新しいルームを作成し、このルームが残ります。よろしいですか？",
   "leave-room-modal.join-room.confirm": "入室",
   "leave-room-modal.join-room.message": "新しいルームに参加すると,このルームから退室します。よろしいですか？",
-  "leave-room-modal.leave-room.confirm": "退室",
+  "leave-room-modal.leave-room.confirm": "退室(タブを閉じる)",
   "leave-room-modal.leave-room.message": "本当にルームを退室しますか?",
   "leave-room-modal.title": "退室",
   "legal-message.privacy": "次に進むことにより、<privacylink>プライバシーポリシーに関する通知</privacylink>に同意されたものとみなします。",
@@ -701,5 +701,5 @@
   "mute": "マイクをオフにする(M)",
   "unmute": "マイクをオンにする(M)",
   "mute-tooltip.description": "{muteStatus} ",
-  "room-entry-modal.dxe-back-link": "エントランスに戻る"
+  "room-entry-modal.dxe-back-link": "タブを閉じる"
 }
