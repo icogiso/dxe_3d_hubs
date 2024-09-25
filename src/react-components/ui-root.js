@@ -1258,7 +1258,7 @@ class UIRoot extends Component {
               icon: LeaveIcon,
               onClick: () => {
                 this.showNonHistoriedDialog(LeaveRoomModal, {
-                  destinationUrl: { customBackLink },
+                  destinationUrl: customBackLink,
                   reason: LeaveReason.leaveRoom
                 });
               }
@@ -1713,7 +1713,7 @@ class UIRoot extends Component {
                         onClick={() => {
                           this.setState({ leaving: true });
                           this.showNonHistoriedDialog(LeaveRoomModal, {
-                            destinationUrl: { customBackLink },
+                            destinationUrl: customBackLink,
                             reason: LeaveReason.leaveRoom,
                             onClose: () => {
                               this.setState({ leaving: false });
