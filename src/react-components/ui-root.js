@@ -1338,7 +1338,6 @@ class UIRoot extends Component {
         ].filter(item => item)
       }
     ];
-    console.log("isModerator:"+isModerator); //true
 
     return (
       <MoreMenuContextProvider>
