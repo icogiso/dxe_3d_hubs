@@ -1,0 +1,59 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.avatar-preview-container) {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  /* TODO: This styling into AvatarPreview */
+}
+:local(.avatar-preview-container) > :first-child {
+  width: 168px;
+  height: 300px;
+  min-height: 300px;
+  border-radius: 8px;
+  background-color: var(--tile-bg-color);
+}
+
+:local(.slider-container) {
+  display: flex;
+  flex-direction: row;
+}
+
+:local(.slider-input-container) {
+  width: 209px;
+}
+
+:local(.displayName) {
+  font-weight: 400;
+  color: var(--text1-color);
+}
+
+:local(.pronouns) {
+  color: var(--text2-color);
+}/*# sourceMappingURL=UserProfileSidebar.css.map */

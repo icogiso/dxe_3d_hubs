@@ -1,0 +1,99 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.select-input) {
+  position: relative;
+}
+
+:local(.dropdown-button) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  border: 1px solid var(--input-border-color);
+  border-radius: 8px;
+  color: var(--text1-color);
+  background-color: var(--input-bg-color);
+  width: 100%;
+  max-width: 300px;
+  padding: 0 8px;
+}
+:local(.dropdown-button) span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+:local(.dropdown-button):hover {
+  border-color: var(--input-border-color-hover);
+}
+:local(.dropdown-button):focus {
+  outline: none;
+}
+:local(.dropdown-button):focus-within {
+  border-color: var(--input-outline-color);
+  box-shadow: 0 0 0 2px var(--input-outline-color);
+}
+:local(.dropdown-button) svg {
+  color: var(--text1-color);
+}
+
+:local(.dropdown) {
+  position: absolute;
+  top: 44px;
+  display: none;
+  flex-direction: column;
+  background-color: var(--input-bg-color);
+  border-radius: 8px;
+  padding: 8px 0;
+  z-index: 99999;
+  left: 0;
+  right: 0;
+  box-shadow: -1px -1px 1px var(--border1-color), 3px 3px 6px var(--shadow-color);
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+:local(.open) :local(.dropdown-button) svg {
+  transform: rotate(180deg);
+}
+:local(.open) :local(.dropdown) {
+  display: flex;
+}
+
+:local(.dropdown-item) {
+  width: 100%;
+  padding: 8px;
+  cursor: pointer;
+}
+:local(.dropdown-item):focus {
+  outline: none;
+}
+
+:local(.highlighted-item) {
+  color: var(--active-text-color);
+  background-color: var(--active-color-hover);
+}/*# sourceMappingURL=SelectInputField.css.map */

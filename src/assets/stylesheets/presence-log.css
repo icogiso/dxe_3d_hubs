@@ -1,0 +1,302 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.presence-log) :local(.presence-log-entry) {
+  font-family: var(--font-family-default);
+}
+
+:local(.no-default-button-style) {
+  padding: 0px;
+  border-style: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+:focus:local(.no-default-button-style) {
+  outline: 0;
+}
+
+:local(.presence-log) {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  margin-top: 90px;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: content-box;
+  pointer-events: none !important;
+}
+:local(.presence-log) :local(.presence-log-entry) {
+  pointer-events: auto;
+  user-select: text;
+  -moz-user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+  background-color: var(--overlay-bg-color);
+  color: var(--overlay-text-color);
+  margin-bottom: 8px;
+  font-size: 0.8em;
+  padding: 8px 16px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  pointer-events: all;
+  /* this checks if a sibling has the message source for when have chat closed and resets padding */
+}
+:local(.presence-log) :local(.presence-log-entry):last-child {
+  margin-bottom: 0;
+}
+:local(.presence-log) :local(.presence-log-entry):not(:last-child) {
+  margin-bottom: 16px;
+}
+:local(.presence-log) :local(.presence-log-entry) :local(.message-body) {
+  margin-left: 4px;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  max-width: 500px;
+  padding-bottom: 8px;
+}
+:local(.presence-log) :local(.presence-log-entry) :local(.message-source + .message-body) {
+  padding-bottom: 0px;
+}
+:local(.presence-log) :local(.presence-log-entry) :local(.message-body-multi) {
+  margin-left: 0px;
+}
+:local(.presence-log) :local(.presence-log-entry) :local(.message-body-mono) {
+  font-family: monospace;
+  font-size: 14px;
+}
+:local(.presence-log) :local(.presence-log-entry) :local(.message-wrap) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+:local(.presence-log) :local(.presence-log-entry) :local(.message-wrap-multi) {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+:local(.presence-log) :local(.presence-log-entry) :local(.message-source) {
+  font-weight: bold;
+  flex-shrink: 0;
+}
+:local(.presence-log) :local(.presence-log-entry) :local(.message-source-link) {
+  cursor: pointer;
+  text-decoration: underline;
+}
+:local(.presence-log) :local(.presence-log-entry) a {
+  color: var(--link-color);
+}
+:local(.presence-log) :local(.presence-log-entry) :local(.icon-button) {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  outline-style: none;
+  width: 24px;
+  height: 24px;
+  background-size: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 6px;
+  border-radius: 12px;
+  background-color: transparent;
+  flex-shrink: 0;
+}
+@media (pointer: fine) {
+  :local(.presence-log) :local(.presence-log-entry) :local(.icon-button):hover {
+    background-color: var(--primary-color);
+  }
+}
+:local(.presence-log) :local(.presence-log-entry) :local(.spawn-message) {
+  background-image: url(../images/spawn_message.png);
+}
+:local(.presence-log) :local(.presence-log-entry) :local(.share) {
+  background-image: url(../images/share_message.png);
+}
+:local(.presence-log) :local(.presence-log-entry):local(.media) {
+  display: flex;
+  align-items: center;
+  min-height: 35px;
+}
+:local(.presence-log) :local(.presence-log-entry):local(.media) :local(.mediaBody) {
+  display: flex;
+  flex-direction: column;
+}
+:local(.presence-log) :local(.presence-log-entry):local(.media) img {
+  height: 35px;
+  margin-left: 8px;
+  border: 2px solid var(--overlay-border-color);
+  display: block;
+  border-radius: 5px;
+}
+:local(.presence-log) :local(.presence-log-entry):local(.permission) {
+  display: flex;
+  align-items: center;
+  min-height: 35px;
+}
+:local(.presence-log) :local(.presence-log-entry):local(.permission) :local(.permissionBody) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+:local(.presence-log) :local(.expired) {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: visibility 0s 0.5s, opacity 0.5s linear, transform 0.5s;
+}
+:local(.presence-log) :local(.presence-log-entry-with-button) {
+  padding: 8px 18px 8px 10px;
+}
+
+:local(.presence-log-in-room) {
+  position: absolute;
+  left: 20px;
+  bottom: 8px;
+}
+:local(.presence-log-in-room) :local(.presence-log-entry) {
+  background-color: var(--overlay-bg-color);
+  color: var(--overlay-text-color);
+  min-height: 18px;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+:local(.presence-log-in-room) :local(.presence-log-entry) a {
+  color: var(--link-color);
+}
+
+:local(.presence-log-spawn) {
+  position: absolute;
+  bottom: 0;
+  z-index: -10;
+  width: auto;
+  margin: 0;
+}
+:local(.presence-log-spawn) :local(.presence-log-entry) {
+  background-color: black;
+  color: white;
+  min-height: 18px;
+  padding: 8px 16px;
+  border-radius: 16px;
+  line-height: 18px;
+  margin: 0;
+  max-width: 100%;
+}
+:local(.presence-log-spawn) :local(.presence-log-entry) :local(.message-body) {
+  margin-left: 0;
+}
+:local(.presence-log-spawn) :local(.presence-log-entry) a {
+  color: white;
+}
+:local(.presence-log-spawn) :local(.presence-log-entry-one-line) {
+  font-weight: bold;
+  line-height: 19px;
+  text-align: center;
+}
+:local(.presence-log-spawn) :local(.presence-log-emoji) {
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+}
+:local(.presence-log-spawn) :local(.message-wrap) {
+  flex-direction: column;
+}
+:local(.presence-log-spawn) :local(.message-source) {
+  font-weight: normal;
+  font-size: 0.7em;
+  white-space: nowrap;
+  color: white;
+}
+:local(.presence-log-spawn) :local(.message-source-link) {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+:local(.presence-log-notifications) {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  align-items: center;
+}
+:local(.presence-log-notifications) :local(.presence-log-entry) {
+  background-color: var(--overlay-bg-color);
+  color: var(--overlay-text-color);
+  min-height: 18px;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+:local(.presence-log-notifications) :local(.presence-log-entry):first-child {
+  margin-top: 16px;
+}
+:local(.presence-log-notifications) :local(.presence-log-entry) a {
+  color: var(--link-color);
+}
+
+:local(.emoji) {
+  margin: 0.2em !important;
+  vertical-align: text-top !important;
+  line-height: 1em;
+}/*# sourceMappingURL=presence-log.css.map */

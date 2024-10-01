@@ -1,0 +1,105 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.icon-button) {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border-width: 0;
+  border-color: transparent;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+:local(.icon-button) svg {
+  color: var(--text1-color);
+}
+:local(.icon-button) > * {
+  margin-right: 4px;
+}
+:local(.icon-button) > *:last-child {
+  margin-right: 0;
+}
+:local(.icon-button):hover {
+  color: var(--primary-color-hover);
+}
+:local(.icon-button):hover svg {
+  color: var(--primary-color-hover);
+}
+:local(.icon-button):active {
+  color: var(--primary-color-pressed);
+}
+:local(.icon-button):active svg {
+  color: var(--primary-color-pressed);
+}
+:local(.icon-button):focus {
+  outline: none;
+}
+:local(.icon-button):disabled {
+  color: var(--disabled-icon-color);
+  cursor: not-allowed;
+}
+:local(.icon-button):disabled svg {
+  color: var(--disabled-icon-color);
+}
+:local(.icon-button) input {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+}
+:local(.icon-button) input:focus {
+  outline: none;
+}
+:local(.icon-button) input::-webkit-file-upload-button, :local(.icon-button) input::file-selector-button {
+  visibility: hidden;
+}
+@media (max-width: 991px), (max-height: 599px) {
+  :local(.icon-button):local(.compact-sm) {
+    flex-direction: column;
+    justify-content: center;
+  }
+  :local(.icon-button):local(.compact-sm) > * {
+    margin-right: 0;
+    margin-bottom: 4px;
+  }
+  :local(.icon-button):local(.compact-sm) > *:last-child {
+    margin-bottom: 0;
+  }
+}
+:global(.keyboard-user) :local(.icon-button):focus-within {
+  box-shadow: 0 0 0 2px var(--outline-color);
+}
+
+@media (min-width: 992px) and (min-height: 600px) {
+  :local(.lg) {
+    font-size: 12px;
+  }
+  :local(.lg) svg {
+    height: 24px;
+    width: 24px;
+  }
+}/*# sourceMappingURL=IconButton.css.map */

@@ -1,0 +1,98 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.content-menu) {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  flex-direction: row;
+  background-color: var(--button-bg-color);
+  border: 1px solid var(--button-border-color);
+  border-radius: 12px;
+  pointer-events: auto;
+  padding: 4px;
+  color: var(--text1-color);
+}
+@media (min-width: 992px) {
+  :local(.content-menu) {
+    top: 24px;
+    right: 24px;
+  }
+}
+
+:local(.content-menu-button) {
+  display: flex;
+  flex-direction: row;
+  border: none;
+  border-radius: 8px;
+  background-color: transparent;
+  font-size: 10px;
+  font-weight: 700;
+  align-items: center;
+  padding: 8px 10px;
+}
+:local(.content-menu-button) > * {
+  margin-right: 8px;
+}
+:local(.content-menu-button) > *:last-child {
+  margin-right: 0;
+}
+:local(.content-menu-button):hover {
+  background-color: var(--button-bg-color-hover);
+}
+:local(.content-menu-button):active {
+  background-color: var(--button-bg-color-pressed);
+}
+:local(.content-menu-button) svg {
+  color: var(--text1-color);
+}
+
+:local(.active) {
+  color: var(--text5-color);
+  background-color: var(--active-color);
+}
+:local(.active) svg {
+  color: var(--text5-color);
+}
+:local(.active):hover {
+  background-color: var(--active-color-hover);
+}
+:local(.active):active {
+  background-color: var(--active-color-pressed);
+}
+
+:local(.separator) {
+  width: 1px;
+  margin: 0 8px;
+  background-color: var(--border1-color);
+}
+
+:local(.disabled) {
+  pointer-events: none;
+  background-color: transparent;
+}/*# sourceMappingURL=ContentMenu.css.map */

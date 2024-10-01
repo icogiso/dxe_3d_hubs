@@ -1,0 +1,36 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.no-default-button-style) {
+  padding: 0px;
+  border-style: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+:focus:local(.no-default-button-style) {
+  outline: 0;
+}/*# sourceMappingURL=shared.css.map */

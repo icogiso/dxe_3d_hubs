@@ -1,0 +1,382 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.avatar-editor) .form-submit, :local(.avatar-editor) form .select, :local(.avatar-editor) form .textarea, :local(.avatar-editor) form .text-field {
+  font-family: var(--font-family-default);
+}
+
+:local(.avatar-editor) form .select, :local(.avatar-editor) form .textarea, :local(.avatar-editor) form .text-field {
+  border: 1px solid var(--input-border-color);
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+:local(.avatar-editor) form .select, :local(.avatar-editor) form .textarea, :local(.avatar-editor) form .text-field {
+  color: var(--text1-color);
+  font-size: 1.2em;
+  background-color: transparent;
+  line-height: 2em;
+  padding-left: 1.25em;
+  padding-right: 1.25em;
+  margin: 0.5em 0;
+  width: 100%;
+}
+
+:local(.avatar-editor) .form-submit {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  text-decoration: none;
+  outline-style: none;
+  font-weight: bold;
+  cursor: pointer;
+  border: 0;
+  border-radius: 28px;
+  padding: 0px 18px;
+  background: var(--primary-color);
+  font-size: 1em;
+  color: var(--text5-color);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 150px;
+  height: 48px;
+}
+
+:local(.no-default-button-style) {
+  padding: 0px;
+  border-style: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+:focus:local(.no-default-button-style) {
+  outline: 0;
+}
+
+:local(.avatar-editor) {
+  padding: 2em;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  align-items: flex-start;
+  color: var(--text1-color);
+}
+@media (max-width: 768px) {
+  :local(.avatar-editor) {
+    padding: 0.5em;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+:local(.avatar-editor) > .loader {
+  position: absolute;
+  left: calc(50% - 4.3em);
+  top: calc(50% - 4.5em);
+}
+:local(.avatar-editor) .info {
+  text-align: center;
+  width: 100%;
+  color: var(--text2-color);
+  margin: 1em 0;
+}
+:local(.avatar-editor) .info p {
+  margin: 0;
+  margin-bottom: 0.5em;
+}
+:local(.avatar-editor) .info p a {
+  margin-right: 5px;
+}
+:local(.avatar-editor) .info a {
+  color: var(--link-color);
+}
+:local(.avatar-editor) .center {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+  align-items: center;
+  overflow: auto;
+}
+@media (min-width: 768px) {
+  :local(.avatar-editor) .center {
+    padding-top: 2em;
+  }
+}
+:local(.avatar-editor) form {
+  display: flex;
+  flex-direction: column;
+}
+:local(.avatar-editor) form > label {
+  margin-top: 8px;
+}
+:local(.avatar-editor) form details {
+  margin-bottom: 10px;
+}
+:local(.avatar-editor) form > .text-field-container {
+  display: flex;
+  align-items: center;
+}
+:local(.avatar-editor) form > .text-field-container label {
+  margin-right: 5px;
+}
+:local(.avatar-editor) form .file-input-row {
+  display: flex;
+  align-items: center;
+}
+:local(.avatar-editor) form .file-input-row.disabled {
+  opacity: 0.5;
+}
+:local(.avatar-editor) form .file-input-row label {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+  cursor: pointer;
+}
+:local(.avatar-editor) form .file-input-row input {
+  display: none;
+}
+:local(.avatar-editor) form .file-input-row .img-box {
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  min-height: 50px;
+  border-radius: 8px;
+  margin-right: 5px;
+  background: var(--tile-bg-color);
+  overflow: hidden;
+  color: var(--tile-text-color);
+  position: relative;
+}
+:local(.avatar-editor) form .file-input-row .img-box svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+}
+:local(.avatar-editor) form .file-input-row img {
+  width: 100%;
+}
+:local(.avatar-editor) form .file-input-row a {
+  margin-left: 10px;
+  color: var(--link-color);
+}
+:local(.avatar-editor) form .text-field {
+  font-size: 16px;
+}
+:local(.avatar-editor) form .textarea {
+  font-size: 16px;
+}
+:local(.avatar-editor) form .select-container {
+  position: relative;
+}
+:local(.avatar-editor) form .select-container .arrow {
+  position: absolute;
+  right: 10px;
+  bottom: 20px;
+}
+:local(.avatar-editor) form .select-grid-container .select-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 5px;
+  justify-content: space-between;
+  max-width: 355px;
+}
+:local(.avatar-editor) form .select-grid-container input {
+  display: none;
+}
+:local(.avatar-editor) form .select-grid-container .item {
+  box-sizing: border-box;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text2-color);
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 5px;
+  width: calc(33.3333333333% - 6.6666666667px);
+  position: relative;
+}
+:local(.avatar-editor) form .select-grid-container .item.selected {
+  background: var(--tile-bg-color);
+}
+:local(.avatar-editor) form .select-grid-container .item:hover {
+  background: var(--tile-bg-color-hover);
+}
+:local(.avatar-editor) form .select-grid-container .item:active {
+  background: var(--tile-bg-color-pressed);
+}
+:local(.avatar-editor) form .select-grid-container .item.custom {
+  width: 100%;
+  height: 40px;
+}
+:local(.avatar-editor) form .select-grid-container .item.custom svg {
+  margin-right: 8px;
+  margin-top: -1px;
+}
+:local(.avatar-editor) form .select-grid-container .item img {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+}
+:local(.avatar-editor) form .select {
+  font-size: 16px;
+  height: 36px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+:local(.avatar-editor) form .checkbox-container {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+:local(.avatar-editor) form .checkbox-container .checkbox {
+  cursor: pointer;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  width: 2em;
+  height: 2em;
+  border: 1px solid var(--input-border-color);
+  background-color: var(--input-bg-color);
+  border-radius: 6px;
+  vertical-align: sub;
+  margin: 0 0.7em;
+  min-width: 2em;
+  min-height: 2em;
+}
+:local(.avatar-editor) form .checkbox-container .checkbox:checked {
+  position: relative;
+}
+:local(.avatar-editor) form .checkbox-container .checkbox:checked::after {
+  content: " ";
+  position: absolute;
+  background: var(--active-color);
+  top: 0.3em;
+  left: 0.3em;
+  right: 0.3em;
+  bottom: 0.3em;
+  border-radius: 0.3em;
+}
+:local(.avatar-editor) form .license {
+  font-size: 8pt;
+  color: var(--text2-color);
+}
+:local(.avatar-editor) form .license a {
+  color: var(--text2-color);
+}
+:local(.avatar-editor) form hr {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--border2-color);
+}
+:local(.avatar-editor) form a {
+  color: var(--text2-color);
+}
+:local(.avatar-editor) .preview {
+  margin-left: 2em;
+  height: 450px;
+  max-width: 200px;
+}
+@media (max-width: 768px) {
+  :local(.avatar-editor) .preview {
+    margin-left: 0.5em;
+  }
+}
+:local(.avatar-editor) .form-submit {
+  background: var(--primary-color);
+  margin: 0;
+  margin-bottom: 0.5em;
+}
+:local(.avatar-editor) .form-submit:disabled {
+  background-color: var(--disabled-bg-color);
+}
+:local(.avatar-editor) .split {
+  display: grid;
+  grid-template: 100%/55% 45%;
+  align-items: center;
+}
+:local(.avatar-editor) canvas {
+  width: 100%;
+  height: 100%;
+}
+:local(.avatar-editor) .delete-avatar {
+  margin-top: 20px;
+  color: var(--text2-color);
+}
+:local(.avatar-editor) .delete-avatar a {
+  cursor: pointer;
+  text-decoration: underline;
+  color: var(--cancel-color);
+}
+:local(.avatar-editor) .close-button {
+  cursor: pointer;
+  color: var(--text2-color);
+  outline-style: none;
+  background: none;
+  border: none;
+  margin-top: 16px;
+  font-size: 1.6em;
+  align-self: flex-start;
+}
+@media (max-width: 768px) {
+  :local(.avatar-editor) .close-button {
+    padding-left: 0.5em;
+  }
+}/*# sourceMappingURL=avatar-editor.css.map */

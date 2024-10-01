@@ -42,6 +42,14 @@ const confirmationMessages = defineMessages({
   }
 });
 
+const handleClose = () => {
+  window.close();
+
+  setTimeout(function() {
+    alert("お使いのブラウザでタブを閉じることができませんでした。お手数ですが手動でタブを閉じてください。");
+  }, 3000);
+}
+
 export function LeaveRoomModal({ reason, destinationUrl, onClose }) {
   const intl = useIntl();
 
@@ -52,7 +60,7 @@ export function LeaveRoomModal({ reason, destinationUrl, onClose }) {
     >
       <Column padding center centerMd="both" grow>
         <p>{intl.formatMessage(reasonMessages[reason])}</p>
-        <Button as="a" preset="cancel" href={destinationUrl} rel="noopener noreferrer">
+        <Button as="a" preset="cancel" onClick={handleClose} rel="noopener noreferrer">
           {intl.formatMessage(confirmationMessages[reason])}
         </Button>
       </Column>

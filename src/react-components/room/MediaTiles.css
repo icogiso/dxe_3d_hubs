@@ -1,0 +1,195 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.media-tile) {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  height: -moz-max-content;
+  height: max-content;
+  text-decoration: none;
+  background: transparent;
+}
+
+:local(.thumbnail-container) {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  background-color: var(--tile-bg-color);
+  border-radius: 12px;
+}
+:local(.thumbnail-container) img, :local(.thumbnail-container) video, :local(.thumbnail-container) :local(.create-tile-content) {
+  border-radius: 12px;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+:local(.thumbnail-container):hover {
+  background-color: var(--tile-bg-color-hover);
+}
+:local(.thumbnail-container):active {
+  background-color: var(--tile-bg-color-pressed);
+}
+
+:local(.tall) :local(.thumbnail-container), :local(.wide) :local(.thumbnail-container) {
+  height: 0;
+}
+:local(.tall) :local(.thumbnail-container) img, :local(.tall) :local(.thumbnail-container) video, :local(.tall) :local(.thumbnail-container) :local(.create-tile-content), :local(.wide) :local(.thumbnail-container) img, :local(.wide) :local(.thumbnail-container) video, :local(.wide) :local(.thumbnail-container) :local(.create-tile-content) {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+:local(.wide) :local(.thumbnail-container) {
+  padding-top: 56.25%;
+}
+
+:local(.tall) :local(.thumbnail-container) {
+  padding-top: 177.78%;
+}
+
+:local(.thumbnail-link) {
+  display: flex;
+  width: 100%;
+}
+
+:local(.tile-actions) {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+:local(.tile-actions) > * {
+  margin-bottom: 4px;
+}
+
+:local(.tile-actions) > :last-child {
+  margin-bottom: 0;
+}
+
+:local(.tile-action), :local(.member-count) {
+  background: var(--tile-button-bg-color);
+  color: var(--tile-button-text-color);
+  height: 30px;
+  border-radius: 30px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--tile-button-border-color);
+}
+:local(.tile-action) svg, :local(.member-count) svg {
+  color: var(--tile-button-text-color);
+}
+
+:local(.tile-action):hover {
+  background-color: var(--tile-button-bg-color-hover);
+  color: white;
+}
+:local(.tile-action):active {
+  background-color: var(--tile-button-bg-color-pressed);
+}
+
+:local(.member-count) {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+}
+:local(.member-count) svg {
+  margin-right: 4px;
+}
+
+:local(.favorite-icon) {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  color: var(--favorite-color);
+}
+
+:local(.info) {
+  margin-top: 8px;
+  color: var(--text1-color);
+}
+:local(.info) > * {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin: 0;
+  display: block;
+  padding-bottom: 4px;
+}
+
+:local(.description) {
+  display: flex;
+  justify-content: space-between;
+}
+:local(.description) > * {
+  display: flex;
+  margin-right: 4px;
+}
+:local(.description) > :last-child {
+  margin-right: 0;
+}
+:local(.description) svg {
+  width: 12px;
+  height: 12px;
+}
+:local(.description) a svg {
+  color: var(--link-color);
+}
+:local(.description) a svg:hover {
+  color: var(--link-color-hover);
+}
+:local(.description) a svg:active {
+  color: var(--link-color-pressed);
+}
+
+:local(.create-tile) {
+  height: 100%;
+}
+
+:local(.create-tile-content) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--tile-text-color);
+  font-weight: 700;
+  border-radius: 12px;
+  flex: 1;
+}
+:local(.create-tile-content) p {
+  font-size: 12px;
+}
+:local(.create-tile-content) svg {
+  margin-bottom: 16px;
+  color: var(--tile-text-color);
+}/*# sourceMappingURL=MediaTiles.css.map */

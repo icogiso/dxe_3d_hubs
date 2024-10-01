@@ -1,0 +1,33 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.numeric-input) input {
+  padding-right: 4px;
+}
+:local(.numeric-input) input:focus {
+  box-shadow: none;
+}/*# sourceMappingURL=NumericInput.css.map */

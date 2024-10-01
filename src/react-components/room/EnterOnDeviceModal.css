@@ -1,0 +1,55 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.code-container) {
+  display: flex;
+}
+:local(.code-container) > * {
+  margin-right: 4px;
+}
+:local(.code-container) > *:last-child {
+  margin-right: 0;
+}
+
+:local(.short-url-container), :local(.code-letter) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  border-radius: 12px;
+  border: 1px solid var(--input-border-color);
+  font-size: 32px;
+  font-weight: 400;
+}
+
+:local(.short-url-container) {
+  width: 204px;
+}
+
+:local(.code-letter) {
+  width: 40px;
+}/*# sourceMappingURL=EnterOnDeviceModal.css.map */

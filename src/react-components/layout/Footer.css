@@ -1,0 +1,118 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+footer {
+  display: block;
+  background-color: var(--background2-color);
+  font-size: 14px;
+  padding: 20px;
+}
+@media (min-width: 992px) {
+  footer {
+    padding: 0;
+    display: flex;
+  }
+}
+footer nav {
+  display: flex;
+}
+@media (min-width: 992px) {
+  footer nav {
+    flex: 1;
+    justify-content: flex-end;
+  }
+}
+footer nav ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  align-items: center;
+  flex-direction: column;
+}
+@media (min-width: 992px) {
+  footer nav ul {
+    flex-direction: row;
+  }
+}
+footer nav a {
+  color: var(--text1-color);
+  font-weight: bold;
+}
+footer nav li {
+  display: flex;
+  padding-top: 20px;
+  align-items: center;
+}
+@media (min-width: 992px) {
+  footer nav li {
+    padding-top: 0;
+    margin-right: 20px;
+  }
+}
+
+:local(.container) {
+  flex-direction: column;
+  align-items: center;
+}
+@media (min-width: 992px) {
+  :local(.container) {
+    height: 80px;
+    flex-direction: row;
+    align-items: inherit;
+  }
+}
+
+:local(.powered-by) {
+  text-align: center;
+  color: var(--text1-color);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+@media (min-width: 992px) {
+  :local(.powered-by) {
+    margin-left: 20px;
+  }
+}
+
+:local(.company-logo) {
+  height: 49px;
+}
+@media (min-width: 992px) {
+  :local(.company-logo) {
+    margin-left: 18px;
+    height: 41px;
+  }
+}
+
+:local(.discord-logo) {
+  height: 24px;
+  width: 24px;
+  display: inline;
+  margin-right: 4px;
+}/*# sourceMappingURL=Footer.css.map */

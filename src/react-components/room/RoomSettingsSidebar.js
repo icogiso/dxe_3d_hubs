@@ -52,6 +52,10 @@ export function RoomSettingsSidebar({
     }
   }, [spawnAndMoveMedia, setValue]);
 
+  //[?rpub]のクエリが存在する場合、パブリックメニューを表示
+  const pubQueryParams = new URLSearchParams(window.location.search); //https://hubs.local:4000/p6SWetG/local-room1?rpub
+  const isRpubPresent = pubQueryParams.has('rpub');
+
   return (
     <Sidebar
       title={<FormattedMessage id="room-settings-sidebar.title" defaultMessage="Room Settings" />}
@@ -104,11 +108,11 @@ export function RoomSettingsSidebar({
           fullWidth
           {...register("room_size")}
         />
-        <RadioInputField
+        {/* <RadioInputField
           label={<FormattedMessage id="room-settings-sidebar.room-access" defaultMessage="Room Access" />}
           fullWidth
-        >
-          <RadioInputOption
+        > */}
+          {/* <RadioInputOption
             value="allow"
             label={<FormattedMessage id="room-settings-sidebar.access-shared-link" defaultMessage="Shared link" />}
             description={
@@ -119,7 +123,7 @@ export function RoomSettingsSidebar({
             }
             error={errors?.entry_mode?.message}
             {...register("entry_mode")}
-          />
+          /> */}
           {/* <RadioInputOption
             value="invite"
             label={<FormattedMessage id="room-settings-sidebar.access-invite" defaultMessage="Invite only" />}
@@ -132,11 +136,11 @@ export function RoomSettingsSidebar({
             error={errors?.entry_mode?.message}
             {...register("entry_mode")}
           /> */}
-        </RadioInputField>
-        {entryMode === "invite" && (
+        {/* </RadioInputField> */}
+        {/* {entryMode === "invite" && (
           <InviteLinkInputField fetchingInvite={fetchingInvite} inviteUrl={inviteUrl} onRevokeInvite={onRevokeInvite} />
-        )}
-        {showPublicRoomSetting && (
+        )} */}
+        {showPublicRoomSetting && isRpubPresent && (
           <ToggleInput
             label={<FormattedMessage id="room-settings-sidebar.access-public" defaultMessage="Public" />}
             description={
@@ -190,13 +194,13 @@ export function RoomSettingsSidebar({
               label={<FormattedMessage id="room-settings-sidebar.spawn-emoji" defaultMessage="Create emoji" />}
               {...register("member_permissions.spawn_emoji")}
             />
-            <ToggleInput
+            {/* <ToggleInput
               label={<FormattedMessage id="room-settings-sidebar.fly" defaultMessage="Allow flying" />}
               {...register("member_permissions.fly")}
-            />
+            /> */}
           </div>
         </InputField>
-        <InputField
+        {/* <InputField
           label={<FormattedMessage id="room-settings-sidebar.bitecs-client" defaultMessage="bitECS based Client" />}
           fullWidth
         >
@@ -215,7 +219,7 @@ export function RoomSettingsSidebar({
             }
             {...register("user_data.hubs_use_bitecs_based_client")}
           />
-        </InputField>
+        </InputField> */}
         <ApplyButton type="submit" />
       </Column>
     </Sidebar>

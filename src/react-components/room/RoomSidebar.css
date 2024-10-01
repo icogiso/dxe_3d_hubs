@@ -1,0 +1,79 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.section-title) {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text2-color);
+  margin-bottom: 16px;
+  margin-top: 16px;
+}
+:local(.section-title):first-child {
+  margin-top: 0;
+}
+
+:local(.scene-screenshot-container) {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+}
+
+:local(.scene-screenshot-image) {
+  background-color: var(--tile-bg-color);
+  border-radius: 12px;
+}
+
+:local(.scene-info) {
+  margin-bottom: 16px;
+}
+
+:local(.scene-name) {
+  color: var(--text2-color);
+}
+
+:local(.scene-creator) {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--text2-color);
+}
+
+:local(.attribution) {
+  font-size: 12px;
+  margin-top: 8px;
+  color: var(--text2-color);
+}
+:local(.attribution):first-child {
+  margin-top: 0;
+}
+
+:local(.attribution-name) {
+  font-weight: 700;
+}
+
+:local(.attribution-author) {
+  margin-top: 4px;
+}/*# sourceMappingURL=RoomSidebar.css.map */

@@ -1,0 +1,41 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.room-permissions), :local(.permissions-group) {
+  margin-left: 20px;
+}
+:local(.room-permissions) > *, :local(.permissions-group) > * {
+  margin-top: 12px;
+}
+:local(.room-permissions):last-child, :local(.permissions-group):last-child {
+  margin-right: 0px;
+}
+
+:local(.confirm-revoke-button) {
+  display: inline;
+  color: var(--link-color);
+}/*# sourceMappingURL=RoomSettingsSidebar.css.map */

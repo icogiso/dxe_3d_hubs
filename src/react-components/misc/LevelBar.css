@@ -1,0 +1,49 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.level-bar-container) {
+  position: relative;
+  display: flex;
+}
+
+:local(.level-bar-border) {
+  position: relative;
+  width: 100%;
+  border: 1px solid var(--toolbar-basic-border-color);
+  border-radius: 6px;
+  z-index: -1;
+}
+
+:local(.level-bar) {
+  position: absolute;
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
+  background-color: #8cdf2f;
+  margin-left: 4px;
+  margin-top: 4px;
+  z-index: -1;
+}/*# sourceMappingURL=LevelBar.css.map */

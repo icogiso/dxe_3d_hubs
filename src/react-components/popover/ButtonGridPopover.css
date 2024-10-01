@@ -1,0 +1,36 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.button-grid-popover) {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+}
+:local(.button-grid-popover):not(:local(.fullscreen)) {
+  max-width: 224px;
+  padding-top: 0;
+}/*# sourceMappingURL=ButtonGridPopover.css.map */

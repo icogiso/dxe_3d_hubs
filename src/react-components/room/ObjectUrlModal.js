@@ -8,6 +8,7 @@ import { Button } from "../input/Button";
 import { Column } from "../layout/Column";
 import { IconButton } from "../input/IconButton";
 import styles from "./ObjectUrlModal.scss";
+import InputFieldStyles from "../input/InputField.scss";
 import classNames from "classnames";
 import { FormattedMessage } from "react-intl";
 
@@ -32,7 +33,8 @@ export function ObjectUrlModal({ showModelCollectionLink, modelCollectionUrl, on
   const url = watch("url", "");
 
   const validateFiles = file => {
-    if (!file || file.length=== 0) return true; // ファイルが選択されていない場合はチェックしない
+    if (!file || file.length=== 0) return "ファイルを選択してください。";
+    //ファイルが選択されている場合は形式チェック
     const supportedFormats = ["pdf","png", "jpg", "gif", "mp4", "mp3","glb"];
     const extension = file[0].name.split('.').pop().toLowerCase();
     return supportedFormats.includes(extension) || "pdf,png,jpg,gif,mp4,mp3,glbのいずれかの形式でアップロードしてください。";
@@ -113,8 +115,11 @@ export function ObjectUrlModal({ showModelCollectionLink, modelCollectionUrl, on
                     </span>
                   </div>
                 )}
-                {/* <input id="file" className={styles.hidden} type="file" {...register("file")} /> */}
-                <input id="file" {...register("file", { validate: validateFiles })} className={styles.hidden} type="file" />
+                <input 
+                  id="file"
+                  {...register("file", { validate: validateFiles })}
+                  className={styles.hidden}
+                  type="file" />
               </IconButton>
             </>
           }
@@ -125,6 +130,7 @@ export function ObjectUrlModal({ showModelCollectionLink, modelCollectionUrl, on
             />
           }
         />
+        {errors.file && (!file || file.length=== 0) &&<p className={classNames(InputFieldStyles.error, InputFieldStyles.upload_error)}>{errors.file.message}</p>}
         <Button type="submit" preset="accent4">
           <FormattedMessage id="object-url-modal.create-object-button" defaultMessage="Create Object" />
         </Button>

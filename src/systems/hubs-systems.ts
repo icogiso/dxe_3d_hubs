@@ -56,6 +56,14 @@ import { pdfMenuSystem } from "../bit-systems/pdf-menu-system";
 import { linkHoverMenuSystem } from "../bit-systems/link-hover-menu";
 import { deleteEntitySystem } from "../bit-systems/delete-entity-system";
 import type { HubsSystems } from "aframe";
+// THREE.WebGLRendererの警告をスルー
+const originalConsoleWarn = console.warn;
+console.warn = function (message?: any, ...optionalParams: any[]) {
+  if (typeof message === 'string' && message.includes('THREE.WebGLRenderer: Texture marked for update but no image data found')) {
+    return;
+  }
+  originalConsoleWarn.apply(console, [message, ...optionalParams]);
+};
 import { Camera, Scene, WebGLRenderer } from "three";
 import { HubsWorld } from "../app";
 import { sceneLoadingSystem } from "../bit-systems/scene-loading";
@@ -321,10 +329,14 @@ export function mainTick(xrFrame: XRFrame, renderer: WebGLRenderer, scene: Scene
   scene.updateMatrixWorld();
 
   renderer.info.reset();
-  if (APP.fx.composer) {
-    APP.fx.composer.render();
-  } else {
+  try {
     renderer.render(scene, camera);
+  } catch (error) {
+    if (error.message.includes("Texture marked for update but no image data found")) {
+      console.warn("Suppressed error: ", error.message);
+    } else {
+      throw error; // その他のエラーは再スロー
+    }
   }
 
   // tock()s on components and system will fire here. (As well as any other time render() is called without unbinding onAfterRender)

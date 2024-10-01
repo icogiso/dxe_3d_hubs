@@ -1,0 +1,151 @@
+@use "../styles/theme";
+
+:local(.ReactionInfo) {
+  grid-column-start: sidebar;
+  height: 152px;
+  overflow: hidden;
+  width: 296px;
+  position: absolute;
+  top: 74px;
+  left: 8px;
+  z-index: 0;
+  border-radius: 16px;
+  transition: all 0.5s ease;
+
+  @media (min-width: 992px) {
+    left: 24px;
+    top: 24px;
+  }
+
+  @media (max-width: 410px) {
+    width: 230px;
+    top: 64px;
+    left: auto;
+    right: 8px;
+  }
+}
+
+:local(.ReactionInfoWrap) {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  pointer-events: auto;
+  overflow-wrap: break-word;
+}
+
+:local(.ReactionInfoHeader) {
+  display: flex;
+  height: 48px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: flex-start;
+  background: rgba(0, 0, 0, 0.76);
+  color: var(--text5-color);
+  padding: 15px 34px 15px 24px;
+
+  @media (max-width: 410px) {
+    padding: 14px 24px 13px 16px;
+  }
+}
+
+:local(.ReactionInfoHeaderTitle) {
+  margin-left: 8px;
+  font-size: 14px;
+
+  @media (max-width: 410px) {
+    font-size: 12px;
+  }
+}
+
+:local(.ReactionInfoList) {
+  display: flex;
+  flex: 1;
+  flex-shrink: 1;
+  flex-direction: column;
+  list-style: none;
+  overflow-y: auto;
+  color: var(--text5-color);
+  background: rgba(0, 0, 0, 0.55);
+  padding: 24px 34px 24px 24px;
+}
+
+:local(.ReactionInfoListWrap) {
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+  margin-bottom: 16px;
+
+  &:last-child{
+    margin-bottom: 0;
+  }
+}
+
+:local(.ReactionInfoItem) {
+  display: flex;
+  align-items: center;
+}
+
+:local(.ReactionInfoItemText) {
+  font-size: 14px;
+
+  @media (max-width: 410px) {
+    font-size: 12px;
+  }
+}
+
+//UIアニメーション
+.ui-fade-slide {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.ui-fade-slide.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ui-fade-slide.hidden {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+// UI内のテキストアニメーション(表示)
+@keyframes textSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.text-fade-slide {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: textSlideIn 0.5s forwards;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+// UI内のテキストアニメーション(非表示)
+@keyframes textFadeOutShrink {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+.text-hidden {
+  opacity: 0;
+  transform: scale(0.9);
+  animation: textFadeOutShrink 0.5s forwards;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}

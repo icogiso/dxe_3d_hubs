@@ -1,0 +1,62 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.label) {
+  margin-bottom: 8px;
+  color: var(--text3-color);
+  align-self: flex-start;
+}
+
+:local(.input-field) {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 300px;
+  white-space: break-spaces;
+  line-height: 1.2rem;
+}
+
+:local(.fullWidth) {
+  max-width: 100%;
+}
+
+:local(.error) {
+  margin-top: 8px;
+  color: var(--error-color);
+  align-self: flex-start;
+}
+
+:local(.info) {
+  margin-top: 8px;
+  color: var(--text2-color);
+  align-self: flex-start;
+}
+
+:local(.info),
+:local(.error) {
+  font-size: 10px;
+}/*# sourceMappingURL=InputField.css.map */

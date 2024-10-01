@@ -1,0 +1,89 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.no-default-button-style) {
+  padding: 0px;
+  border-style: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+:focus:local(.no-default-button-style) {
+  outline: 0;
+}
+
+:local(.treatment) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:local(.screenshot) {
+  position: absolute;
+  width: 115%;
+  height: 115%;
+  top: -40px;
+  left: -40px;
+  opacity: 0.8;
+}
+:local(.screenshot) img {
+  width: 100%;
+  height: 100%;
+}
+
+:local(.hub-name) {
+  color: black;
+  text-shadow: 0px 0px 10px #888;
+  font-weight: bold;
+  font-size: 1.8em;
+  margin-bottom: 16px;
+}
+
+:local(.main-panel) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  pointer-events: auto;
+}
+
+:local(.logo) {
+  position: absolute;
+  top: 16px;
+  left: 8px;
+  width: 175px;
+  filter: drop-shadow(0 0 4px #888);
+}
+:local(.logo) img {
+  width: 100%;
+}/*# sourceMappingURL=preload-overlay.css.map */

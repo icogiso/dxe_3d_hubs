@@ -1,0 +1,102 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+body {
+  font-family: var(--font-family-default);
+}
+
+:local(.no-default-button-style) {
+  padding: 0px;
+  border-style: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+:focus:local(.no-default-button-style) {
+  outline: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #ui-root, .home-root {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--background1-color);
+  color: var(--text1-color);
+}
+
+#ui-root, .home-root {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+small {
+  font-size: 0.8rem;
+}/*# sourceMappingURL=globals.css.map */

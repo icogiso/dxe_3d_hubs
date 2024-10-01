@@ -1,0 +1,140 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.outer-wrapper) {
+  display: flex;
+  position: relative;
+  height: 40px;
+  border: 1px solid var(--input-border-color);
+  border-radius: 8px;
+  color: var(--text1-color);
+  overflow: hidden;
+}
+:local(.outer-wrapper):focus-within {
+  border-color: var(--input-outline-color);
+  box-shadow: 0 0 0 2px var(--input-outline-color);
+}
+
+:local(.input-wrapper) {
+  flex: 1;
+  height: 100%;
+}
+
+:local(.before-input),
+:local(.after-input) {
+  display: flex;
+  height: 40px;
+  align-items: center;
+}
+:local(.before-input) :local(.button),
+:local(.after-input) :local(.button) {
+  height: 100%;
+  border-radius: 0;
+  min-width: auto;
+  padding: 0 16px;
+  border-width: 0;
+  min-height: auto;
+  border: none;
+}
+:local(.before-input) :local(.button):hover,
+:local(.after-input) :local(.button):hover {
+  border: none;
+}
+:global(.keyboard-user) :local(.before-input) :local(.button):focus,
+:global(.keyboard-user) :local(.after-input) :local(.button):focus {
+  border-width: 0;
+}
+:global(.keyboard-user) :local(.before-input) :local(.button):focus:first-child,
+:global(.keyboard-user) :local(.after-input) :local(.button):focus:first-child {
+  margin-right: 1px;
+  box-shadow: inset 0 0 0 3px var(--outline-color), -1px 0 0 2px var(--outline-color);
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+:global(.keyboard-user) :local(.before-input) :local(.button):focus:last-child,
+:global(.keyboard-user) :local(.after-input) :local(.button):focus:last-child {
+  margin-left: 1px;
+  box-shadow: inset 0 0 0 3px var(--outline-color), 1px 0 0 2px var(--outline-color);
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+:local(.before-input) :local(.icon-button), :local(.before-input) > svg,
+:local(.after-input) :local(.icon-button),
+:local(.after-input) > svg {
+  padding: 0;
+  margin-left: 8px;
+}
+:local(.before-input) :local(.icon-button):last-child, :local(.before-input) > svg:last-child,
+:local(.after-input) :local(.icon-button):last-child,
+:local(.after-input) > svg:last-child {
+  margin-right: 8px;
+  max-width: 70px;
+}
+
+:local(.before-input) :local(.button) {
+  border-right-width: 1px;
+}
+
+:local(.after-input) :local(.button) {
+  border-left-width: 1px;
+}
+
+:local(.disabled) {
+  cursor: default;
+  color: var(--disabled-text-color);
+  background-color: var(--disabled-bg-color);
+}
+
+:local(.invalid) {
+  border-color: var(--error-color) !important;
+}
+:local(.invalid):focus-within {
+  box-shadow: 0 0 0 2px var(--error-color);
+}
+
+:local(.text-input) {
+  height: 100%;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  padding-left: 8px;
+  line-height: calc(40px - 2px);
+}
+:local(.text-input):focus {
+  box-shadow: none;
+}
+:local(.text-input)::-moz-placeholder {
+  color: var(--text3-color);
+}
+:local(.text-input)::placeholder {
+  color: var(--text3-color);
+}
+
+:local(.invalid-icon) {
+  margin: 0 8px;
+  color: var(--error-color);
+}/*# sourceMappingURL=TextInput.css.map */

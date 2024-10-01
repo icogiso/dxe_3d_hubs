@@ -103,6 +103,9 @@ import { usePermissions } from "./room/hooks/usePermissions";
 import { ChatContextProvider } from "./room/contexts/ChatContext";
 import ChatToolbarButton from "./room/components/ChatToolbarButton/ChatToolbarButton";
 import SeePlansCTA from "./room/components/SeePlansCTA/SeePlansCTA";
+import WaypointList from "./room/WaypointList";
+import { ReactionInfoContainer } from "./room/ReactionInfoContainer";
+import { customBackLink } from "../hub";
 
 const avatarEditorDebug = qsTruthy("avatarEditorDebug");
 
@@ -1248,18 +1251,18 @@ class UIRoot extends Component {
           //     icon: CameraIcon,
           //     onClick: () => this.toggleStreamerMode()
           //   },
-          // (this.props.breakpoint === "sm" || this.props.breakpoint === "md") &&
-          //   entered && {
-          //     id: "leave-room",
-          //     label: <FormattedMessage id="more-menu.enter-leave-room" defaultMessage="Leave Room" />,
-          //     icon: LeaveIcon,
-          //     onClick: () => {
-          //       this.showNonHistoriedDialog(LeaveRoomModal, {
-          //         destinationUrl: "/",
-          //         reason: LeaveReason.leaveRoom
-          //       });
-          //     }
-          //   },
+          (this.props.breakpoint === "sm" || this.props.breakpoint === "md") &&
+            entered && {
+              id: "leave-room",
+              label: <FormattedMessage id="more-menu.enter-leave-room" defaultMessage="Leave Room" />,
+              icon: LeaveIcon,
+              onClick: () => {
+                this.showNonHistoriedDialog(LeaveRoomModal, {
+                  destinationUrl: customBackLink,
+                  reason: LeaveReason.leaveRoom
+                });
+              }
+            },
           // canCloseRoom && {
           //   id: "close-room",
           //   label: <FormattedMessage id="more-menu.close-room" defaultMessage="Close Room" />,
@@ -1335,7 +1338,6 @@ class UIRoot extends Component {
         ].filter(item => item)
       }
     ];
-    console.log("isModerator:"+isModerator); //true
 
     return (
       <MoreMenuContextProvider>
@@ -1400,6 +1402,7 @@ class UIRoot extends Component {
                 scene={this.props.scene}
               />
             )}
+
             {this.props.hub && (
               <RoomLayoutContainer
                 scene={this.props.scene}
@@ -1432,6 +1435,28 @@ class UIRoot extends Component {
                           />
                         )}
                       </ContentMenu>
+                    )}
+                    {entered && (
+                      <>
+                        {isModerator && (
+                          <ReactionInfoContainer
+                            displayNameOverride={displayNameOverride}
+                            store={this.props.store}
+                            mediaSearchStore={this.props.mediaSearchStore}
+                            hubChannel={this.props.hubChannel}
+                            history={this.props.history}
+                            mySessionId={this.props.sessionId}
+                            presences={this.props.presences}
+                            onClose={() => this.setSidebar(null)}
+                            onCloseDialog={() => this.closeDialog()}
+                            showNonHistoriedDialog={this.showNonHistoriedDialog}
+                            performConditionalSignIn={this.props.performConditionalSignIn}
+                          />
+                        )}
+                        <WaypointList 
+                          scene={this.props.scene}
+                        />
+                      </>
                     )}
                     {!entered && !streaming && !isMobile && streamerName && <SpectatingLabel name={streamerName} />}
                     {this.props.activeObject && (
@@ -1687,7 +1712,7 @@ class UIRoot extends Component {
                         onClick={() => {
                           this.setState({ leaving: true });
                           this.showNonHistoriedDialog(LeaveRoomModal, {
-                            destinationUrl: "/",
+                            destinationUrl: customBackLink,
                             reason: LeaveReason.leaveRoom,
                             onClose: () => {
                               this.setState({ leaving: false });

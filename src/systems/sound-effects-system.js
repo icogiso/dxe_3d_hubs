@@ -274,9 +274,14 @@ export class SoundEffectsSystem {
       if (!positionalAudio.isPlaying || !object3D.parent) {
         this.stopPositionalAudio(positionalAudio);
       } else {
-        object3D.updateMatrices();
-        setMatrixWorld(positionalAudio, object3D.matrixWorld);
+        if (object3D.parent) {
+          object3D.updateMatrices();
+          setMatrixWorld(positionalAudio, object3D.matrixWorld);
+        } else {
+          console.error("Object3D has no parent, unable to update positional audio.");
+        }
       }
     }
+    
   }
 }

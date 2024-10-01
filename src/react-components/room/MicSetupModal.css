@@ -1,0 +1,154 @@
+/**
+  PRIMARY INTERACTION
+  **/
+/**
+  SECONDARY INTERACTION
+  **/
+/**
+  SEMANTIC
+  **/
+/**
+  TEXT
+  **/
+/**
+  BORDER
+  **/
+/**
+  NEUTRALS
+  **/
+/**
+  STATUS
+  **/
+/**
+  BACKGROUNDS
+  **/
+/**
+  MENU
+  **/
+:local(.content) p {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+:local(.content) > :last-child {
+  margin-top: auto;
+}
+
+:local(.audio-check-container) {
+  display: flex;
+  gap: 24px 24px;
+}
+@media (max-width: 450px) {
+  :local(.audio-check-container) {
+    flex-flow: wrap;
+  }
+}
+
+:local(.audio-io-container) {
+  width: 200px;
+  border-radius: 8px;
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  gap: 10px 10px;
+  padding: 20px;
+  align-items: center;
+  border: 1px solid var(--toolbar-basic-border-color);
+  background-color: transparent;
+  transition: background-color 0.1s ease-in-out, border-color 0.1s ease-in-out;
+}
+
+:local(.icon-enabled) {
+  width: 48px;
+  height: 48px;
+  color: var(--text1-color);
+}
+:local(.icon-enabled) path {
+  stroke-width: 1;
+}
+
+:local(.icon-disabled) {
+  width: 48px;
+  height: 48px;
+  color: var(--disabled-text-color);
+}
+:local(.icon-disabled) path {
+  stroke-width: 1;
+  color: var(--disabled-icon-color);
+}
+
+:local(.icon-container) {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+:local(.voice-chat-disabled) {
+  display: flex;
+  flex: auto;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  gap: 20px;
+}
+
+:local(.text-disabled) {
+  color: var(--disabled-text-color);
+}
+
+:local(.action-container) {
+  height: 48px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+:local(.selection-container) {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  gap: 10px 10px;
+  align-self: stretch;
+}
+
+:local(.selection-input) {
+  width: 100%;
+  max-width: none;
+}
+
+:local(.popover) {
+  background-color: #000000;
+  border: 1px solid #000000;
+}
+
+:local(.popover-arrow) {
+  color: #000000;
+}
+
+:local(.popover-content) {
+  width: 200px;
+  padding: 12px;
+  font-size: 12px;
+  color: var(--text5-color);
+  line-height: 20px;
+}
+
+:local(.error-title) {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+:local(.spinner-container) {
+  position: absolute;
+  margin-left: -11px;
+  margin-top: -11px;
+}
+
+:local(.info-icon) {
+  color: #868686;
+}
+
+:local(.level-bar) {
+  width: 24px;
+  height: 100%;
+}/*# sourceMappingURL=MicSetupModal.css.map */

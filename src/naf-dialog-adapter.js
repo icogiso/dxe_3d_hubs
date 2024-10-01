@@ -2,6 +2,7 @@ import * as mediasoupClient from "mediasoup-client";
 import protooClient from "protoo-client";
 import { debug as newDebug } from "debug";
 import EventEmitter from "eventemitter3";
+import trtcSDK from "trtc-js-sdk";
 import { MediaDevices } from "./utils/media-devices-utils";
 
 // Used for VP9 webcam video.
@@ -24,15 +25,12 @@ const debug = newDebug("naf-dialog-adapter:debug");
 const error = newDebug("naf-dialog-adapter:error");
 const info = newDebug("naf-dialog-adapter:info");
 
+const trtcDebug = newDebug("naf-dialog-adapter:trtc:debug");
+const trtcError = newDebug("naf-dialog-adapter:trtc:error");
+
 const PC_PROPRIETARY_CONSTRAINTS = {
   optional: [{ googDscp: true }]
 };
-
-const WEBCAM_SIMULCAST_ENCODINGS = [
-  { scaleResolutionDownBy: 4, maxBitrate: 500000 },
-  { scaleResolutionDownBy: 2, maxBitrate: 1000000 },
-  { scaleResolutionDownBy: 1, maxBitrate: 5000000 }
-];
 
 // Used for simulcast screen sharing.
 const SCREEN_SHARING_SIMULCAST_ENCODINGS = [
@@ -48,9 +46,6 @@ export class DialogAdapter extends EventEmitter {
     super();
 
     this._micShouldBeEnabled = false;
-    this._micProducer = null;
-    this._cameraProducer = null;
-    this._shareProducer = null;
     this._localMediaStream = null;
     this._consumers = new Map();
     this._pendingMediaRequests = new Map();
@@ -61,6 +56,15 @@ export class DialogAdapter extends EventEmitter {
     this.scene = null;
     this._serverParams = {};
     this._consumerStats = {};
+
+    /*
+     * For TRTC SDK
+     */
+    this._trtcClient = null;
+    this._trtcRoomId = null;
+    this._trtcUserId = null;
+    this._trtcLocalStream = null;
+    this._trtcRemoteStreams = new Map();
   }
 
   get consumerStats() {
@@ -251,6 +255,9 @@ export class DialogAdapter extends EventEmitter {
     this._forceTurn = forceTurn;
     this._iceTransportPolicy = iceTransportPolicy;
 
+    this._trtcRoomId = roomId;
+    this._trtcUserId = clientId;
+
     const urlWithParams = new URL(this._serverUrl);
     urlWithParams.searchParams.append("roomId", this._roomId);
     urlWithParams.searchParams.append("peerId", this._clientId);
@@ -367,6 +374,7 @@ export class DialogAdapter extends EventEmitter {
 
         case "peerBlocked": {
           const { peerId } = notification.data;
+          this.trtcMuteRemoteStream(clientId);
           document.body.dispatchEvent(new CustomEvent("blocked", { detail: { clientId: peerId } }));
 
           break;
@@ -374,6 +382,7 @@ export class DialogAdapter extends EventEmitter {
 
         case "peerUnblocked": {
           const { peerId } = notification.data;
+          this.trtcUnmuteRemoteStream(peerId);
           document.body.dispatchEvent(new CustomEvent("unblocked", { detail: { clientId: peerId } }));
 
           break;
@@ -427,6 +436,7 @@ export class DialogAdapter extends EventEmitter {
 
         try {
           await this._joinRoom();
+          await this._trtcJoinRoom();
           resolve();
           this.emit(DIALOG_CONNECTION_CONNECTED);
         } catch (err) {
@@ -504,21 +514,17 @@ export class DialogAdapter extends EventEmitter {
     let track;
 
     if (this._clientId === clientId) {
-      if (kind === "audio" && this._micProducer) {
-        track = this._micProducer.track;
-      } else if (kind === "video") {
-        if (this._cameraProducer && !this._cameraProducer.closed) {
-          track = this._cameraProducer.track;
-        } else if (this._shareProducer && !this._shareProducer.closed) {
-          track = this._shareProducer.track;
-        }
+      if (kind === "audio") {
+        track = this._trtcLocalStream.getAudioTrack();
+      } else {
+        track = this._trtcLocalStream.getVideoTrack();
       }
     } else {
-      this._consumers.forEach(consumer => {
-        if (consumer.appData.peerId === clientId && kind == consumer.track.kind) {
-          track = consumer.track;
-        }
-      });
+      if (kind === "audio") {
+        track = this._trtcRemoteStreams.get(clientId)?.get("audio")?.getAudioTrack();
+      } else {
+        track = this._trtcRemoteStreams.get(clientId)?.get("video")?.getVideoTrack();
+      }
     }
 
     if (track) {
@@ -618,18 +624,6 @@ export class DialogAdapter extends EventEmitter {
   }
 
   async closeSendTransport() {
-    if (this._micProducer) {
-      this._micProducer.close();
-      this._protoo?.connected && this._protoo?.request("closeProducer", { producerId: this._micProducer.id });
-      this._micProducer = null;
-    }
-
-    if (this._videoProducer) {
-      this._videoProducer.close();
-      this._protoo?.connected && this._protoo?.request("closeProducer", { producerId: this._videoProducer.id });
-      this._videoProducer = null;
-    }
-
     // TODO: If _sendTransport is falsey then return
     const transportId = this._sendTransport?.id;
     if (this._sendTransport && !this._sendTransport._closed) {
@@ -747,6 +741,106 @@ export class DialogAdapter extends EventEmitter {
     }
   }
 
+  async _trtcJoinRoom() {
+    trtcDebug("_trtcJoinRoom()");
+
+    let sdkAppId, userSig;
+
+    try {
+      const data = await APP.hubChannel.initTRTC(this._trtcUserId)
+
+      sdkAppId = data.sdk_app_id;
+      userSig = data.user_sig;
+    } catch(e) {
+      trtcError(`_trtcJoinRoom(): initTRTC() ${e}`);
+      return
+    }
+
+    try {
+      this._trtcClient = trtcSDK.createClient({
+        sdkAppId,
+        userSig,
+        userId: this._trtcUserId,
+        mode: 'rtc',
+        useStringRoomId: true,
+      })
+
+      await this._trtcClient.join({ roomId: this._trtcRoomId });
+
+      trtcDebug(`_trtcJoinRoom(): joined roomId: ${this._trtcRoomId}, userId: ${this._trtcUserId}`);
+
+      this._trtcClient.on('stream-added', (data) => {
+        trtcDebug(`on: event "stream-added": ${data}`)
+
+        const userId = remoteStream.getUserId();
+        if (!userId) return
+
+        const remoteStream = data.stream;
+
+        let userStream = this._trtcRemoteStreams.get(userId);
+        if (!userStream) userStream = new Map();
+
+        if (remoteStream.hasAudio()) {
+          userStream.set('audio', remoteStream);
+          this.resolvePendingMediaRequestForTrack(userId, remoteStream.getAudioTrack());
+        }
+        if (remoteStream.hasVideo()) {
+          userStream.set('video', remoteStream);
+          this.resolvePendingMediaRequestForTrack(userId, remoteStream.getVideoTrack());
+        }
+
+        this._trtcRemoteStreams.set(userId, userStream);
+      })
+
+      this._trtcClient.on('stream-updated', (data) => {
+        trtcDebug(`on: event "stream-updated": ${data}`);
+
+        const userId = data.stream.getUserId();
+        if (!userId) return;
+
+        const remoteStream = data.stream;
+
+        let userStream = this._trtcRemoteStreams.get(userId);
+        if (!userStream) userStream = new Map();
+
+        if (remoteStream.hasAudio()) {
+          userStream.set('audio', remoteStream);
+          this.resolvePendingMediaRequestForTrack(userId, remoteStream.getAudioTrack());
+          this.emit('stream_updated', userId, 'audio');
+        }
+        if (remoteStream.hasVideo()) {
+          userStream.set('video', remoteStream);
+          this.resolvePendingMediaRequestForTrack(userId, remoteStream.getVideoTrack());
+          this.emit('stream_updated', userId, 'video');
+        }
+
+        this._trtcRemoteStreams.set(userId, userStream);
+      })
+
+      this._trtcClient.on('stream-removed', (data) => {
+        trtcDebug(`on: event "stream-removed": ${data}`);
+
+        const userId = data.stream.getUserId();
+        if (!userId) return;
+
+        const remoteStream = data.stream;
+
+        if (remoteStream.hasAudio()) {
+          this._trtcRemoteStreams.get(userId)?.delete('audio');
+        }
+        if (remoteStream.hasVideo()) {
+          this._trtcRemoteStreams.get(userId)?.delete('video');
+        }
+      })
+
+      this._trtcClient.on('peer-leave', (data) => {
+        this._trtcRemoteStreams.delete(data.userId);
+      })
+    } catch(e) {
+      trtcError(`_trtcJoinRoom(): ${e}`);
+    }
+  }
+
   async setLocalMediaStream(stream) {
     if (!this._sendTransport) {
       console.error("Tried to setLocalMediaStream before a _sendTransport existed");
@@ -762,29 +856,14 @@ export class DialogAdapter extends EventEmitter {
           sawAudio = true;
 
           // TODO multiple audio tracks?
-          if (this._micProducer) {
-            if (this._micProducer.track !== track) {
-              this._micProducer.track.stop();
-              this._micProducer.replaceTrack(track);
-            }
+          const localStream = await this.getTRTCLocalStream();
+          if (localStream.hasAudio()) {
+            await localStream.replaceTrack(track);
           } else {
-            // stopTracks = false because otherwise the track will end during a temporary disconnect
-            this._micProducer = await this._sendTransport.produce({
-              track,
-              pause: !this._micShouldBeEnabled,
-              stopTracks: false,
-              codecOptions: { opusStereo: false, opusDtx: true },
-              zeroRtpOnPause: true,
-              disableTrackOnPause: true
-            });
-
-            this._micProducer.on("transportclose", () => {
-              this.emitRTCEvent("info", "RTC", () => `Mic transport closed`);
-              this._micProducer = null;
-            });
-
-            this.emit("mic-state-changed", { enabled: this.isMicEnabled });
+            await localStream.addTrack(track);
           }
+
+          this.emit("mic-state-changed", { enabled: this.isMicEnabled });
         } else {
           sawVideo = true;
 
@@ -801,93 +880,46 @@ export class DialogAdapter extends EventEmitter {
       })
     );
 
-    if (!sawAudio && this._micProducer) {
-      this._protoo.request("closeProducer", { producerId: this._micProducer.id });
-      this._micProducer.close();
-      this._micProducer = null;
+    if (!sawAudio) {
+      this.disableMicrophone();
     }
     if (!sawVideo) {
-      this.disableCamera();
-      this.disableShare();
+      await this.disableCamera();
+      await this.disableShare();
     }
     this._localMediaStream = stream;
   }
 
   async enableCamera(track) {
-    // stopTracks = false because otherwise the track will end during a temporary disconnect
-    this._cameraProducer = await this._sendTransport.produce({
-      track,
-      stopTracks: false,
-      codecOptions: { videoGoogleStartBitrate: 1000 },
-      encodings: WEBCAM_SIMULCAST_ENCODINGS,
-      zeroRtpOnPause: true,
-      disableTrackOnPause: true
-    });
+    const localStream = await this.getTRTCLocalStream();
 
-    this._cameraProducer.on("transportclose", () => {
-      this.emitRTCEvent("info", "RTC", () => `Camera transport closed`);
-      this.disableCamera();
-    });
-    this._cameraProducer.observer.on("trackended", () => {
-      this.emitRTCEvent("info", "RTC", () => `Camera track ended`);
-      this.disableCamera();
-    });
+    if (localStream.hasVideo()) {
+      await localStream.replaceTrack(track);
+    } else {
+      await localStream.addTrack(track);
+    }
+    localStream.unmuteVideo();
   }
 
   async disableCamera() {
-    if (!this._cameraProducer) return;
-
-    this._cameraProducer.close();
-
-    try {
-      if (!this._sendTransport.closed) {
-        await this._protoo.request("closeProducer", { producerId: this._cameraProducer.id });
-      }
-    } catch (error) {
-      console.error(`disableCamera(): ${error}`);
-    }
-
-    this._cameraProducer = null;
+    if (this._trtcLocalStream?.hasVideo())
+      this._trtcLocalStream.muteVideo();
   }
 
   async enableShare(track) {
-    // stopTracks = false because otherwise the track will end during a temporary disconnect
-    this._shareProducer = await this._sendTransport.produce({
-      track,
-      stopTracks: false,
-      codecOptions: { videoGoogleStartBitrate: 1000 },
-      encodings: SCREEN_SHARING_SIMULCAST_ENCODINGS,
-      zeroRtpOnPause: true,
-      disableTrackOnPause: true,
-      appData: {
-        share: true
-      }
-    });
+    const localStream = await this.getTRTCLocalStream();
 
-    this._shareProducer.on("transportclose", () => {
-      this.emitRTCEvent("info", "RTC", () => `Desktop Share transport closed`);
-      this.disableShare();
-    });
-    this._shareProducer.observer.on("trackended", () => {
-      this.emitRTCEvent("info", "RTC", () => `Desktop Share transport track ended`);
-      this.disableShare();
-    });
+    if (localStream.hasVideo()) {
+      await localStream.replaceTrack(track);
+    } else {
+      await localStream.addTrack(track);
+    }
+    localStream.unmuteVideo();
   }
 
   async disableShare() {
-    if (!this._shareProducer) return;
-
-    this._shareProducer.close();
-
-    try {
-      if (!this._sendTransport.closed) {
-        await this._protoo.request("closeProducer", { producerId: this._shareProducer.id });
-      }
-    } catch (error) {
-      console.error(`disableShare(): ${error}`);
-    }
-
-    this._shareProducer = null;
+    if (this._trtcLocalStream?.hasVideo())
+      this._trtcLocalStream.muteVideo();
   }
 
   toggleMicrophone() {
@@ -898,25 +930,38 @@ export class DialogAdapter extends EventEmitter {
     }
   }
 
+  disableMicrophone() {
+    if (this._trtcLocalStream?.hasAudio())
+      this._trtcLocalStream.muteAudio();
+  }
+
   enableMicrophone(enabled) {
-    if (!this._micProducer) {
-      console.error("Tried to toggle mic but there's no producer.");
+    if (!this._trtcLocalStream) {
+      console.error("Tried to toggle mic but there's no localStream.");
+      return;
+    }
+    if (!this._trtcLocalStream.hasAudio()) {
+      console.error("Tried to toggle mic but there's no localStream's audio track.");
       return;
     }
 
     if (enabled && !this.isMicEnabled) {
-      this._micProducer.resume();
-      this._protoo.request("resumeProducer", { producerId: this._micProducer.id });
+      this._trtcLocalStream.unmuteAudio();
+      trtcDebug("enableMicrophone: unmuted");
     } else if (!enabled && this.isMicEnabled) {
-      this._micProducer.pause();
-      this._protoo.request("pauseProducer", { producerId: this._micProducer.id });
+      this._trtcLocalStream.muteAudio();
+      trtcDebug("enableMicrophone: muted");
     }
     this._micShouldBeEnabled = enabled;
     this.emit("mic-state-changed", { enabled: this.isMicEnabled });
   }
 
   get isMicEnabled() {
-    return this._micProducer && !this._micProducer.paused;
+    if (!this._trtcLocalStream) return false;
+    if (!this._trtcLocalStream.hasAudio()) return false;
+    const track = this._trtcLocalStream.getAudioTrack();
+    if (!track) return false;
+    return track.enabled;
   }
 
   cleanUpLocalState() {
@@ -924,9 +969,22 @@ export class DialogAdapter extends EventEmitter {
     this._sendTransport = null;
     this._recvTransport && this._recvTransport.close();
     this._recvTransport = null;
-    this._micProducer = null;
-    this._shareProducer = null;
-    this._cameraProducer = null;
+
+    this.trtcCleanUpState();
+  }
+
+  trtcCleanUpState() {
+    this._trtcRoomId = null;
+    this._trtcUserId = null;
+    this._trtcLocalStream = null;
+    this._trtcRemoteStreams = new Map();
+
+    if (this._trtcClient) {
+      this._trtcClient?.leave().finally(() => {
+        this._trtcClient.destroy();
+        this._trtcClient = null;
+      });
+    }
   }
 
   disconnect() {
@@ -956,6 +1014,7 @@ export class DialogAdapter extends EventEmitter {
   block(clientId) {
     return this._protoo.request("block", { whom: clientId }).then(() => {
       this._blockedClients.set(clientId, true);
+      this.trtcMuteRemoteStream(clientId);
       document.body.dispatchEvent(new CustomEvent("blocked", { detail: { clientId: clientId } }));
     });
   }
@@ -976,5 +1035,44 @@ export class DialogAdapter extends EventEmitter {
       second: "numeric"
     });
     this.scene.emit("rtc_event", { level, tag, time, msg: msgFunc() });
+  }
+
+  async getTRTCLocalStream() {
+    if (!this._trtcClient) {
+      trtcError("getTRTCLocalStream: empty TRTC Client");
+      return
+    }
+
+    if (!this._trtcLocalStream) {
+      this._trtcLocalStream = trtcSDK.createStream({ userId: this._trtcUserId });
+      await this._trtcLocalStream.initialize();
+      trtcDebug("getTRTCLocalStream: LocalStream initialized");
+
+      await this._trtcClient.publish(this._trtcLocalStream);
+      trtcDebug("getTRTCLocalStream: LocalStream published");
+
+      this._trtcLocalStream.on("player-state-changed", (data) => {
+        if (data.reason !== 'ended') return;
+        this._trtcLocalStream = null;
+        this.emitRTCEvent("info", "RTC", () => 'LocalStream closed');
+      });
+    }
+    return this._trtcLocalStream;
+  }
+
+  trtcMuteRemoteStream(clientId) {
+    const userStream = this._trtcRemoteStreams.get(clientId);
+    if (!userStream) return;
+
+    userStream.get("audio")?.muteAudio();
+    userStream.get("video")?.muteVideo();
+  }
+
+  trtcUnmuteRemoteStream(clientId) {
+    const userStream = this._trtcRemoteStreams.get(clientId);
+    if (!userStream) return;
+
+    userStream.get("audio")?.unmuteAudio();
+    userStream.get("video")?.unmuteVideo();
   }
 }
