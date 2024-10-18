@@ -79,7 +79,7 @@ export function ReactionInfo({
         <div className={styles.ReactionInfoWrap}>
           <div className={styles.ReactionInfoHeader}>
             <HandRaisedIcon />
-            <p className={styles.ReactionInfoHeaderTitle}>ユーザーが挙手しています({raisedHandCount})</p>
+            <p className={styles.ReactionInfoHeaderTitle}>ユーザーが挙手しました({raisedHandCount})</p>
           </div>
           <ul className={styles.ReactionInfoList}>
             {!!people.length && 
